@@ -1,0 +1,68 @@
+
+
+ /*<---------------------SERVICES------------------------>  */
+
+ .services{
+    background: rgba(34, 34, 34, 1);
+    padding:50px 15px;
+}
+
+.services-title h1{
+    text-align: center;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    color: #24B8AF;
+}
+
+.services-block{
+    padding:50px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+.services-block-inner{
+    padding:0 15px 30px 15px; 
+    display: flex;       
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 235px;
+}
+
+.services-block-inner h2{
+    color:white;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.services-block-inner-logo{
+    position: relative;
+    padding: 50px 0 20px 0;
+}
+
+.services-block-inner-logo::after{
+    position: absolute;
+    content:'';
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 30px;
+    width: 3px;
+    background: #24B8AF;
+    box-shadow: 0px 0px 5px 1px rgba(36, 184, 175, 0.6);        
+}
+
+.services-block-inner-text p{
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 500;
+    padding-top: 50px;
+    font-size: 15px;
+}

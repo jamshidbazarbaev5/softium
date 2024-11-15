@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPortfolio } from '@/app/api/query/query';
+import { usePortfolio } from '@/app/api/query/query';
 
 interface PortfolioItem {
   portfolio_title: string;
@@ -11,50 +11,42 @@ interface PortfolioItem {
   portfolio_url: string;
 }
 
+const PortfolioItem: React.FC<PortfolioItem> = ({ portfolio_title, portfolio_description, portfolio_img }) => (
+  <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
+    <div className="work-content-inner-photo">
+      <Image 
+        src={portfolio_img}
+        alt={portfolio_title}
+        width={300}
+        height={200}
+        unoptimized={true}
+        loading='lazy'
+      />
+    </div>
+    <div className="work-content-inner-text">
+      <h3>{portfolio_title}</h3>
+      <p>{portfolio_description}</p>
+    </div>
+  </div>
+);
+
 const Portfolio: React.FC = () => {
-  const [portfolio, setPortfolio] = useState<PortfolioItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { data: portfolio, isLoading, error } = usePortfolio();
+  const [isContentLoaded, setIsContentLoaded] = useState(false);
 
   useEffect(() => {
-    const fetchPortfolio = async () => {
-      try {
-        const data = await getPortfolio();
-        setPortfolio(data);
-      } catch (error) {
-        console.error('Error fetching portfolio:', error);
-        setError('Error loading portfolio');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchPortfolio();
-  }, []);
+    if (portfolio) {
+      setIsContentLoaded(true);
+    }
+  }, [portfolio]);
 
   const renderPortfolioItems = useMemo(() => {
-    return portfolio.map((item, index) => (
-      <div key={index} className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
-        <div className="work-content-inner-photo">
-          <Image 
-            src={item.portfolio_img}
-            alt={item.portfolio_title}
-            width={300}
-            height={200}
-            unoptimized={true}
-            loading='lazy'
-          />
-        </div>
-        <div className="work-content-inner-text">
-          <h3>{item.portfolio_title}</h3>
-          <p>{item.portfolio_description}</p>
-        </div>
-      </div>
+    return portfolio?.map((item: React.JSX.IntrinsicAttributes & PortfolioItem, index: React.Key | null | undefined) => (
+      <PortfolioItem key={index} {...item} />
     ));
   }, [portfolio]);
 
-  if (error) return <div>{error}</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading portfolio</div>;
 
   return (
     <div className="wrapper">
@@ -84,20 +76,40 @@ const Portfolio: React.FC = () => {
             </div>
           </div>
           
-          <div className="work-block">
-            <div className="work-block-title" data-aos="fade-up" data-aos-duration="700">
-              <h1>Наши лучшие работы</h1>
-            </div>
-            <div className="work-block-content">
-              {renderPortfolioItems}
-            </div>
-            <Link href="#" className="work-block-content-link" data-aos="fade-up" data-aos-duration="700">
-              Все работы
-              <span>
-                <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                </svg>
-              </span>
-            </Link>
+          <div className="work-block" style={{ position: 'relative', minHeight: '200px' }}>
+            {isLoading && (
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                background: 'rgba(255, 255, 255, 0.8)',
+                zIndex: 10
+              }}>
+                <div className="loading-spinner"></div>
+              </div>
+            )}
+            {isContentLoaded && (
+              <>
+                <div className="work-block-title" data-aos="fade-up" data-aos-duration="700">
+                  <h1>Наши лучшие работы</h1>
+                </div>
+                <div className="work-block-content">
+                  {renderPortfolioItems}
+                </div>
+                <Link href="#" className="work-block-content-link" data-aos="fade-up" data-aos-duration="700">
+                  Все работы
+                  <span>
+                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </svg>
+                  </span>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </section>

@@ -1,6 +1,5 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import api from "../api";
-import axios from "axios";
 
 export interface IContact {
     name: string;
@@ -21,10 +20,10 @@ export const getPortfolio = async () => {
 }
 
 export const usePortfolio = () => {
-   return useQuery({
-    queryKey: ['portfolio'],
-    queryFn: getPortfolio
-   })
+    return useQuery({
+        queryKey: ['portfolio'],
+        queryFn: getPortfolio
+    })
 }
 
 export const getAddress = async () => {
@@ -36,5 +35,17 @@ export const useAddress = () => {
     return useQuery({
         queryKey: ['address'],
         queryFn: getAddress
+    })
+}
+
+export const getServices = async () => {
+    const response = await api.get('/service');
+    return response.data;
+}
+
+export const useServices = () => {
+    return useQuery({
+        queryKey: ['services'],
+        queryFn: getServices
     })
 }
