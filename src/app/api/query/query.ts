@@ -27,14 +27,21 @@ export const usePortfolio = () => {
 }
 
 export const getAddress = async () => {
-    const response = await api.get('/address');
-    return response.data;
+    try {
+        const response = await api.get('/address');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching address:', error);
+        throw error;
+    }
 }
 
 export const useAddress = () => {
     return useQuery({
         queryKey: ['address'],
-        queryFn: getAddress
+        queryFn: getAddress,
+        retry: 3,
+        retryDelay: 1000
     })
 }
 

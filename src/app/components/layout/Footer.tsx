@@ -49,7 +49,7 @@ export default function Footer() {
       { href: "/clients", text: "НАШИ КЛИЕНТЫ" },
     ],
     [
-      { href: "#", text: "UX/UI DESIGN" },
+      { href: "/design", text: "UX/UI DESIGN" },
       { href: "#", text: "РАЗРАБОТКА САЙТОВ" },
       { href: "#", text: "РАЗРАБОТКА ПРИЛОЖЕНИЙ" },
       { href: "#", text: "МАРКЕТИНГ" },

@@ -3,6 +3,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePortfolio } from '@/app/api/query/query';
+import AOS from 'aos';
 
 interface PortfolioItem {
   portfolio_title: string;
@@ -35,8 +36,17 @@ const Portfolio: React.FC = () => {
   const [isContentLoaded, setIsContentLoaded] = useState(false);
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      offset: 100,
+    });
+  }, []);
+
+  useEffect(() => {
     if (portfolio) {
       setIsContentLoaded(true);
+      AOS.refresh();
     }
   }, [portfolio]);
 
@@ -54,7 +64,7 @@ const Portfolio: React.FC = () => {
         <div className="container">
           <div className="header-block-main">
             <div className="header-block-main-center">
-              <div className="header-main-center-title">
+              <div className="header-main-center-title" >
                 <h1>UX/UI DESIGN</h1>
               </div>
               <div className="header-main-center-light">
@@ -63,7 +73,7 @@ const Portfolio: React.FC = () => {
                   нам разрешили выставлять наши
                   клиенты.</p>
               </div>
-              <div className="header-main-center-btn">
+              <div className="header-main-center-btn" >
                 <a href="#">
                   Получить консультацию
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
