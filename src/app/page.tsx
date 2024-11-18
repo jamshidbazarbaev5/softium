@@ -46,7 +46,7 @@ export default function MainPage() {
                     <h1>SOFTIUM</h1>
                   </div>
                   <div className="header-main-center-light">
-                    <p>"Softium — программируем будущее вместе!"</p>
+                    <p>&quot;Softium — программируем будущее вместе!&quot;</p>
                   </div>
 
                   <div className="header-main-center-text">
@@ -204,7 +204,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -213,7 +213,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -222,7 +222,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для &#34;KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -231,7 +231,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -240,7 +240,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -249,7 +249,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -258,7 +258,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -267,7 +267,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
@@ -276,7 +276,7 @@ export default function MainPage() {
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
-                    <p>Корпоративный портал для "KARSU"</p>
+                    <p>Корпоративный портал для &quot;KARSU&quot;</p>
                   </div>
                 </div>
               </div>
