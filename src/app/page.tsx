@@ -1,8 +1,121 @@
 'use client';
 import '../app/main/main.css'
 import Image from 'next/image'
+import { useEffect } from 'react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { initAnimation } from '../app/utils/animation';
+
+// Add this type declaration at the top of the file
+declare global {
+  interface Window {
+    startNoise: () => void;
+    stopNoise: () => void;
+    jQuery: typeof jQuery;  // Add jQuery type
+  }
+}
+
+
+// Add this type declaration at the top of the file
+declare global {
+  interface Window {
+    startNoise: () => void;
+    stopNoise: () => void;
+    jQuery: typeof jQuery;  // Add jQuery type
+  }
+}
+
 export default function MainPage() {
-    
+  useEffect(() => {
+    const loadScript = async (src: string): Promise<void> => {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = () => resolve();
+        script.onerror = () => reject();
+        document.head.appendChild(script);
+      });
+    };
+
+    const initSlick = async () => {
+      try {
+        // Check if we're in browser environment
+        if (typeof window === 'undefined') return;
+
+        // Load jQuery if not available
+        if (!window.jQuery) {
+          await loadScript('https://code.jquery.com/jquery-3.6.0.min.js');
+        }
+        
+        // Load Slick
+        await loadScript('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js');
+
+        // Get jQuery from window after it's loaded
+        const $ = window.jQuery;
+
+        // Initialize Slick
+        const $clientBlock = $('.client-block');
+        if ($clientBlock.length) {
+          $clientBlock.slick({
+            autoplay: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            prevArrow: `<button type="button" class="slick-prev">
+                          <svg width="17" height="33" viewBox="0 0 17 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.7481 31.4775L3.99815 21.0608C3.43067 20.5252 2.97863 19.8795 2.66963 19.1631C2.36063 18.4466 2.20117 17.6743 2.20117 16.8941C2.20117 16.1139 2.36063 15.3416 2.66963 14.6252C2.97863 13.9087 3.43067 13.2631 3.99815 12.7275L14.7481 2.31079" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>`,
+            nextArrow: `<button type="button" class="slick-next">
+                          <svg width="17" height="33" viewBox="0 0 17 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 31L13 16.5L2 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>`,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+            ]
+          });
+
+          if (typeof initAnimation === 'function') {
+            initAnimation($clientBlock);
+          }
+          if (typeof window.startNoise === 'function') {
+            window.startNoise();
+          }
+        }
+      } catch (error) {
+        console.error('Error initializing slick:', error);
+      }
+    };
+
+    // Initialize
+    initSlick();
+
+    // Cleanup
+    return () => {
+      if (typeof window !== 'undefined') {
+        const $clientBlock = $('.client-block');
+        if ($clientBlock.length && typeof $clientBlock.slick === 'function') {
+          try {
+            $clientBlock.slick('unslick');
+          } catch (error) {
+            console.error('Error destroying slick:', error);
+          }
+        }
+        if (typeof window.stopNoise === 'function') {
+          window.stopNoise();
+        }
+      }
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
+
   return (
       <div className="wrapper">
         <header className="header">
@@ -13,10 +126,7 @@ export default function MainPage() {
 
                   <div className="header-block-navbar-other">
                     <div className="header-navbar-other-lang">
-                      {/* <div className="dropdown-label" onClick={() => toggleDropdown()}>RU</div> */}
                       <div className="options-dropdown" id="dropdown">
-                        {/* <div className="option" onClick={() => selectLanguage('RU')}>RU</div> */}
-                        {/* <div className="option" onClick={() => selectLanguage('EN')}>EN</div> */}
                       </div>
                     </div>
                     <div className="header-navbar-other-contact">
@@ -34,8 +144,6 @@ export default function MainPage() {
 
                 </div>
               </div>
-
-
 
               <div className="header-block-main">
                 <div className="header-block-main-center">
@@ -457,5 +565,4 @@ export default function MainPage() {
         </section>
       
       </div>
-  )
-}
+  )}
