@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+// import  '../app/main/main.css'
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Mail, Phone, Twitter, Facebook, Instagram, Github } from 'lucide-react';

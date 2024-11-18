@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePortfolio } from '@/app/api/query/query';
 import AOS from 'aos';
+import './portfolio.css'
 
 interface PortfolioItem {
   portfolio_title: string;
