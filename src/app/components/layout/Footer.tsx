@@ -1,6 +1,6 @@
 'use client';
 import { useAddress } from "@/app/api/query/query";
-import { Github, MapPin } from "lucide-react";
+import {  MapPin } from "lucide-react";
 import Link from "next/link";
 
 const SocialIcon = ({ href, children }: { href: string, children: React.ReactNode }) => (

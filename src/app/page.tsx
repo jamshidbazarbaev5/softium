@@ -1,5 +1,6 @@
 'use client';
 import '../app/main/main.css'
+import Image from 'next/image'
 export default function MainPage() {
     
   return (
@@ -139,7 +140,7 @@ export default function MainPage() {
                 <div className="tech-block-slider" data-aos="fade-up" data-aos-duration="700">
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img laravel-icon">
-                      <img src="img/Laravel.svg.png" alt="laravel" />
+                      <Image src="img/Laravel.svg.png" alt="laravel" width={}/>
                     </div>
                   </div>
 
