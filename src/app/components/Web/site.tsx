@@ -1,4 +1,6 @@
 import "./web.css";
+import Image from 'next/image';
+
 export default function Site() {
     return (
         <>
@@ -9,7 +11,7 @@ export default function Site() {
                         <div className="header-block-flex">
                             <div className="header-block-flex-logo">
                                 <a href="#">
-                                    <img src="img/logo.png" alt="logo" id="logo" />
+                                    <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
                                     <p id="logo_title">SOFTIUM</p>
                                 </a>
                             </div>

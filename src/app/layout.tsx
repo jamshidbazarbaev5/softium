@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-// import  '../app/main/main.css'
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Mail, Phone, Twitter, Facebook, Instagram, Github } from 'lucide-react';
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import { Providers } from "./providers";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+// Removed Montserrat and Orbitron font declarations due to missing files
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,48 +35,36 @@ export default function RootLayout({
   return (
     <Providers> 
       <html lang="en">
-        <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-       <Header />
-        {children}
-        <section className="idea">
-          <div className="container">
-            <div className="idea-title" data-aos="fade-up" data-aos-duration="700"> 
-              <h1>Есть идеи?</h1>
-            </div>
-            <div className="idea-block">
-              <div className="idea-block-flex">
-                <div className="idea-block-flex-email">
-                  <a href="mailto:info@softium.com" data-aos="fade-up" data-aos-duration="700">info@softium.com</a>
-                  <a href="mailto:info@softium.com" data-aos="fade-up" data-aos-duration="700">info@softium.com</a>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+         <Header />
+          {children}
+          <section className="idea">
+            <div className="container">
+              <div className="idea-title" data-aos="fade-up" data-aos-duration="700"> 
+                <h1>Есть идеи?</h1>
+              </div>
+              <div className="idea-block">
+                <div className="idea-block-flex">
+                  <div className="idea-block-flex-email">
+                    <a href="mailto:info@softium.com" data-aos="fade-up" data-aos-duration="700">info@softium.com</a>
+                    <a href="mailto:info@softium.com" data-aos="fade-up" data-aos-duration="700">info@softium.com</a>
+                  </div>
+                  <div className="idea-block-flex-numbers">
+                    <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
+                    <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
+                    <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
+                  </div>
+                  <nav className="idea-block-flex-navi">
+                    <button data-aos="fade-up" data-aos-duration="700">Консультация</button>
+                    <button data-aos="fade-up" data-aos-duration="700">Позвонить</button>
+                  </nav>
                 </div>
-                <div className="idea-block-flex-numbers">
-                  <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
-                  <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
-                  <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
-                </div>
-                <nav className="idea-block-flex-navi">
-                  <button data-aos="fade-up" data-aos-duration="700">Консультация</button>
-                  <button data-aos="fade-up" data-aos-duration="700">Позвонить</button>
-                </nav>
               </div>
             </div>
-          </div>
-        </section>
-        <Footer />
+          </section>
+          <Footer />
         </body>
       </html>
     </Providers>

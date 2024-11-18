@@ -3,6 +3,7 @@ import "./design.css";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Image from 'next/image';
 
 export default function Design() {
   function selectLanguage(arg0: string): void {
@@ -106,7 +107,7 @@ export default function Design() {
             <div className="header-block-flex">
               <div className="header-block-flex-logo">
                 <a href="#">
-                  <img src="img/logo.png" alt="logo" id="logo" />
+                  <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
                   <p id="logo_title">SOFTIUM</p>
                 </a>
               </div>

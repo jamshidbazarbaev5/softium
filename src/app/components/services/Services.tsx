@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Services() {
   const { data: services, isLoading, isError } = useServices();
@@ -38,7 +39,7 @@ export default function Services() {
             <div className="header-block-flex">
               <div className="header-block-flex-logo">
                 <a href="#">
-                  <img src="img/logo.png" alt="logo" id="logo" />
+                  <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
                   <p id="logo_title">SOFTIUM</p>
                 </a>
               </div>
