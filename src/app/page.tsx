@@ -140,49 +140,49 @@ export default function MainPage() {
                 <div className="tech-block-slider" data-aos="fade-up" data-aos-duration="700">
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img laravel-icon">
-                      <Image src="img/Laravel.svg.png" alt="laravel" width={}/>
+                      <Image src="/images/Laravel.svg.png" alt="laravel" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
 
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
-                      <img src="img/figma.png" alt="" />
+                      <Image src="/images/figma.png" alt="figma" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
 
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
-                      <img src="img/Unity.png" alt="" />
+                      <Image src="/images/Unity.png" alt="unity" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
 
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
-                      <img src="img/React.png" alt="" />
+                      <Image src="/images/React.png" alt="react" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
 
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
-                      <img src="img/js.png" alt="" />
+                      <Image src="/images/js.png" alt="javascript" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
 
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
-                      <img src="img/Android.png" alt="" />
+                      <Image src="/images/Android.png" alt="android" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
 
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
-                      <img src="img/Angular.png" alt="" />
+                      <Image src="/images/Angular.png" alt="angular" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
 
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
-                      <img src="img/Git.png" alt="" />
+                      <Image src="/images/Git.png" alt="git" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                     </div>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export default function MainPage() {
               <div className="work-block-content">
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -209,7 +209,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -218,7 +218,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -227,7 +227,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -236,7 +236,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -245,7 +245,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -254,7 +254,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -263,7 +263,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -272,7 +272,7 @@ export default function MainPage() {
                 </div>
                 <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
                   <div className="work-content-inner-photo">
-                    <img src="img/work.png" alt="work" />
+                    <Image src="/images/work.png" alt="work" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="work-content-inner-text">
                     <a href="#">KARSU.UZ</a>
@@ -300,7 +300,7 @@ export default function MainPage() {
             </div>
             <div className="client-block" data-aos="fade-up" data-aos-duration="700">
               <div className="client-block-video">
-                <img src="img/video_1.png" alt="video_1" />
+                <Image src="/images/video_1.png" alt="video_1" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                 <div className="client-block-video-btn">
                 <span>
                   <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -310,7 +310,7 @@ export default function MainPage() {
                 </div>
               </div>
               <div className="client-block-video">
-                <img src="img/video_2.png" alt="video_2" />
+                <Image src="/images/video_2.png" alt="video_2" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                 <div className="client-block-video-btn">
                 <span>
                   <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -320,7 +320,7 @@ export default function MainPage() {
                 </div>
               </div>
               <div className="client-block-video">
-                <img src="img/video_3.png" alt="video_3" />
+                <Image src="/images/video_3.png" alt="video_3" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                 <div className="client-block-video-btn">
                 <span>
                   <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -330,7 +330,7 @@ export default function MainPage() {
                 </div>
               </div>
               <div className="client-block-video">
-                <img src="img/video_2.png" alt="video_2" />
+                <Image src="/images/video_2.png" alt="video_2" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                 <div className="client-block-video-btn">
                 <span>
                   <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -340,7 +340,7 @@ export default function MainPage() {
                 </div>
               </div>
               <div className="client-block-video">
-                <Image src="img/video_1.png" alt="video_1"  />
+                <Image src="/images/video_1.png" alt="video_1" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                 <div className="client-block-video-btn">
                 <span>
                   <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -350,7 +350,7 @@ export default function MainPage() {
                 </div>
               </div>
               <div className="client-block-video">
-                <img src="img/video_3.png" alt="video_3" />
+                <Image src="/images/video_3.png" alt="video_3" width={300} height={200} style={{maxWidth: '100%', height: 'auto'}} />
                 <div className="client-block-video-btn">
                 <span>
                   <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -371,114 +371,91 @@ export default function MainPage() {
               <div className="partner-block-group">
                 <div>
                   <div className="partner-block-group-banner">
-                    <img src="img/hp.png" alt="" />
+                    <img src="/images/hp.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/lenovo.png" alt="" />
+                    <img src="/images/lenovo.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/apple.png" alt="" />
+                    <img src="/images/apple.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/samsung.png" alt="" />
+                    <Image src="/images/samsung.png" alt="samsung" width={100} height={100} style={{maxWidth: '100%', height: 'auto'}} />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/Uzbekistan.png" alt="" />
+                    <img src="/images/Uzbekistan.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/tesla.png" alt="" />
+                    <img src="/images/tesla.png" alt="" />
                   </div>
                 </div>
                 <div>
                   <div className="partner-block-group-banner">
-                    <img src="img/hp.png" alt="" />
+                    <img src="/images/hp.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/lenovo.png" alt="" />
+                    <img src="/images/lenovo.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/apple.png" alt="" />
+                    <img src="/images/apple.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/samsung.png" alt="" />
+                    <img src="/images/samsung.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/Uzbekistan.png" alt="" />
+                    <img src="/images/Uzbekistan.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/tesla.png" alt="" />
+                    <img src="/images/tesla.png" alt="" />
                   </div>
                 </div>
               </div>
               <div className="partner-block-group">
                 <div>
                   <div className="partner-block-group-banner">
-                    <img src="img/hp.png" alt="" />
+                    <img src="/images/hp.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/lenovo.png" alt="" />
+                    <img src="/images/lenovo.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/apple.png" alt="" />
+                    <img src="/images/apple.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/samsung.png" alt="" />
+                    <img src="/images/samsung.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/Uzbekistan.png" alt="" />
+                    <img src="/images/Uzbekistan.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/tesla.png" alt="" />
+                    <img src="/images/tesla.png" alt="" />
                   </div>
                 </div>
                 <div>
                   <div className="partner-block-group-banner">
-                    <img src="img/hp.png" alt="" />
+                    <img src="/images/hp.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/lenovo.png" alt="" />
+                    <img src="/images/lenovo.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/apple.png" alt="" />
+                    <img src="/images/apple.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/samsung.png" alt="" />
+                    <img src="/images/samsung.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/Uzbekistan.png" alt="" />
+                    <img src="/images/Uzbekistan.png" alt="" />
                   </div>
                   <div className="partner-block-group-banner">
-                    <img src="img/tesla.png" alt="" />
+                    <img src="/images/tesla.png" alt="" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="idea">
-          <div className="container">
-            <div className="idea-title" data-aos="fade-up" data-aos-duration="700">
-              <h1>Есть идеи?</h1>
-            </div>
-            <div className="idea-block">
-              <div className="idea-block-flex">
-                <div className="idea-block-flex-email">
-                  <a href="mailto:info@softium.com" data-aos="fade-up" data-aos-duration="700">info@softium.com</a>
-                  <a href="mailto:info@softium.com" data-aos="fade-up" data-aos-duration="700">info@softium.com</a>
-                </div>
-                <div className="idea-block-flex-numbers">
-                  <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
-                  <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
-                  <a href="tel:+998999999999" data-aos="fade-up" data-aos-duration="700">+998 99 999 99 99</a>
-                </div>
-                <nav className="idea-block-flex-navi">
-                  <button data-aos="fade-up" data-aos-duration="700">Консультация</button>
-                  <button data-aos="fade-up" data-aos-duration="700">Позвонить</button>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </section>
+      
       </div>
   )
 }
