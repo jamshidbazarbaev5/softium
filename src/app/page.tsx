@@ -340,7 +340,7 @@ export default function MainPage() {
                 </div>
               </div>
               <div className="client-block-video">
-                <img src="img/video_1.png" alt="video_1" />
+                <Image src="img/video_1.png" alt="video_1"  />
                 <div className="client-block-video-btn">
                 <span>
                   <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
