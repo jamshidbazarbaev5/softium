@@ -1,7 +1,17 @@
+@media (min-width: 1024px) {
+    .header-main-center-light p{
+        max-width: 700px;
+    }
+    .header-main-center-title{
+        max-width: 9000px;
+    }
+}
 
 
 
- .services{
+
+
+.services{
     background: rgba(34, 34, 34, 1);
     padding:50px 15px;
 }
@@ -101,13 +111,10 @@
 
     .services-block-inner {
         position: relative;
-        margin:0px;
-        max-width: 400px;
+        margin: 0;
+        max-width: 300px;
         overflow: hidden;    
     }
-    /* .services-block-inner-link{
-        max-width: 400px;
-    } */
     .services-block-inner:hover h2{
         transition: all 0.5s ease-in-out; 
     }

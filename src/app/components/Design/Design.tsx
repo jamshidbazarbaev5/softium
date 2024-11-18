@@ -26,7 +26,7 @@ export default function Design() {
       <header className="header">
         <div className="header-block">
           <div className="container">
-            <div className="header-block-navbar">
+            {/* <div className="header-block-navbar">
               <div className="header-block-navbar-inner">
                 <div className="header-block-navbar-logo">
                   <img src="img/logo.png" alt="logo" />
@@ -102,7 +102,7 @@ export default function Design() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="header-block-flex">
               <div className="header-block-flex-logo">
                 <a href="#">
@@ -191,12 +191,11 @@ export default function Design() {
             <div className="header-block-main">
               <div className="header-block-main-center">
                 <div className="header-main-center-title">
-                  <h1>Наши услуги</h1>
+                  <h1>UX/UI DESIGN</h1>
                 </div>
                 <div className="header-main-center-light">
                   <p>
-                    Мы предоставляем полный спектр услуг по разработке и
-                    продвижению цифровых продуктов
+                  Мы занимаемся разработкой дизайна сайтов — от простых лендингов до масштабных интернет-магазинов и сложных веб-платформ. Мы создаем не только визуальный облик, но и продуманную архитектуру, опираясь на ваши цели: увеличение продаж, повышение узнаваемости бренда или привлечение новой аудитории. Наши ключевые принципы — эстетика, удобство и уникальность!
                   </p>
                 </div>
                 <div className="header-main-center-btn">
