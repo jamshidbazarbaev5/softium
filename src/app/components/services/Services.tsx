@@ -10,27 +10,42 @@ import { useRouter } from "next/navigation";
 
 export default function Services() {
   const [mounted, setMounted] = useState(false);
-  const { data: services, isLoading, isError } = useServices();
+  const [isLoading, setIsLoading] = useState(true);
+  const { data: services, isLoading: servicesLoading, isError } = useServices();
   const router = useRouter();
 
   useEffect(() => {
-    setMounted(true);
-
+    // Set dark background immediately
+    document.body.style.background = '#222222';
+    
     const timer = setTimeout(() => {
+      setMounted(true);
+      
       AOS.init({
         duration: 1000,
-        once: false,
+        once: true,
         mirror: true,
         offset: 50,
       });
-      AOS.refresh();
+      
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500); 
     }, 100);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.background = '';
+    };
   }, []);
 
-  // Don't render until mounted
-  if (!mounted) return null;
+  if (!mounted || isLoading) {
+    return (
+      <div className={`loading-screen ${!isLoading ? 'fade-out' : ''}`}>
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
 
   function toggleDropdown(): void {
     throw new Error("Function not implemented.");
