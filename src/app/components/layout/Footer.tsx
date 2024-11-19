@@ -2,6 +2,8 @@
 import {useAddress, useContact} from "@/app/api/query/query";
 import {  MapPin } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from '@/app/context/LanguageContext';
+import { Language } from '@/app/api/api';
 
 const SocialIcon = ({ href, children }: { href: string, children: React.ReactNode }) => (
   <li data-aos="fade-up" data-aos-duration="600">
@@ -27,8 +29,38 @@ const LinkList = ({ links }: { links: Array<{ href: string; text: string }> }) =
 );
 
 export default function Footer() {
-  const { data: addressData, isLoading: isAddressLoading, isError: isAddressError } = useAddress();
-  const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact();
+  const { language } = useLanguage();
+  const { data: addressData, isLoading: isAddressLoading, isError: isAddressError } = useAddress(language as Language);
+  const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact(language as Language);
+
+  const translations = {
+    ru: {
+      about: "О НАС",
+      services: "УСЛУГИ",
+      portfolio: "ПОРТФОЛИО",
+      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      clients: "НАШИ КЛИЕНТЫ",
+      design: "UX/UI DESIGN",
+      websites: "РАЗРАБОТКА САЙТОВ",
+      apps: "РАЗРАБОТКА ПРИЛОЖЕНИЙ",
+      onMap: "На карте",
+      copyright: "© SOFTIUM 2024"
+    },
+    en: {
+      about: "ABOUT US",
+      services: "SERVICES",
+      portfolio: "PORTFOLIO",
+      feedback: "FEEDBACK",
+      clients: "OUR CLIENTS",
+      design: "UX/UI DESIGN",
+      websites: "WEBSITE DEVELOPMENT",
+      apps: "APP DEVELOPMENT",
+      onMap: "On map",
+      copyright: "© SOFTIUM 2024"
+    }
+  };
+
+  const t = translations[language as keyof typeof translations];
 
   if (isAddressLoading || isContactLoading) return <div>Loading...</div>;
   if (isAddressError || isContactError) return <div>Error</div>;
@@ -40,16 +72,16 @@ export default function Footer() {
 
   const linkGroups = [
     [
-      { href: "/about", text: "О НАС" },
-      { href: "/services", text: "УСЛУГИ" },
-      { href: "/portfolio", text: "ПОРТФОЛИО" },
-      { href: "/contact", text: "ОБРАТНОЙ СВЯЗЬ" },
-      { href: "/clients", text: "НАШИ КЛИЕНТЫ" },
+      { href: "/about", text: t.about },
+      { href: "/services", text: t.services },
+      { href: "/portfolio", text: t.portfolio },
+      { href: "/contact", text: t.feedback },
+      { href: "/clients", text: t.clients },
     ],
     [
-      { href: "/design", text: "UX/UI DESIGN" },
-      { href: "/websites", text: "РАЗРАБОТКА САЙТОВ" },
-      { href: "/apps", text: "РАЗРАБОТКА ПРИЛОЖЕНИЙ" },
+      { href: "/design", text: t.design },
+      { href: "/websites", text: t.websites },
+      { href: "/apps", text: t.apps },
     ],
     [
       { href: `mailto:${contactData[0].email}`, text: contactData[0].email },
@@ -81,7 +113,7 @@ export default function Footer() {
       <div className="footer-down">
         <div className="footer-bottom">
           <div className="footer-bottom-name">
-            <p>© SOFTIUM 2024</p>
+            <p>{t.copyright}</p>
           </div>
           <div className="footer-bottom-nav">
             <div className="footer-bottom-nav-map">
@@ -92,7 +124,7 @@ export default function Footer() {
                 <p>{addressData[0].address_name}</p>
               </div>
               <div className="footer-nav-map-link">
-                <Link href={addressData[0].address_url}>На карте</Link>
+                <Link href={addressData[0].address_url}>{t.onMap}</Link>
               </div>
             </div>
           </div>

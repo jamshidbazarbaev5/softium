@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import api from "../api";
+import api, { Language } from "../api";
 
 export interface IContact {
     name: string;
@@ -8,27 +8,26 @@ export interface IContact {
     text: string;
 }
 
-export const getMainPage = async () => {
-    const response = await api.get('/main_page');
+export const getMainPage = async (language: Language) => {
+    const response = await api(language)('/main_page');
     return response.data;
 }
 
-export const getPortfolio = async () => {
-    const response = await api.get('/portfolio');
-    console.log(response.data)
+export const getPortfolio = async (language: Language) => {
+    const response = await api(language)('/portfolio');
     return response.data;
 }
 
-export const usePortfolio = () => {
+export const usePortfolio = (language: Language) => {
     return useQuery({
-        queryKey: ['portfolio'],
-        queryFn: getPortfolio
+        queryKey: ['portfolio', language],
+        queryFn: () => getPortfolio(language)
     })
 }
 
-export const getAddress = async () => {
+export const getAddress = async (language: Language) => {
     try {
-        const response = await api.get('/address');
+        const response = await api(language)('/address');
         return response.data;
     } catch (error) {
         console.error('Error fetching address:', error);
@@ -36,48 +35,45 @@ export const getAddress = async () => {
     }
 }
 
-export const useAddress = () => {
+export const useAddress = (language: Language) => {
     return useQuery({
-        queryKey: ['address'],
-        queryFn: getAddress,
-       
+        queryKey: ['address', language],
+        queryFn: () => getAddress(language)
     })
 }
 
-export const getServices = async () => {
-    const response = await api.get('/service');
+export const getServices = async (language: Language) => {
+    const response = await api(language)('/service');
     return response.data;
 }
 
-export const useServices = () => {
+export const useServices = (language: Language) => {
     return useQuery({
-        queryKey: ['services'],
-        queryFn: getServices
+        queryKey: ['services', language],
+        queryFn: () => getServices(language)
     })
 }
 
-export const getContact = async ()=>{
-    const response= await api.get('/contact');
+export const getContact = async (language: Language) => {
+    const response = await api(language)('/contact');
     return response.data;
 }
-export const useContact  =()=>{
+
+export const useContact = (language: Language) => {
     return useQuery({
-        queryKey: ['contact'],
-        queryFn: getContact,
-       
+        queryKey: ['contact', language],
+        queryFn: () => getContact(language)
     })
 }
 
-export const getPartners  = async ()=>{
-    const response = await api.get('/partners');
-    return response.data
+export const getPartners = async (language: Language) => {
+    const response = await api(language)('/partners');
+    return response.data;
 }
 
-
-export const usePartner = ()=>{
+export const usePartner = (language: Language) => {
     return useQuery({
-        queryKey: ['partner'],
-        queryFn: getPartners
+        queryKey: ['partner', language],
+        queryFn: () => getPartners(language)
     })
 }
-

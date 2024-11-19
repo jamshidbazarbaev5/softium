@@ -6,10 +6,55 @@ import Link from "next/link";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useLanguage } from "@/app/context/LanguageContext";
+
+// Add translations
+const translations = {
+  ru: {
+    menu: "Меню",
+    about: "О НАС",
+    services: "УСЛУГИ",
+    portfolio: "ПОРТФОЛИО",
+    contact: "ОБРАТНАЯ СВЯЗЬ",
+    clients: "НАШИ КЛИЕНТЫ",
+  },
+  en: {
+    menu: "Menu",
+    about: "ABOUT",
+    services: "SERVICES",
+    portfolio: "PORTFOLIO",
+    contact: "CONTACT",
+    clients: "OUR CLIENTS",
+  }
+};
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
+  const { language, setLanguage } = useLanguage();
+  const t = translations[language as keyof typeof translations];
+
+  const handleLanguageChange = (newLang: 'ru' | 'en') => {
+    setLanguage(newLang);
+  };
+
+  const getPageTitle = () => {
+    switch (pathname) {
+      case "/portfolio":
+        return t.portfolio;
+      case "/services":
+        return t.services;
+      case "/about":
+        return t.about;
+      case "/contact":
+        return t.contact;
+      case "/clients":
+        return t.clients;
+      default:
+        return t.portfolio;
+    }
+  };
+
   const redirectToMainPage = () => {
     router.push("/");
   };
@@ -26,20 +71,16 @@ export default function Header() {
         easing: "ease-in-out",
       });
 
-      // Small delay to ensure styles are applied
       setTimeout(() => {
         document.body.style.opacity = "1";
         AOS.refresh();
       }, 100);
     };
 
-    // Add a class to handle the transition
     document.body.classList.add("page-transition");
 
-    // Small delay before initializing styles
     setTimeout(initializeStyles, 50);
 
-    // Cleanup function
     return () => {
       document.body.classList.remove("page-transition");
       document.body.style.opacity = "1";
@@ -55,22 +96,6 @@ export default function Header() {
     }, 100);
   };
 
-  const getPageTitle = () => {
-    switch (pathname) {
-      case "/portfolio":
-        return "Портфолио";
-      case "/services":
-        return "Услуги";
-      case "/about":
-        return "О нас";
-      case "/contact":
-        return "Обратная связь";
-      case "/clients":
-        return "Наши клиенты";
-      default:
-        return "Портфолио";
-    }
-  };
   return (
     <header>
       <div className="header-block-navbar">
@@ -80,10 +105,20 @@ export default function Header() {
           </div>
           <div className="header-block-navbar-other">
             <div className="header-navbar-other-lang">
-              <div className="dropdown-label">RU</div>
+              <div className="dropdown-label">{language.toUpperCase()}</div>
               <div className="options-dropdown" id="dropdown">
-                <div className="option">RU</div>
-                <div className="option">EN</div>
+                <div 
+                  className={`option ${language === 'ru' ? 'active' : ''}`}
+                  onClick={() => handleLanguageChange('ru')}
+                >
+                  RU
+                </div>
+                <div 
+                  className={`option ${language === 'en' ? 'active' : ''}`}
+                  onClick={() => handleLanguageChange('en')}
+                >
+                  EN
+                </div>
               </div>
             </div>
             <div className="header-navbar-other-contact">
@@ -111,21 +146,21 @@ export default function Header() {
             </label>
             <ul className="header-navbar-menu-list">
               <li>
-                <a href="/about">О НАС</a>
+                <a href="/about">{t.about}</a>
               </li>
               <li>
                 <a href="/services" onClick={redirectToService}>
-                  УСЛУГИ
+                  {t.services}
                 </a>
               </li>
               <li>
-                <a href="/portfolio">ПОРТФОЛИО</a>
+                <a href="/portfolio">{t.portfolio}</a>
               </li>
               <li>
-                <Link href="/contact">ОБРАТНАЯ СВЯЗЬ</Link>
+                <Link href="/contact">{t.contact}</Link>
               </li>
               <li>
-                <Link href="/clients">НАШИ КЛИЕНТЫ</Link>
+                <Link href="/clients">{t.clients}</Link>
               </li>
             </ul>
           </nav>
@@ -163,7 +198,7 @@ export default function Header() {
               <span id="menu_span"></span>
               <span id="menu_span"></span>
             </div>
-            <p id="fixed_text">Меню</p>
+            <p id="fixed_text">{t.menu}</p>
           </label>
           <div className="header-fixed-menu-link">
             <Link href="#" id="fixed_link">
@@ -172,28 +207,38 @@ export default function Header() {
           </div>
           <ul className="header-fixed-menu-list">
             <li>
-              <Link href="/about">О НАС</Link>
+              <Link href="/about">{t.about}</Link>
             </li>
             <li>
-              <a href="/services">УСЛУГИ</a>
+              <a href="/services">{t.services}</a>
             </li>
             <li>
-              <a href="/portfolio">ПОРТФОЛИО</a>
+              <a href="/portfolio">{t.portfolio}</a>
             </li>
             <li>
-              <Link href="/contact">ОБРАТНАЯ СВЯЗЬ</Link>
+              <Link href="/contact">{t.contact}</Link>
             </li>
             <li>
-              <Link href="/clients">НАШИ КЛИЕНТЫ</Link>
+              <Link href="/clients">{t.clients}</Link>
             </li>
           </ul>
         </div>
         <div className="header-block-right-content">
           <div className="header-right-content-lang">
-            <Link href="#" id="lang">
+            <Link 
+              href="#" 
+              id="lang" 
+              className={language === 'ru' ? 'active' : ''}
+              onClick={() => handleLanguageChange('ru')}
+            >
               RU
             </Link>
-            <Link href="#" id="lang">
+            <Link 
+              href="#" 
+              id="lang" 
+              className={language === 'en' ? 'active' : ''}
+              onClick={() => handleLanguageChange('en')}
+            >
               EN
             </Link>
           </div>

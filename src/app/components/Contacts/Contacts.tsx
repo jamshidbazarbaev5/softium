@@ -3,9 +3,46 @@ import React, { useState, useEffect } from "react";
 import "./contact.css";
 import { IContact } from "@/app/api/query/query";
 import { useAddress, useContact } from "@/app/api/query/query";
+import { useLanguage } from "@/app/context/LanguageContext";
+import { Language } from "@/app/api/api";
 import Link from "next/link";
 
+// Text content for different languages
+const translations = {
+  ru: {
+    title: "Контакты",
+    formTitle: "Несколько слов о вашем проекте",
+    namePlaceholder: "Имя*",
+    emailPlaceholder: "E-mail*",
+    phonePlaceholder: "Телефон* (+998)",
+    textPlaceholder: "Расскажите нам свою идею!",
+    submitButton: "Отправить",
+    sending: "Отправка...",
+    errorMessage: "Произошла ошибка при отправке. Пожалуйста, попробуйте снова.",
+    successMessage: "Ваше сообщение успешно отправлено!",
+    contactsTitle: "Наши контакты",
+    mapButton: "На карте"
+  },
+  en: {
+    title: "Contacts",
+    formTitle: "A few words about your project",
+    namePlaceholder: "Name*",
+    emailPlaceholder: "E-mail*",
+    phonePlaceholder: "Phone* (+998)",
+    textPlaceholder: "Tell us your idea!",
+    submitButton: "Submit",
+    sending: "Sending...",
+    errorMessage: "An error occurred while sending. Please try again.",
+    successMessage: "Your message has been sent successfully!",
+    contactsTitle: "Our contacts",
+    mapButton: "On map"
+  }
+};
+
 const ContactForm = () => {
+  const { language } = useLanguage();
+  const t = translations[language as keyof typeof translations];
+  
   const [formData, setFormData] = useState<IContact>({
     name: "",
     email: "",
@@ -38,7 +75,7 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch('https://softium.uz/en/main_page/api/v1/contactUs/', {
+      const response = await fetch(`https://softium.uz/${language}/main_page/api/v1/contactUs/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,15 +116,13 @@ const ContactForm = () => {
 
   return (
     <div className="contacts-block-form">
-      <h3 className="contacts-block-form-title">
-        Несколько слов о вашем проекте
-      </h3>
+      <h3 className="contacts-block-form-title">{t.formTitle}</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
           className="contacts-form-name"
-          placeholder="Имя*"
+          placeholder={t.namePlaceholder}
           required
           value={formData.name}
           onChange={handleChange}
@@ -96,7 +131,7 @@ const ContactForm = () => {
           type="email"
           name="email"
           className="contacts-form-email"
-          placeholder="E-mail*"
+          placeholder={t.emailPlaceholder}
           required
           value={formData.email}
           onChange={handleChange}
@@ -105,7 +140,7 @@ const ContactForm = () => {
           type="tel"
           name="phone_number"
           className="contacts-form-phone"
-          placeholder="Телефон* (+998)"
+          placeholder={t.phonePlaceholder}
           required
           value={formData.phone_number}
           onChange={handleChange}
@@ -114,23 +149,23 @@ const ContactForm = () => {
           name="text"
           id="form_idea"
           className="contacts-form-text"
-          placeholder="Расскажите нам свою идею!"
+          placeholder={t.textPlaceholder}
           value={formData.text}
           onChange={handleChange}
           required
         ></textarea>
         <button type="submit" className="contacts-form-btn" disabled={isSubmitting}>
-          {isSubmitting ? 'Отправка...' : 'Отправить'}
+          {isSubmitting ? t.sending : t.submitButton}
         </button>
       </form>
       {isError && (
         <div className="contacts-form-message error">
-          Произошла ошибка при отправке. Пожалуйста, попробуйте снова.
+          {t.errorMessage}
         </div>
       )}
       {isSuccess && (
         <div className="contacts-form-message success" style={{animation: "fadeOut 3s forwards"}}>
-          Ваше сообщение успешно отправлено!
+          {t.successMessage}
         </div>
       )}
     </div>
@@ -147,41 +182,49 @@ interface Contact {
   email: string;
 }
 
-const ContactInfo = ({ addressData, contactData }: { addressData: Address[], contactData: Contact[] }) => (
-  <div className="contacts-block-numbers">
-    <h3 className="contacts-block-numbers-title">Наши контакты</h3>
-    <ul className="contacts-block-numbers-list">
-      {contactData?.map((contact: Contact, index: number) => (
-        <li key={`phone-${index}`}>
-          <a href={`tel:${contact.phone_number.replace(/\s/g, "")}`}>
-            {contact.phone_number}
-          </a>
-        </li>
-      ))}
+const ContactInfo = ({ addressData, contactData }: { addressData: Address[], contactData: Contact[] }) => {
+  const { language } = useLanguage();
+  const t = translations[language as keyof typeof translations];
+  
+  return (
+    <div className="contacts-block-numbers">
+      <h3 className="contacts-block-numbers-title">{t.contactsTitle}</h3>
+      <ul className="contacts-block-numbers-list">
+        {contactData?.map((contact: Contact, index: number) => (
+          <li key={`phone-${index}`}>
+            <a href={`tel:${contact.phone_number.replace(/\s/g, "")}`}>
+              {contact.phone_number}
+            </a>
+          </li>
+        ))}
 
-      {contactData?.map((contact: Contact, index: number) => (
-        <li key={`email-${index}`}>
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        </li>
-      ))}
+        {contactData?.map((contact: Contact, index: number) => (
+          <li key={`email-${index}`}>
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </li>
+        ))}
 
-      {addressData?.map((address: Address, index: number) => (
-        <React.Fragment key={`address-${index}`}>
-          <li>{address.address_name}</li>
-          <button type="button" className="contacts-form-btn-map">
-          <Link href={address.address_url} >На карте</Link>
+        {addressData?.map((address: Address, index: number) => (
+          <React.Fragment key={`address-${index}`}>
+            <li>{address.address_name}</li>
+            <button type="button" className="contacts-form-btn-map">
+            <Link href={address.address_url} >{t.mapButton}</Link>
 
-          </button>
-         
-        </React.Fragment>
-      ))}
-    </ul>
-  </div>
-);
+            </button>
+           
+          </React.Fragment>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const Contacts: React.FC = () => {
-  const { data: addressData, isLoading: isAddressLoading, isError: isAddressError } = useAddress();
-  const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact();
+  const { language } = useLanguage();
+  const t = translations[language as keyof typeof translations];
+  
+  const { data: addressData, isLoading: isAddressLoading, isError: isAddressError } = useAddress(language as Language);
+  const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact(language as Language);
 
   if (isAddressLoading || isContactLoading) return <div>Loading...</div>;
   if (isAddressError || isContactError) return <div>Error</div>;
@@ -190,7 +233,7 @@ const Contacts: React.FC = () => {
     <main>
       <section className="contacts">
         <div className="container">
-          <h1 className="contacts-title">Контакты</h1>
+          <h1 className="contacts-title">{t.title}</h1>
           <div className="contacts-block">
             <div className="contacts-block-flex">
               <ContactForm />

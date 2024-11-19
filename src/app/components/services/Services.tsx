@@ -7,12 +7,55 @@ import "aos/dist/aos.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Language } from '@/app/api/api';
+import { useLanguage } from '@/app/context/LanguageContext';
 
 export default function Services() {
   const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { data: services, isLoading: servicesLoading, isError } = useServices();
   const router = useRouter();
+  const { language } = useLanguage();
+  
+  const { data: services, isLoading: servicesLoading, isError } = useServices(language as Language);
+
+  const translations = {
+    ru: {
+      menu: "Меню",
+      about: "О НАС",
+      services: "УСЛУГИ",
+      portfolio: "ПОРТФОЛИО",
+      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      clients: "НАШИ КЛИЕНТЫ",
+      ourServices: "Наши услуги",
+      servicesDescription: "Мы предоставляем полный спектр услуг по разработке и продвижению цифровых продуктов",
+      getConsultation: "Получить консультацию",
+      design: "UX/UI ДИЗАЙН",
+      websites: "РАЗРАБОТКА САЙТОВ",
+      apps: "РАЗРАБОТКА ПРИЛОЖЕНИЙ",
+      designDescription: "Мы создаем современный и удобный дизайн для вашего проекта",
+      websitesDescription: "Разрабатываем сайты любой сложности",
+      appsDescription: "Создаем мобильные приложения для iOS и Android"
+    },
+    en: {
+      menu: "Menu",
+      about: "ABOUT US",
+      services: "SERVICES",
+      portfolio: "PORTFOLIO",
+      feedback: "FEEDBACK",
+      clients: "OUR CLIENTS",
+      ourServices: "Our Services",
+      servicesDescription: "We provide a full range of services for the development and promotion of digital products",
+      getConsultation: "Get Consultation",
+      design: "UX/UI DESIGN",
+      websites: "WEBSITE DEVELOPMENT",
+      apps: "APP DEVELOPMENT",
+      designDescription: "We create modern and user-friendly design for your project",
+      websitesDescription: "We develop websites of any complexity",
+      appsDescription: "We create mobile applications for iOS and Android"
+    }
+  };
+
+  const t = translations[language as keyof typeof translations];
 
   useEffect(() => {
     // Set dark background immediately
@@ -101,24 +144,24 @@ export default function Services() {
                     <span id="menu_span"></span>
                     <span id="menu_span"></span>
                   </div>
-                  <p id="fixed_text">Меню</p>
+                  <p id="fixed_text">{t.menu}</p>
                 </label>
 
                 <ul className="header-fixed-menu-list">
                   <li>
-                    <a href="/about">О НАС</a>
+                    <a href="/about">{t.about}</a>
                   </li>
                   <li>
-                    <a href="/services">УСЛУГИ</a>
+                    <a href="/services">{t.services}</a>
                   </li>
                   <li>
-                    <a href="/portfolio">ПОРТФОЛИО</a>
+                    <a href="/portfolio">{t.portfolio}</a>
                   </li>
                   <li>
-                    <a href="/contact">ОБРАТНОЙ СВЯЗЬ</a>
+                    <a href="/contact">{t.feedback}</a>
                   </li>
                   <li>
-                    <a href="/clients">НАШИ КЛИЕНТЫ</a>
+                    <a href="/clients">{t.clients}</a>
                   </li>
                 </ul>
               </div>
@@ -141,18 +184,17 @@ export default function Services() {
             <div className="header-block-main">
               <div className="header-block-main-center">
                 <div className="header-main-center-title">
-                  <h1>Наши услуги</h1>
+                  <h1>{t.ourServices}</h1>
                 </div>
                 <div className="header-main-center-light">
                   <p>
-                    Мы предоставляем полный спектр услуг по разработке и
-                    продвижению цифровых продуктов
+                    {t.servicesDescription}
                   </p>
                 </div>
 
                 <div className="header-main-center-btn">
                   <a href="#">
-                    Получить консультацию
+                    {t.getConsultation}
                     <svg
                       width="20"
                       height="20"
@@ -198,13 +240,13 @@ export default function Services() {
       <section className="services">
         <div className="container">
           <div className="services-title" data-aos="fade-up">
-            <h1>Наши услуги</h1>
+            <h1>{t.ourServices}</h1>
           </div>
 
           <div className="services-block">
             <Link href="/design" style={{ textDecoration: "none" }}>
               <div className="services-block-inner" data-aos="fade-up">
-                <h2 data-aos="fade-up">UX/UI DESIGN</h2>
+                <h2 data-aos="fade-up">{t.design}</h2>
                 <div className="services-block-inner-logo" data-aos="fade-up">
                   <svg
                     width="44"
@@ -222,9 +264,7 @@ export default function Services() {
                 </div>
                 <div className="services-block-inner-text" data-aos="fade-up">
                   <p>
-                    Softium предоставляет UX/UI дизайн, создавая удобные и
-                    привлекательные интерфейсы для повышения успеха вашего
-                    продукта.
+                    {t.designDescription}
                   </p>
                 </div>
               </div>
@@ -236,7 +276,7 @@ export default function Services() {
               className="services-block-inner-link"
             >
               <div className="services-block-inner" data-aos="fade-up">
-                <h2 data-aos="fade-up">РАЗРАБОТКА САЙТОВ</h2>
+                <h2 data-aos="fade-up">{t.websites}</h2>
                 <div className="services-block-inner-logo" data-aos="fade-up">
                   <svg
                     width="50"
@@ -254,16 +294,14 @@ export default function Services() {
                 </div>
                 <div className="services-block-inner-text" data-aos="fade-up">
                   <p>
-                    Softium занимается созданием современных, адаптивных сайтов,
-                    которые эффективно представляют ваш бизнес в сети и
-                    привлекают клиентов.
+                    {t.websitesDescription}
                   </p>
                 </div>
               </div>
             </Link>
             <Link href="/apps" style={{ textDecoration: "none" }}>
               <div className="services-block-inner" data-aos="fade-up">
-                <h2 data-aos="fade-up">РАЗРАБОТКА ПРИЛОЖЕНИЙ</h2>
+                <h2 data-aos="fade-up">{t.apps}</h2>
                 <div className="services-block-inner-logo" data-aos="fade-up">
                   <svg
                     width="45"
@@ -281,9 +319,7 @@ export default function Services() {
                 </div>
                 <div className="services-block-inner-text" data-aos="fade-up">
                   <p>
-                    Softium разрабатывает функциональные мобильные и
-                    веб-приложения, которые ускоряют рост вашего бизнеса и
-                    улучшают пользовательский опыт.
+                    {t.appsDescription}
                   </p>
                 </div>
               </div>

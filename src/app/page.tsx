@@ -9,6 +9,10 @@ import { initAnimation } from "./utils/animation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { usePartner, usePortfolio } from "./api/query/query";
+import LanguageSwitcher from './components/LanguageSwitcher';
+import { useRouter } from 'next/navigation';
+import { Language } from './api/api';
+import { useLanguage } from '@/app/context/LanguageContext';
 
 declare global {
   interface Window {
@@ -28,16 +32,20 @@ interface PartnersItem {
 }
 
 export default function MainPage() {
+  const { language } = useLanguage();
+  const router = useRouter();
+  
   const {
     data: portfolioData,
     isLoading: isPortfolioLoading,
     isError: isPortfolioError,
-  } = usePortfolio();
+  } = usePortfolio(language as Language);
+
   const {
     data: partners,
     isLoading: isPartnersLoading,
     isError: isPartnersError,
-  } = usePartner();
+  } = usePartner(language as Language);
 
   const pathname = usePathname();
   const slickInitialized = useRef(false);
@@ -210,6 +218,42 @@ export default function MainPage() {
   );
   console.log(partners);
 
+  // Add translations
+  const translations = {
+    ru: {
+      webStudio: "Веб-студия",
+      slogan: "Softium — программируем будущее вместе!",
+      description: "Softium — это команда профессионалов в сфере разработки сайтов, дизайна и IT-решений. Мы создаем современные, функциональные и визуально привлекательные проекты, которые помогают бизнесу расти и выделяться в цифровом мире. От идей до готового продукта — программируем успех вашего бизнеса.",
+      getConsultation: "Получить консультацию",
+      aboutUs: "О нас",
+      aboutDescription: "Softium — это команда опытных разработчиков, дизайнеров и IT-специалистов, которые создают инновационные цифровые решения для бизнеса. Мы занимаемся разработкой сайтов, дизайном, веб-приложениями и многими другими направлениями, связанными с программированием. Наша цель — помочь вам воплотить идеи в жизнь, используя современные технологии для роста и успеха вашего бизнеса.",
+      moreAboutUs: "Подробнее о нас",
+      ourTechnologies: "Наши технологии",
+      techDescription: "Мы эксперты в веб-технологиях, которых достаточно для создания полного и максимально функционального веб-сайта для вашего бизнеса.",
+      ourBestWorks: "Наши лучшие работы",
+      allWorks: "Все работы",
+      clientsAboutUs: "Клиенты о нас",
+      ourPartners: "Наши партнеры"
+    },
+    en: {
+      webStudio: "Web Studio",
+      slogan: "Softium — programming the future together!",
+      description: "Softium is a team of professionals in website development, design, and IT solutions. We create modern, functional, and visually appealing projects that help businesses grow and stand out in the digital world. From ideas to finished product — we program your business success.",
+      getConsultation: "Get Consultation",
+      aboutUs: "About Us",
+      aboutDescription: "Softium is a team of experienced developers, designers, and IT specialists who create innovative digital solutions for business. We develop websites, design, web applications, and many other programming-related areas. Our goal is to help you bring ideas to life using modern technologies for your business growth and success.",
+      moreAboutUs: "More About Us",
+      ourTechnologies: "Our Technologies",
+      techDescription: "We are experts in web technologies that are sufficient to create a complete and maximally functional website for your business.",
+      ourBestWorks: "Our Best Works",
+      allWorks: "All Works",
+      clientsAboutUs: "Clients About Us",
+      ourPartners: "Our Partners"
+    }
+  };
+
+  const t = translations[language as keyof typeof translations];
+
   return (
     <div className="wrapper">
       <header className="header">
@@ -218,6 +262,7 @@ export default function MainPage() {
             <div className="header-block-navbar">
               <div className="header-block-navbar-inner">
                 <div className="header-block-navbar-other">
+                  <LanguageSwitcher />  
                   <div className="header-navbar-other-lang">
                     <div className="options-dropdown" id="dropdown"></div>
                   </div>
@@ -245,31 +290,23 @@ export default function MainPage() {
             <div className="header-block-main">
               <div className="header-block-main-center">
                 <div className="header-main-center-small">
-                  <span>Веб-студия</span>
+                  <span>{t.webStudio}</span>
                 </div>
                 <div className="header-main-center-title">
                   <h1>SOFTIUM</h1>
                 </div>
                 <div className="header-main-center-light">
-                  <p>&quot;Softium — программируем будущее вместе!&quot;</p>
+                  <p>&quot;{t.slogan}&quot;</p>
                 </div>
 
                 <div className="header-main-center-text">
                   <p>
-                    Softium —{" "}
-                    <span>
-                      это команда профессионалов в сфере разработки сайтов,
-                      дизайна и IT-решений. Мы создаем современные,
-                      функциональные и визуально привлекательные проекты,
-                      которые помогают бизнесу расти и выделяться в цифровом
-                      мире. От идей до готового продукта — программируем успех
-                      вашего бизнеса.
-                    </span>
+                    <span>{t.description}</span>
                   </p>
                 </div>
 
                 <div className="header-main-center-btn">
-                  <a href="#">Получить консультацию</a>
+                  <a href="#">{t.getConsultation}</a>
                 </div>
               </div>
             </div>
@@ -333,23 +370,15 @@ export default function MainPage() {
                 data-aos-duration="700"
               >
                 <div className="about-block-title">
-                  <h1>О нас</h1>
+                  <h1>{t.aboutUs}</h1>
                 </div>
                 <div className="about-block-text">
-                  <p>
-                    <span>Softium</span> — это команда опытных разработчиков,
-                    дизайнеров и IT-специалистов, которые создают инновационные
-                    цифровые решения для бизнеса. Мы занимаемся разработкой
-                    сайтов, дизайном, веб-приложениями и многими другими
-                    направлениями, связанными с программированием. Наша цель —
-                    помочь вам воплотить идеи в жизнь, используя современные
-                    технологии для роста и успеха вашего бизнеса.
-                  </p>
+                  <p>{t.aboutDescription}</p>
                 </div>
 
                 <div className="about-block-link">
                   <a href="#about">
-                    Подробнее о нас
+                    {t.moreAboutUs}
                     <svg
                       width="16"
                       height="7"
@@ -414,7 +443,7 @@ export default function MainPage() {
               data-aos="fade-up"
               data-aos-duration="700"
             >
-              <h1>Наши технологии</h1>
+              <h1>{t.ourTechnologies}</h1>
             </div>
 
             <div
@@ -423,9 +452,7 @@ export default function MainPage() {
               data-aos-duration="700"
             >
               <p>
-                Мы эксперты в веб-технологиях, которых достаточно для создания
-                полного и максимально функционального веб-сайта для вашего
-                бизнеса.
+                {t.techDescription}
               </p>
             </div>
 
@@ -544,7 +571,7 @@ export default function MainPage() {
               data-aos="fade-up"
               data-aos-duration="700"
             >
-              <h1>Наши лучшие работы</h1>
+              <h1>{t.ourBestWorks}</h1>
             </div>
             <div className="work-block-content" style={{ color: "white" }}>
               {isPortfolioLoading ? (
@@ -569,7 +596,7 @@ export default function MainPage() {
               data-aos="fade-up"
               data-aos-duration="700"
             >
-              Все работы
+              {t.allWorks}
               <span>
                 <svg
                   width="16"
@@ -609,7 +636,7 @@ export default function MainPage() {
             data-aos="fade-up"
             data-aos-duration="700"
           >
-            <h1>Клиенты о нас</h1>
+            <h1>{t.clientsAboutUs}</h1>
           </div>
           <div
             className="client-block"
@@ -772,7 +799,7 @@ export default function MainPage() {
       <section className="partner">
         <div className="container">
           <div className="partner-title">
-            <h1>Наши партнеры</h1>
+            <h1>{t.ourPartners}</h1>
           </div>
           <div className="partner-block">
             {isPortfolioLoading ? (
