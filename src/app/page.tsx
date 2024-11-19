@@ -142,7 +142,6 @@ export default function MainPage() {
       }
     };
 
-    // Small delay to ensure DOM is ready
     const timeoutId = setTimeout(() => {
       initSlick();
       document.body.style.opacity = '1';

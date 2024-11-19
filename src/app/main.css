@@ -1726,3 +1726,13 @@ canvas#neon {
     padding: 25px 0;
   }
 }
+
+.header-other-contact-email {
+  color: white;
+}
+.header-other-contact-location{
+  color: white;
+}
+.header-other-contact-phone{
+  color: white;
+}
