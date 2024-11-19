@@ -1,5 +1,5 @@
 import { useContact } from "@/app/api/query/query";
-import { IContact } from "@/app/api/query/query"; // Import IContact interface
+import { IContact } from "@/app/api/query/query"; 
 
 export default function Idea() {
     const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact();

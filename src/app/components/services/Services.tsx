@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 export default function Services() {
   const [mounted, setMounted] = useState(false);
@@ -15,14 +15,13 @@ export default function Services() {
 
   useEffect(() => {
     setMounted(true);
-    
-    // Initialize AOS with a slight delay to ensure DOM is ready
+
     const timer = setTimeout(() => {
       AOS.init({
         duration: 1000,
         once: false,
         mirror: true,
-        offset: 50
+        offset: 50,
       });
       AOS.refresh();
     }, 100);
@@ -46,10 +45,10 @@ export default function Services() {
       : []
     : [];
   console.log(servicesData);
-
-  const redirectToMainPage = () => {
-    router.push('/');
-  };
+  // const handleLogoClick = () => {
+  //   router.push("/");
+  //   window.location.reload();
+  // };
 
   return (
     <>
@@ -57,19 +56,16 @@ export default function Services() {
         <div className="header-block">
           <div className="container">
             <div className="header-block-flex">
-              <Link href="/">
-                <div className="header-block-flex-logo">
-                  <Image
-                      src="/img/logo.png"
-                      alt="logo"
-                      id="logo"
-                      width={100}
-                      height={100}
-                  />
-                  <p id="logo_title">SOFTIUM</p>
-                </div>
-                
-              </Link>
+              <a className="header-block-flex-logo" href="/">
+                <Image
+                  src="/img/logo.png"
+                  alt="logo"
+                  id="logo"
+                  width={100}
+                  height={100}
+                />
+              </a>
+
               <div className="header-block-flex-number">
                 <a href="tel:+998990990011" id="call_number">
                   <span>+998</span> 99 099 00 11
@@ -79,7 +75,7 @@ export default function Services() {
 
             <div className="header-block-fixed">
               <div className="header-block-fixed-menu">
-              <input
+                <input
                   type="checkbox"
                   id="fixed_menu"
                   className="header-fixed-menu-input"
@@ -95,19 +91,19 @@ export default function Services() {
 
                 <ul className="header-fixed-menu-list">
                   <li>
-                    <a href="#">О НАС</a>
+                    <a href="/about">О НАС</a>
                   </li>
                   <li>
-                    <a href="#">УСЛУГИ</a>
+                    <a href="/services">УСЛУГИ</a>
                   </li>
                   <li>
-                    <a href="#">ПОРТФОЛИО</a>
+                    <a href="/portfolio">ПОРТФОЛИО</a>
                   </li>
                   <li>
-                    <a href="#">ОБРАТНОЙ СВЯЗЬ</a>
+                    <a href="/contact">ОБРАТНОЙ СВЯЗЬ</a>
                   </li>
                   <li>
-                    <a href="#">НАШИ КЛИЕНТЫ</a>
+                    <a href="/clients">НАШИ КЛИЕНТЫ</a>
                   </li>
                 </ul>
               </div>

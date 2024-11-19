@@ -1,7 +1,8 @@
 "use client";
-import "../app/main/main.css";
+import './main.css'
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { initAnimation } from "./utils/animation";
@@ -25,6 +26,7 @@ interface PortfolioItem {
 interface PartnersItem {
   partner_img: string;
 }
+
 export default function MainPage() {
   const {
     data: portfolioData,
@@ -37,7 +39,14 @@ export default function MainPage() {
     isError: isPartnersError,
   } = usePartner();
 
+  const pathname = usePathname();
+  const slickInitialized = useRef(false);
+
   useEffect(() => {
+    // Force style update on route change
+    document.body.style.opacity = '0.99';
+    
+    // Initialize AOS
     AOS.init({
       duration: 1000,
       once: true,
@@ -45,6 +54,11 @@ export default function MainPage() {
     });
 
     const loadScript = async (src: string): Promise<void> => {
+      // Check if script already exists
+      if (document.querySelector(`script[src="${src}"]`)) {
+        return Promise.resolve();
+      }
+
       return new Promise((resolve, reject) => {
         const script = document.createElement("script");
         script.src = src;
@@ -58,18 +72,27 @@ export default function MainPage() {
       try {
         if (typeof window === "undefined") return;
 
+        // Load jQuery if not present
         if (!window.jQuery) {
           await loadScript("https://code.jquery.com/jquery-3.6.0.min.js");
         }
 
+        // Load Slick if not present
         await loadScript(
           "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
         );
 
         const $ = window.jQuery;
+        if (!$) return;
 
+        // Destroy existing slick instance if it exists
         const $clientBlock = $(".client-block");
-        if ($clientBlock.length) {
+        if ($clientBlock.hasClass('slick-initialized')) {
+          $clientBlock.slick('unslick');
+        }
+
+        // Initialize new slick instance
+        if ($clientBlock.length && !slickInitialized.current) {
           $clientBlock.slick({
             autoplay: true,
             infinite: true,
@@ -103,30 +126,45 @@ export default function MainPage() {
           if (typeof window.startNoise === "function") {
             window.startNoise();
           }
+          
+          slickInitialized.current = true;
         }
       } catch (error) {
         console.error("Error initializing slick:", error);
       }
     };
 
-    initSlick();
+    // Small delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      initSlick();
+      document.body.style.opacity = '1';
+      AOS.refresh();
+    }, 100);
 
+    // Cleanup function
     return () => {
-      if (typeof window !== "undefined") {
+      clearTimeout(timeoutId);
+      
+      if (typeof window !== "undefined" && window.jQuery) {
+        const $ = window.jQuery;
         const $clientBlock = $(".client-block");
-        if ($clientBlock.length && typeof $clientBlock.slick === "function") {
+        
+        if ($clientBlock.length && $clientBlock.hasClass('slick-initialized')) {
           try {
-            $clientBlock.slick("unslick");
+            $clientBlock.slick('unslick');
+            slickInitialized.current = false;
           } catch (error) {
             console.error("Error destroying slick:", error);
           }
         }
+        
         if (typeof window.stopNoise === "function") {
           window.stopNoise();
         }
       }
     };
-  }, []);
+  }, [pathname]);
+
   const PortfolioItem: React.FC<PortfolioItem> = ({
     portfolio_title,
     portfolio_description,
@@ -161,6 +199,7 @@ export default function MainPage() {
           alt="Partner logo"
           width={200}
           height={100}
+          style={{ width: "auto", height: "auto", maxWidth: "100%" }}
           unoptimized={true}
           loading="lazy"
         />
@@ -403,7 +442,7 @@ export default function MainPage() {
                       alt="laravel"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>
@@ -415,7 +454,7 @@ export default function MainPage() {
                       alt="figma"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>
@@ -427,7 +466,7 @@ export default function MainPage() {
                       alt="unity"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>
@@ -439,7 +478,7 @@ export default function MainPage() {
                       alt="react"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>
@@ -451,7 +490,7 @@ export default function MainPage() {
                       alt="javascript"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>
@@ -463,7 +502,7 @@ export default function MainPage() {
                       alt="android"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>
@@ -475,7 +514,7 @@ export default function MainPage() {
                       alt="angular"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>
@@ -487,7 +526,7 @@ export default function MainPage() {
                       alt="git"
                       width={100}
                       height={100}
-                      style={{ maxWidth: "100%", height: "auto" }}
+                      style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                     />
                   </div>
                 </div>

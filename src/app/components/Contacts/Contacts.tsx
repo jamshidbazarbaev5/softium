@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./contact.css";
 import { IContact } from "@/app/api/query/query";
 import { useAddress, useContact } from "@/app/api/query/query";
+import Link from "next/link";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState<IContact>({
@@ -167,7 +168,11 @@ const ContactInfo = ({ addressData, contactData }: { addressData: Address[], con
       {addressData?.map((address: Address, index: number) => (
         <React.Fragment key={`address-${index}`}>
           <li>{address.address_name}</li>
-          <li>{address.address_url}</li>
+          <button type="button" className="contacts-form-btn-map">
+          <Link href={address.address_url} >На карте</Link>
+
+          </button>
+         
         </React.Fragment>
       ))}
     </ul>

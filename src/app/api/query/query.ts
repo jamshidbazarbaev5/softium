@@ -40,8 +40,7 @@ export const useAddress = () => {
     return useQuery({
         queryKey: ['address'],
         queryFn: getAddress,
-        retry: 3,
-        retryDelay: 1000
+       
     })
 }
 
@@ -64,7 +63,8 @@ export const getContact = async ()=>{
 export const useContact  =()=>{
     return useQuery({
         queryKey: ['contact'],
-        queryFn: getContact
+        queryFn: getContact,
+       
     })
 }
 
