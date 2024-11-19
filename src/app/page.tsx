@@ -1,7 +1,7 @@
 "use client";
 import './main.css'
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -32,7 +32,7 @@ interface PartnersItem {
 }
 
 export default function MainPage() {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const router = useRouter();
   
   const {
@@ -49,6 +49,19 @@ export default function MainPage() {
 
   const pathname = usePathname();
   const slickInitialized = useRef(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileLanguageOpen, setIsMobileLanguageOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleLanguageChange = (newLang: 'ru' | 'en') => {
+    setLanguage(newLang);
+    setIsMobileLanguageOpen(false);
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   useEffect(() => {
     // Force style update on route change
@@ -261,10 +274,32 @@ export default function MainPage() {
             <div className="header-block-navbar">
               <div className="header-block-navbar-inner">
                 <div className="header-block-navbar-other">
-                  <LanguageSwitcher />  
                   <div className="header-navbar-other-lang">
-                    <div className="options-dropdown" id="dropdown"></div>
+                    {/* <div className="dropdown-label" onClick={toggleDropdown}>
+                      {language.toUpperCase()}
+                    </div>
+                    <div className={`options-dropdown ${isDropdownOpen ? 'show' : ''}`}>
+                      <div 
+                        className={`option ${language === 'ru' ? 'active' : ''}`}
+                        onClick={() => {
+                          handleLanguageChange('ru');
+                          setIsDropdownOpen(false);
+                        }}
+                      >
+                        RU
+                      </div>
+                      <div 
+                        className={`option ${language === 'en' ? 'active' : ''}`}
+                        onClick={() => {
+                          handleLanguageChange('en');
+                          setIsDropdownOpen(false);
+                        }}
+                      >
+                        EN
+                      </div>
+                    </div> */}
                   </div>
+                  
                   <div className="header-navbar-other-contact">
                     <div className="header-other-contact-location">
                       <a href="#">
