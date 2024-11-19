@@ -56,3 +56,28 @@ export const useServices = () => {
         queryFn: getServices
     })
 }
+
+export const getContact = async ()=>{
+    const response= await api.get('/contact');
+    return response.data;
+}
+export const useContact  =()=>{
+    return useQuery({
+        queryKey: ['contact'],
+        queryFn: getContact
+    })
+}
+
+export const getPartners  = async ()=>{
+    const response = await api.get('/partners');
+    return response.data
+}
+
+
+export const usePartner = ()=>{
+    return useQuery({
+        queryKey: ['partner'],
+        queryFn: getPartners
+    })
+}
+

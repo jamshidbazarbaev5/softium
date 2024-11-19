@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./contact.css";
 import { IContact } from "@/app/api/query/query";
+import { useAddress, useContact } from "@/app/api/query/query";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState<IContact>({
@@ -14,6 +15,7 @@ const ContactForm = () => {
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -134,30 +136,51 @@ const ContactForm = () => {
   );
 };
 
-const ContactInfo = () => (
+interface Address {
+  address_name: string;
+  address_url: string;
+}
+
+interface Contact {
+  phone_number: string;
+  email: string;
+}
+
+const ContactInfo = ({ addressData, contactData }: { addressData: Address[], contactData: Contact[] }) => (
   <div className="contacts-block-numbers">
     <h3 className="contacts-block-numbers-title">Наши контакты</h3>
     <ul className="contacts-block-numbers-list">
-      {["+998 99 999 99 99", "+998 99 999 99 99", "+998 99 999 99 99"].map(
-        (number, index) => (
-          <li key={index}>
-            <a href={`tel:${number.replace(/\s/g, "")}`}>{number}</a>
-          </li>
-        )
-      )}
-      {["info@softium.com", "info@softium.com"].map((email, index) => (
-        <li key={index}>
-          <a href={`mailto:${email}`}>{email}</a>
+      {contactData?.map((contact: Contact, index: number) => (
+        <li key={`phone-${index}`}>
+          <a href={`tel:${contact.phone_number.replace(/\s/g, "")}`}>
+            {contact.phone_number}
+          </a>
         </li>
       ))}
-      <li>Узбекистан, Нукус</li>
-      <li>ул. А. Досназарова, 230100</li>
-      <li>SOFTIUM WEB STUDIO</li>
+
+      {contactData?.map((contact: Contact, index: number) => (
+        <li key={`email-${index}`}>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        </li>
+      ))}
+
+      {addressData?.map((address: Address, index: number) => (
+        <React.Fragment key={`address-${index}`}>
+          <li>{address.address_name}</li>
+          <li>{address.address_url}</li>
+        </React.Fragment>
+      ))}
     </ul>
   </div>
 );
 
 const Contacts: React.FC = () => {
+  const { data: addressData, isLoading: isAddressLoading, isError: isAddressError } = useAddress();
+  const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact();
+
+  if (isAddressLoading || isContactLoading) return <div>Loading...</div>;
+  if (isAddressError || isContactError) return <div>Error</div>;
+
   return (
     <main>
       <section className="contacts">
@@ -166,7 +189,7 @@ const Contacts: React.FC = () => {
           <div className="contacts-block">
             <div className="contacts-block-flex">
               <ContactForm />
-              <ContactInfo />
+              <ContactInfo addressData={addressData} contactData={contactData} />
             </div>
           </div>
         </div>

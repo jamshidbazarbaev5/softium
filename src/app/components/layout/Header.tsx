@@ -1,11 +1,42 @@
 'use client'
-import { Mail, MapPin, Phone, Twitter, Facebook, Instagram } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { useEffect } from 'react';
+import { Mail, MapPin, Phone,Instagram } from "lucide-react";
+import { usePathname,useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Header() {
     const pathname = usePathname();
+    const router = useRouter();
+
+    useEffect(() => {
+        // Force styles refresh on route change
+        const refreshStyles = () => {
+            document.body.style.opacity = '0.99';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                AOS.refresh();
+            }, 10);
+        };
+
+        refreshStyles();
+        
+        return () => {
+            document.body.style.opacity = '1';
+        };
+    }, [pathname]);
+
+    const redirectToService = (e: React.MouseEvent) => {
+        e.preventDefault();
+        // Add transition class before navigation
+        document.body.classList.add('page-transition');
+        
+        setTimeout(() => {
+            router.push('/services');
+        }, 50);
+    };
 
     const getPageTitle = () => {
       switch(pathname) {
@@ -59,7 +90,7 @@ export default function Header() {
           </label>
           <ul className="header-navbar-menu-list">
             <li><Link href="/about">О НАС</Link></li>
-            <li><Link href="/services">УСЛУГИ</Link></li>
+            <li><Link href="/services" onClick={redirectToService}>УСЛУГИ</Link></li>
             <li><Link href="/portfolio">ПОРТФОЛИО</Link></li>
             <li><Link href="/contact">ОБРАТНАЯ СВЯЗЬ</Link></li>
             <li><Link href="/clients">НАШИ КЛИЕНТЫ</Link></li>
@@ -106,8 +137,6 @@ export default function Header() {
           <Link href="#" id="lang">EN</Link>
         </div>
         <div className="header-right-content-social">
-          <Link href="#" id="social_icon"><Twitter /></Link>
-          <Link href="#" id="social_icon"><Facebook /></Link>
           <Link href="#" id="social_icon"><Instagram /></Link>
         </div>
         <div className="header-right-content-email">

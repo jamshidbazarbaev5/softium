@@ -46,4 +46,6 @@ interface JQuery {
   slick(command: 'unslick' | 'slickNext' | 'slickPrev' | 'slickPause' | 'slickPlay' | 'slickGoTo'): void;
   slick(command: 'slickGoTo', index: number): void;
   slick(command: 'slickSetOption', option: keyof SlickSettings, value: SlickOptionValue, refresh?: boolean): void;
-} 
+}
+/* eslint-enable no-unused-vars */
+ 

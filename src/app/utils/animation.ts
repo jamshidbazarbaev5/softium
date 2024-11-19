@@ -27,9 +27,6 @@ interface Particle {
 }
 
 declare global {
-  let vec_cells: Cell[][];
-  let particles: Particle[];
-  
   interface Window {
     noise: () => void;
     makeGreenParticles: () => void;
@@ -47,7 +44,7 @@ declare global {
   }
 }
 
-export const initAnimation = ($: JQuery): void => {
+export const initAnimation = (jquery: JQuery): void => {
   (function ($) {
     const noise = () => {
       let a: HTMLCanvasElement,
@@ -57,6 +54,7 @@ export const initAnimation = ($: JQuery): void => {
       const e: ImageData[] = [];
       let f = 0,
           g: number;
+
 
       const h = () => {
         const p = b.createImageData(c, d),

@@ -1,6 +1,4 @@
 import "./app.css";
-import Image from 'next/image';
-
 export default function AppDev() {
     return (
             <>
@@ -11,7 +9,7 @@ export default function AppDev() {
                         <div className="header-block-flex">
                             <div className="header-block-flex-logo">
                                 <a href="#">
-                                    <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
+                                    <img src="img/logo.png" alt="logo" id="logo" />
                                     <p id="logo_title">SOFTIUM</p>
                                 </a>
                             </div>

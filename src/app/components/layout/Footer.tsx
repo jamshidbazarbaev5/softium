@@ -1,18 +1,18 @@
 'use client';
-import { useAddress } from "@/app/api/query/query";
+import {useAddress, useContact} from "@/app/api/query/query";
 import {  MapPin } from "lucide-react";
 import Link from "next/link";
 
 const SocialIcon = ({ href, children }: { href: string, children: React.ReactNode }) => (
   <li data-aos="fade-up" data-aos-duration="600">
-    <a 
+    <Link
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="hover:opacity-80 transition-opacity"
     >
       {children}
-    </a>
+    </Link>
   </li>
 );
 
@@ -27,10 +27,11 @@ const LinkList = ({ links }: { links: Array<{ href: string; text: string }> }) =
 );
 
 export default function Footer() {
-  const { data, isLoading, isError } = useAddress();
+  const { data: addressData, isLoading: isAddressLoading, isError: isAddressError } = useAddress();
+  const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
+  if (isAddressLoading || isContactLoading) return <div>Loading...</div>;
+  if (isAddressError || isContactError) return <div>Error</div>;
 
   const socialIcons = [
     { href: "#", svg: <svg width="33" height="30" viewBox="0 0 33 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M29.0865 1.05554C29.4836 0.884119 29.9181 0.824993 30.345 0.884323C30.7719 0.943654 31.1754 1.11927 31.5136 1.39289C31.8519 1.6665 32.1124 2.02813 32.2682 2.44011C32.4241 2.85209 32.4693 3.29939 32.3994 3.73539L28.7556 26.4088C28.4021 28.5959 26.0629 29.8501 24.1076 28.7607C22.4721 27.8493 20.0429 26.4451 17.8578 24.9799C16.7653 24.2465 13.4187 21.8978 13.8301 20.2266C14.1835 18.7977 19.8067 13.428 23.0199 10.2357C24.2811 8.98144 23.706 8.2579 22.2166 9.41158C18.5181 12.276 12.5801 16.632 10.6168 17.8583C8.88478 18.9395 7.98187 19.124 6.90224 18.9395C4.93252 18.6032 3.10579 18.0824 1.61484 17.4479C-0.399871 16.5908 -0.301862 13.7494 1.61323 12.9221L29.0865 1.05554Z" fill="white" /></svg> },
@@ -51,9 +52,9 @@ export default function Footer() {
       { href: "/apps", text: "РАЗРАБОТКА ПРИЛОЖЕНИЙ" },
     ],
     [
-      { href: "#", text: "info@softium.com" },
-      { href: "#", text: "+998 99 999 99 99" },
-      { href: "#", text: "+998 99 999 99 99" },
+      { href: `mailto:${contactData[0].email}`, text: contactData[0].email },
+      { href: `tel:${contactData[0].phone_number}`, text: contactData[0].phone_number },
+      { href: `tel:${contactData[1].phone_number}`, text: contactData[1].phone_number },
     ],
   ];
 
@@ -88,10 +89,10 @@ export default function Footer() {
                 <Link href="#"><MapPin /></Link>
               </div>
               <div className="footer-nav-map-text">
-                <p>{data[0].address_name}</p>
+                <p>{addressData[0].address_name}</p>
               </div>
               <div className="footer-nav-map-link">
-                <Link href={data[0].address_url}>На карте</Link>
+                <Link href={addressData[0].address_url}>На карте</Link>
               </div>
             </div>
           </div>

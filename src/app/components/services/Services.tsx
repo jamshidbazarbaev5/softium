@@ -1,21 +1,37 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useServices } from "@/app/api/query/query";
 import "./servives.css";
-import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
 export default function Services() {
+  const [mounted, setMounted] = useState(false);
   const { data: services, isLoading, isError } = useServices();
+  const router = useRouter();
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-    });
+    setMounted(true);
+    
+    // Initialize AOS with a slight delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+        offset: 50
+      });
+      AOS.refresh();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
+
+  // Don't render until mounted
+  if (!mounted) return null;
 
   function toggleDropdown(): void {
     throw new Error("Function not implemented.");
@@ -31,18 +47,29 @@ export default function Services() {
     : [];
   console.log(servicesData);
 
+  const redirectToMainPage = () => {
+    router.push('/');
+  };
+
   return (
     <>
       <header className="header">
         <div className="header-block">
           <div className="container">
             <div className="header-block-flex">
-              <div className="header-block-flex-logo">
-                <a href="#">
-                  <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
+              <Link href="/">
+                <div className="header-block-flex-logo">
+                  <Image
+                      src="/img/logo.png"
+                      alt="logo"
+                      id="logo"
+                      width={100}
+                      height={100}
+                  />
                   <p id="logo_title">SOFTIUM</p>
-                </a>
-              </div>
+                </div>
+                
+              </Link>
               <div className="header-block-flex-number">
                 <a href="tel:+998990990011" id="call_number">
                   <span>+998</span> 99 099 00 11
@@ -52,7 +79,7 @@ export default function Services() {
 
             <div className="header-block-fixed">
               <div className="header-block-fixed-menu">
-                <input
+              <input
                   type="checkbox"
                   id="fixed_menu"
                   className="header-fixed-menu-input"
@@ -164,7 +191,7 @@ export default function Services() {
           </div>
 
           <div className="services-block">
-            <Link href="/design" style={{textDecoration:'none'}}>
+            <Link href="/design" style={{ textDecoration: "none" }}>
               <div className="services-block-inner" data-aos="fade-up">
                 <h2 data-aos="fade-up">UX/UI DESIGN</h2>
                 <div className="services-block-inner-logo" data-aos="fade-up">
@@ -192,7 +219,11 @@ export default function Services() {
               </div>
             </Link>
 
-            <Link href="/websites" style={{textDecoration:'none'}} className="services-block-inner-link">
+            <Link
+              href="/websites"
+              style={{ textDecoration: "none" }}
+              className="services-block-inner-link"
+            >
               <div className="services-block-inner" data-aos="fade-up">
                 <h2 data-aos="fade-up">РАЗРАБОТКА САЙТОВ</h2>
                 <div className="services-block-inner-logo" data-aos="fade-up">
@@ -219,34 +250,33 @@ export default function Services() {
                 </div>
               </div>
             </Link>
-            <Link href='/apps' style={{textDecoration:'none'}}>
-            <div className="services-block-inner" data-aos="fade-up">
-              <h2 data-aos="fade-up">РАЗРАБОТКА ПРИЛОЖЕНИЙ</h2>
-              <div className="services-block-inner-logo" data-aos="fade-up">
-                <svg
-                  width="45"
-                  height="44"
-                  viewBox="0 0 45 44"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  data-aos="fade-up"
-                >
-                  <path
-                    d="M39.6133 16.3047H28.0762V4.58594C28.0762 2.13672 26.084 0.144531 23.6348 0.144531H5.125C2.67578 0.144531 0.683594 2.13672 0.683594 4.58594V38.8867C0.683594 41.3359 2.67578 43.3281 5.125 43.3281H39.6074C42.0566 43.3281 44.0488 41.3594 44.0488 38.9395V20.6992C44.0547 18.2734 42.0625 16.3047 39.6133 16.3047ZM23.6406 40.9844H5.125C3.9707 40.9844 3.02734 40.0469 3.02734 38.8867V15.9648L3.0332 15.85C3.0332 15.1727 3.0332 15.4668 3.0332 15.3063C3.0332 15.0637 3.0332 15.1047 3.0332 14.7754V4.5918C3.0332 3.4375 3.9707 2.49414 5.13086 2.49414H23.6406C24.7949 2.49414 25.7383 3.43164 25.7383 4.5918V17.4883C25.7326 17.8938 25.7356 18.0151 25.7324 17.8C25.7383 18.1609 25.7383 17.7812 25.7383 18.4375V18.8453V18.9004V38.8926C25.7324 40.0469 24.7949 40.9844 23.6406 40.9844ZM41.7109 38.9395C41.7109 40.0703 40.7734 40.9844 39.6133 40.9844H27.5547C27.8887 40.3574 28.082 39.6484 28.082 38.8867L28 20.8C28 20.4297 28 20.3922 28 20.2V19.6V18.6484H39.6133C40.7676 18.6484 41.7109 19.5684 41.7109 20.6934V38.9395Z"
-                    fill="white"
-                  />
-                </svg>
+            <Link href="/apps" style={{ textDecoration: "none" }}>
+              <div className="services-block-inner" data-aos="fade-up">
+                <h2 data-aos="fade-up">РАЗРАБОТКА ПРИЛОЖЕНИЙ</h2>
+                <div className="services-block-inner-logo" data-aos="fade-up">
+                  <svg
+                    width="45"
+                    height="44"
+                    viewBox="0 0 45 44"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    data-aos="fade-up"
+                  >
+                    <path
+                      d="M39.6133 16.3047H28.0762V4.58594C28.0762 2.13672 26.084 0.144531 23.6348 0.144531H5.125C2.67578 0.144531 0.683594 2.13672 0.683594 4.58594V38.8867C0.683594 41.3359 2.67578 43.3281 5.125 43.3281H39.6074C42.0566 43.3281 44.0488 41.3594 44.0488 38.9395V20.6992C44.0547 18.2734 42.0625 16.3047 39.6133 16.3047ZM23.6406 40.9844H5.125C3.9707 40.9844 3.02734 40.0469 3.02734 38.8867V15.9648L3.0332 15.85C3.0332 15.1727 3.0332 15.4668 3.0332 15.3063C3.0332 15.0637 3.0332 15.1047 3.0332 14.7754V4.5918C3.0332 3.4375 3.9707 2.49414 5.13086 2.49414H23.6406C24.7949 2.49414 25.7383 3.43164 25.7383 4.5918V17.4883C25.7326 17.8938 25.7356 18.0151 25.7324 17.8C25.7383 18.1609 25.7383 17.7812 25.7383 18.4375V18.8453V18.9004V38.8926C25.7324 40.0469 24.7949 40.9844 23.6406 40.9844ZM41.7109 38.9395C41.7109 40.0703 40.7734 40.9844 39.6133 40.9844H27.5547C27.8887 40.3574 28.082 39.6484 28.082 38.8867L28 20.8C28 20.4297 28 20.3922 28 20.2V19.6V18.6484H39.6133C40.7676 18.6484 41.7109 19.5684 41.7109 20.6934V38.9395Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
+                <div className="services-block-inner-text" data-aos="fade-up">
+                  <p>
+                    Softium разрабатывает функциональные мобильные и
+                    веб-приложения, которые ускоряют рост вашего бизнеса и
+                    улучшают пользовательский опыт.
+                  </p>
+                </div>
               </div>
-              <div className="services-block-inner-text" data-aos="fade-up">
-                <p>
-                  Softium разрабатывает функциональные мобильные и
-                  веб-приложения, которые ускоряют рост вашего бизнеса и
-                  улучшают пользовательский опыт.
-                </p>
-              </div>
-            </div>
             </Link>
-            
           </div>
         </div>
       </section>

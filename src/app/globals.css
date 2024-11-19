@@ -1,4 +1,4 @@
-/**,*/
+/* *,
 /**::before,*/
 /**::after{*/
 /*    margin: 0;*/
@@ -1076,4 +1076,35 @@
 /*    .footer-bottom{*/
 /*        padding: 25px 0;*/
 /*    }*/
-/*}*/
+/*}  */
+
+/* Add these styles */
+.route-changed {
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+}
+
+/* Ensure your existing styles are properly scoped */
+header {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Add any other global styles needed */
+
+/* Add transition styles */
+body {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.page-transition {
+  opacity: 0.98;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Ensure AOS animations work properly */
+[data-aos] {
+  pointer-events: none;
+}
+.aos-animate {
+  pointer-events: auto;
+}
