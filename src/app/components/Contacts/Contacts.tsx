@@ -21,7 +21,9 @@ const translations = {
     errorMessage: "Произошла ошибка при отправке. Пожалуйста, попробуйте снова.",
     successMessage: "Ваше сообщение успешно отправлено!",
     contactsTitle: "Наши контакты",
-    mapButton: "На карте"
+    mapButton: "На карте",
+    loading: "Загрузка...",
+    error: "Произошла ошибка при загрузке данных."
   },
   en: {
     title: "Contacts",
@@ -35,7 +37,9 @@ const translations = {
     errorMessage: "An error occurred while sending. Please try again.",
     successMessage: "Your message has been sent successfully!",
     contactsTitle: "Our contacts",
-    mapButton: "On map"
+    mapButton: "On map",
+    loading: "Loading...",
+    error: "An error occurred while loading data."
   }
 };
 
@@ -219,6 +223,7 @@ const ContactInfo = ({ addressData, contactData }: { addressData: Address[], con
   );
 };
 
+
 const Contacts: React.FC = () => {
   const { language } = useLanguage();
   const t = translations[language as keyof typeof translations];
@@ -226,8 +231,22 @@ const Contacts: React.FC = () => {
   const { data: addressData, isLoading: isAddressLoading, isError: isAddressError } = useAddress(language as Language);
   const { data: contactData, isLoading: isContactLoading, isError: isContactError } = useContact(language as Language);
 
-  if (isAddressLoading || isContactLoading) return <div>Loading...</div>;
-  if (isAddressError || isContactError) return <div>Error</div>;
+  if (isAddressLoading || isContactLoading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p className="loading-text">{t.loading}</p>
+      </div>
+    );
+  }
+
+  if (isAddressError || isContactError) {
+    return (
+      <div className="error-container">
+        <p className="error-text">{t.error}</p>
+      </div>
+    );
+  }
 
   return (
     <main>

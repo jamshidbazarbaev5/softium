@@ -217,11 +217,12 @@ export default function MainPage() {
         <Image
           src={partner_img}
           alt="Partner logo"
-          width={200}
+          width={300}
           height={100}
-          style={{ width: "auto", height: "auto", maxWidth: "100%" }}
-          unoptimized={true}
+          // style={{ width: "auto", height: "auto", maxWidth: "100%" }}
+          // unoptimized={true}
           loading="lazy"
+          loader={({ src }) => src}
         />
       ) : (
         <div>No image available</div>

@@ -294,7 +294,7 @@ export default function Header() {
             </Link>
           </div>
           <div className="header-right-content-social">
-            <Link href="#" id="social_icon">
+            <Link href="https://www.instagram.com/softium_nukus/" id="social_icon">
               <Instagram />
             </Link>
           </div>
