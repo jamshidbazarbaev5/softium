@@ -22,7 +22,7 @@ const LinkList = ({ links }: { links: Array<{ href: string; text: string }> }) =
   <ul className="footer-block-links-list">
     {links.map((link, index) => (
       <li key={index} data-aos="fade-up" data-aos-duration={600 + index * 50}>
-        <Link href={link.href}>{link.text}</Link>
+        <a href={link.href}>{link.text}</a>
       </li>
     ))}
   </ul>
