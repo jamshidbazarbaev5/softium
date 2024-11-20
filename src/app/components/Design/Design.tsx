@@ -1,23 +1,59 @@
-"use client";
+'use client'
 import "./design.css";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from 'next/image';
+import { useLanguage } from '@/app/context/LanguageContext'
 
 export default function Design() {
-  function selectLanguage(arg0: string): void {
-    throw new Error("Function not implemented.");
-  }
+  const { language } = useLanguage();
 
-  function toggleDropdown(): void {
-    throw new Error("Function not implemented.");
-  }
+  const translations = {
+    ru: {
+      menu: "МЕНЮ",
+      portfolio: "ПОРТФОЛИО",
+      about: "О НАС",
+      services: "УСЛУГИ",
+      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      clients: "НАШИ КЛИЕНТЫ",
+      our_services: "НАШИ УСЛУГИ",
+      services_description: "Мы предоставляем широкий спектр услуг в сфере веб-разработки и дизайна",
+      get_consultation: "Получить консультацию",
+      what_we_offer: "ЧТО МЫ ПРЕДЛАГАЕМ",
+      beauty: "Красота",
+      beauty_description: "Правильное и удобное расположение блоков, кнопок и контактов предоставит посетителю комфорт в работе с сайтом",
+      usability: "Удобство",
+      usability_description: "Правильное и удобное расположение блоков, кнопок и контактов предоставит посетителю комфорт в работе с сайтом",
+      adaptability: "Адаптивность",
+      adaptability_description: "Сайт будет адаптирован под смартфоны и планшеты, посетителям будет удобно работать с ресурсом через мобильные устройства."
+    },
+    en: {
+      menu: "MENU",
+      portfolio: "PORTFOLIO",
+      about: "ABOUT US",
+      services: "SERVICES",
+      feedback: "FEEDBACK",
+      clients: "OUR CLIENTS",
+      our_services: "OUR SERVICES",
+      services_description: "We provide a wide range of services in web development and design",
+      get_consultation: "Get Consultation",
+      what_we_offer: "WHAT WE OFFER",
+      beauty: "Beauty",
+      beauty_description: "The correct and convenient placement of blocks, buttons and contacts will provide visitors with comfort in working with the site",
+      usability: "Usability",
+      usability_description: "The correct and convenient placement of blocks, buttons and contacts will provide visitors with comfort in working with the site",
+      adaptability: "Adaptability",
+      adaptability_description: "The site will be adapted for smartphones and tablets, visitors will be comfortable working with the resource through mobile devices."
+    }
+  };
+
+  const t = translations[language as keyof typeof translations];
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: true,
+      once: true, 
       offset: 100,
     });
   }, []);
@@ -130,28 +166,28 @@ export default function Design() {
                     <span id="menu_span"></span>
                     <span id="menu_span"></span>
                   </div>
-                  <p id="fixed_text">Меню</p>
+                  <p id="fixed_text">{t.menu}</p>
                 </label>
                 <div className="header-fixed-menu-link">
                   <a href="#" id="fixed_link">
-                    Портфолио
+                    {t.portfolio}
                   </a>
                 </div>
                 <ul className="header-fixed-menu-list">
                   <li>
-                    <a href="#">О НАС</a>
+                    <a href="#">{t.about}</a>
                   </li>
                   <li>
-                    <a href="#">УСЛУГИ</a>
+                    <a href="#">{t.services}</a>
                   </li>
                   <li>
-                    <a href="#">ПОРТФОЛИО</a>
+                    <a href="#">{t.portfolio}</a>
                   </li>
                   <li>
-                    <a href="#">ОБРАТНОЙ СВЯЗЬ</a>
+                    <a href="#">{t.feedback}</a>
                   </li>
                   <li>
-                    <a href="#">НАШИ КЛИЕНТЫ</a>
+                    <a href="#">{t.clients}</a>
                   </li>
                 </ul>
               </div>
@@ -192,16 +228,16 @@ export default function Design() {
             <div className="header-block-main">
               <div className="header-block-main-center">
                 <div className="header-main-center-title">
-                  <h1>UX/UI DESIGN</h1>
+                  <h1>{t.our_services}</h1>
                 </div>
                 <div className="header-main-center-light">
                   <p>
-                  Мы занимаемся разработкой дизайна сайтов — от простых лендингов до масштабных интернет-магазинов и сложных веб-платформ. Мы создаем не только визуальный облик, но и продуманную архитектуру, опираясь на ваши цели: увеличение продаж, повышение узнаваемости бренда или привлечение новой аудитории. Наши ключевые принципы — эстетика, удобство и уникальность!
+                    {t.services_description}
                   </p>
                 </div>
                 <div className="header-main-center-btn">
                   <a href="#">
-                    Получить консультацию
+                    {t.get_consultation}
                     <svg
                       width="20"
                       height="20"
@@ -242,13 +278,13 @@ export default function Design() {
             data-aos="fade-up"
             data-aos-duration="700"
           >
-            <h1>Что мы предлагаем</h1>
+            <h1>{t.what_we_offer}</h1>
           </div>
 
           <div className="services-block">
             <div className="services-block-inner">
               <h2 data-aos="fade-up" data-aos-duration="700">
-                Красота
+                {t.beauty}
               </h2>
               <div
                 className="services-block-inner-logo"
@@ -274,15 +310,13 @@ export default function Design() {
                 data-aos-duration="700"
               >
                 <p>
-                  Подбор правильных шрифтов и цветовой палитры, картинок и
-                  иконок, теней и градиентов сделает ваш сайт необычайно
-                  красивым
+                  {t.beauty_description}
                 </p>
               </div>
             </div>
             <div className="services-block-inner">
               <h2 data-aos="fade-up" data-aos-duration="700">
-                Юзабилити
+                {t.usability}
               </h2>
               <div
                 className="services-block-inner-logo"
@@ -328,14 +362,13 @@ export default function Design() {
                 data-aos-duration="700"
               >
                 <p>
-                  Правильное и удобное расположение блоков, кнопок и контактов
-                  предоставит посетителю комфорт в работе с сайтом
+                  {t.usability_description}
                 </p>
               </div>
             </div>
             <div className="services-block-inner">
               <h2 data-aos="fade-up" data-aos-duration="700">
-                Адаптивность
+                {t.adaptability}
               </h2>
               <div
                 className="services-block-inner-logo"
@@ -361,8 +394,7 @@ export default function Design() {
                 data-aos-duration="700"
               >
                 <p>
-                  Сайт будет адаптирован под смартфоны и планшеты, посетителям
-                  будет удобно работать с ресурсом через мобильные устройства.
+                  {t.adaptability_description}
                 </p>
               </div>
             </div>

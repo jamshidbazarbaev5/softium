@@ -1,4 +1,5 @@
-"use client";
+// "use client";
+import { Metadata } from 'next'
 import localFont from "next/font/local";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
@@ -16,6 +17,44 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Softium - Web Development Studio',
+    template: '%s | Softium'
+  },
+  description: 'Softium is a professional web development studio specializing in creating modern, functional websites and applications.',
+  keywords: ['web development', 'software development', 'mobile apps', 'web design', 'IT solutions', 'Softium'],
+  authors: [{ name: 'Softium Team' }],
+  creator: 'Softium',
+  publisher: 'Softium',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
 
 export default function RootLayout({
   children,

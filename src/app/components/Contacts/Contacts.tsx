@@ -7,7 +7,6 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { Language } from "@/app/api/api";
 import Link from "next/link";
 
-// Text content for different languages
 const translations = {
   ru: {
     title: "Контакты",

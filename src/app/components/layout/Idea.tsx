@@ -1,3 +1,4 @@
+'use client'
 import { useContact } from "@/app/api/query/query";
 import { IContact } from "@/app/api/query/query"; 
 import { useLanguage } from '@/app/context/LanguageContext';
