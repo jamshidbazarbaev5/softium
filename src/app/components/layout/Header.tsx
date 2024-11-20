@@ -272,6 +272,24 @@ export default function Header() {
           </ul>
         </div>
         <div className="header-block-right-content">
+          <div className="header-right-content-lang">
+            <Link 
+              href="#" 
+              id="lang" 
+              className={language === 'ru' ? 'active' : ''}
+              onClick={() => handleLanguageChange('ru')}
+            >
+              RU
+            </Link>
+            <Link 
+              href="#" 
+              id="lang" 
+              className={language === 'en' ? 'active' : ''}
+              onClick={() => handleLanguageChange('en')}
+            >
+              EN
+            </Link>
+          </div>
           <div className="header-right-content-social">
             <Link href="#" id="social_icon">
               <Instagram />
