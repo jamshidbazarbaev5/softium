@@ -112,7 +112,10 @@ export default function Header() {
       <div className="header-block-navbar">
         <div className="header-block-navbar-inner">
           <div className="header-block-navbar-logo">
+            <a href="/">
             <Image src="/img/logo.png" alt="logo" width={50} height={50} />
+
+            </a>
           </div>
           <div className="header-block-navbar-other">
             <div className="header-navbar-other-lang">
@@ -207,7 +210,7 @@ export default function Header() {
           </nav>
         </div>
       </div>
-      <div className="header-block-flex">
+      {/* <div className="header-block-flex">
         <div className="header-block-flex-logo">
           <a href="/">
             <Image
@@ -232,7 +235,7 @@ export default function Header() {
             </Link>
           )}
         </div>
-      </div>
+      </div> */}
       <div className="header-block-fixed">
         <div className="header-block-fixed-menu">
           <input

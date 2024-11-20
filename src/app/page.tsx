@@ -275,7 +275,7 @@ export default function MainPage() {
               <div className="header-block-navbar-inner">
                 <div className="header-block-navbar-other">
                   <div className="header-navbar-other-lang">
-                    <div className="dropdown-label" onClick={toggleDropdown}>
+                    {/* <div className="dropdown-label" onClick={toggleDropdown}>
                       {language.toUpperCase()}
                     </div>
                     <div className={`options-dropdown ${isDropdownOpen ? 'show' : ''}`}>
@@ -297,7 +297,7 @@ export default function MainPage() {
                       >
                         EN
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   
                   <div className="header-navbar-other-contact">
