@@ -274,6 +274,7 @@ export default function MainPage() {
           <div className="container">
             <div className="header-block-navbar">
               <div className="header-block-navbar-inner">
+
                 <div className="header-block-navbar-other">
                   <div className="header-navbar-other-lang">
                     {/* <div className="dropdown-label" onClick={toggleDropdown}>
@@ -300,7 +301,7 @@ export default function MainPage() {
                       </div>
                     </div> */}
                   </div>
-                  
+
                   <div className="header-navbar-other-contact">
                     <div className="header-other-contact-location">
                       <a href="#">

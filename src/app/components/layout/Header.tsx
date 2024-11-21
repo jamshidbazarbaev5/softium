@@ -210,7 +210,7 @@ export default function Header() {
           </nav>
         </div>
       </div>
-      {/* <div className="header-block-flex">
+      <div className="header-block-flex">
         <div className="header-block-flex-logo">
           <a href="/">
             <Image
@@ -225,7 +225,7 @@ export default function Header() {
         </div>
         <div className="header-block-flex-number">
           {contactData?.[0] && (
-            <Link 
+            <Link
               href={formatTelegramUrl(contactData[0].phone_number)}
               id="call_number"
               target="_blank"
@@ -235,7 +235,7 @@ export default function Header() {
             </Link>
           )}
         </div>
-      </div> */}
+      </div>
       <div className="header-block-fixed">
         <div className="header-block-fixed-menu">
           <input

@@ -1077,3 +1077,137 @@ body{
         padding: 25px 0;
     }
 }
+
+
+
+
+.about-block{
+   background: #222222;
+    padding: 80px 20px;
+    margin: 0 auto;
+    padding-left: 100px;
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.about-block[data-aos="fade-right"] {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition-property: transform, opacity;
+}
+
+.about-block[data-aos="fade-right"].aos-animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.section-title,
+.main-title,
+.description {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+[data-aos="fade-right"] .section-title,
+[data-aos="fade-right"] .main-title,
+[data-aos="fade-right"] .description {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition-property: transform, opacity;
+}
+
+[data-aos="fade-right"].aos-animate .section-title,
+[data-aos="fade-right"].aos-animate .main-title,
+[data-aos="fade-right"].aos-animate .description {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.section-title {
+    color: #24B8AF;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+.main-title {
+    color: white;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 2;
+    line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.watermark {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    color: rgba(255, 255, 255, 0.05);
+    font-size: 120px;
+    font-weight: 900;
+    z-index: 1;
+    line-height: 1;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.description {
+    color: #939393;
+    max-width: 800px;
+    font-size: 16px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .about-block {
+        padding: 40px 15px;
+        padding-left: 30px;
+    }
+
+    .main-title {
+        font-size: 32px;
+    }
+
+    .watermark {
+        font-size: 120px;
+    }
+}
+
+.wrapper {
+    background: #222222;
+}
+
+section {
+    background: #222222;
+}
+
+.about-block {
+    background: #222222;
+    padding: 80px 20px;
+    margin: 0 auto;
+    padding-left: 100px;
+    opacity: 0;
+    transform: translateX(-100px);
+    max-width: 1500px;
+}
+
+@media (max-width: 768px) {
+    .wrapper,
+    section,
+    .about-block {
+        background: #222222;
+    }
+    
+    .about-block {
+        padding: 40px 15px;
+        padding-left: 30px;
+    }
+}
+

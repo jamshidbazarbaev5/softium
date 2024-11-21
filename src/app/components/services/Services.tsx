@@ -58,7 +58,6 @@ export default function Services() {
   const t = translations[language as keyof typeof translations];
 
   useEffect(() => {
-    // Set dark background immediately
     document.body.style.background = '#222222';
     
     const timer = setTimeout(() => {
