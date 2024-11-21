@@ -342,7 +342,7 @@ export default function MainPage() {
                 </div>
 
                 <div className="header-main-center-btn">
-                  <a href="#">{t.getConsultation}</a>
+                  <a href="/contact">{t.getConsultation}</a>
                 </div>
               </div>
             </div>

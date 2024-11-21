@@ -258,7 +258,7 @@ export default function Header() {
           </div>
           <ul className="header-fixed-menu-list">
             <li>
-              <Link href="/about">{t.about}</Link>
+              <a href="/about">{t.about}</a>
             </li>
             <li>
               <a href="/services">{t.services}</a>
