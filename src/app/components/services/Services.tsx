@@ -192,7 +192,7 @@ export default function Services() {
                 </div>
 
                 <div className="header-main-center-btn">
-                  <a href="#">
+                  <a href="/contact">
                     {t.getConsultation}
                     <svg
                       width="20"
