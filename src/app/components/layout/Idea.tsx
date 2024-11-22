@@ -32,7 +32,15 @@ export default function Idea() {
 
     const buttonClick = () => {
         if (contactData && contactData.length > 1) {
-            window.open(`https://t.me/${contactData[1].phone_number.replace(/[^0-9]/g, '')}`, '_blank');
+            const phoneNumber = contactData[0].phone_number.replace(/[^0-9]/g, '');
+            const telegramUrl = `tg://resolve?phone=${phoneNumber}`;
+            const webTelegramUrl = `https://web.telegram.org/k/#/+${phoneNumber}`;
+
+            window.open(telegramUrl, '_blank');
+
+            setTimeout(() => {
+                window.open(webTelegramUrl, '_blank');
+            }, 500);
         }
     }
 

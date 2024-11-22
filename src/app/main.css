@@ -1245,6 +1245,7 @@ canvas#neon {
   .header-block-fixed {
     display: block;
   }
+  
 
   .header-block-flex {
     display: flex;
@@ -1627,6 +1628,10 @@ canvas#neon {
     max-width: 500px;
   }
 
+  /*.slick-arrow {*/
+  /*  position: absolute;*/
+  /*  left: -5px;*/
+  /*}*/
   /* .partner-block-content-inner img {
    
 

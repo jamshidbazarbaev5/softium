@@ -648,7 +648,6 @@ body {
   .header-block-fixed {
     display: block;
   }
-
   .header-block-flex {
     display: flex;
     align-items: center;
