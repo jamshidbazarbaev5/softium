@@ -76,7 +76,7 @@ export default function Footer() {
       { href: "/services", text: t.services },
       { href: "/portfolio", text: t.portfolio },
       { href: "/contact", text: t.feedback },
-      { href: "/clients", text: t.clients },
+      { href: "/#clients", text: t.clients },
     ],
     [
       { href: "/design", text: t.design },

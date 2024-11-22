@@ -1,0 +1,32 @@
+/* Webkit browsers (Chrome, Safari, newer versions of Opera) */
+::-webkit-scrollbar {
+  width: 8px;  /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;  /* color of the track */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #24B8AF;  /* color of the scroll thumb */
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1a9891;  /* color when hovering */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;  /* "auto" or "thin" */
+  scrollbar-color: #24B8AF #1a1a1a;  /* thumb and track color */
+}
+
+/* For Edge and IE */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: thin;  /* Firefox */
+}
+  

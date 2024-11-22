@@ -665,7 +665,7 @@ export default function MainPage() {
           </div>
         </div>
       </section>
-      <section className="client">
+      <section className="client" id="clients">
         <div className="container">
           <div
             className="client-title"
