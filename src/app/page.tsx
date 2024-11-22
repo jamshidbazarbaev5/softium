@@ -413,7 +413,7 @@ export default function MainPage() {
                 </div>
 
                 <div className="about-block-link">
-                  <a href="#about">
+                  <a href="/about">
                     {t.moreAboutUs}
                     <svg
                       width="16"

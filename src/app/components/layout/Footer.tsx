@@ -85,8 +85,8 @@ export default function Footer() {
     ],
     [
       { href: `mailto:${contactData[0].email}`, text: contactData[0].email },
-      { href: `tel:${contactData[0].phone_number}`, text: contactData[0].phone_number },
-      { href: `tel:${contactData[1].phone_number}`, text: contactData[1].phone_number },
+      { href: `https://t.me/${contactData[0].phone_number.replace(/[^0-9]/g, '')}`, text: contactData[0].phone_number },
+      { href: `https://t.me/${contactData[1].phone_number.replace(/[^0-9]/g, '')}`, text: contactData[1].phone_number },
     ],
   ];
 

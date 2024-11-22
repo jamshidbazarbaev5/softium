@@ -167,7 +167,7 @@ const ContactForm = () => {
         </div>
       )}
       {isSuccess && (
-        <div className="contacts-form-message success" style={{animation: "fadeOut 3s forwards"}}>
+        <div className="contacts-form-message success">
           {t.successMessage}
         </div>
       )}

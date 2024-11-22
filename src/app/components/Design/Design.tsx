@@ -148,9 +148,9 @@ export default function Design() {
                 </a>
               </div>
               <div className="header-block-flex-number">
-                <a href="tel:+998990990011" id="call_number">
+                {/* <a href="tel:+998990990011" id="call_number">
                   <span>+998</span> 99 099 00 11
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="header-block-fixed">
