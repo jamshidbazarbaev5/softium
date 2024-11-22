@@ -231,7 +231,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>+998</span> 99 099 00 11
+              <span>+998</span> 975000501
             </Link>
           )}
         </div>
