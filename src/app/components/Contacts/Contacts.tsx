@@ -210,10 +210,8 @@ const ContactInfo = ({ addressData, contactData }: { addressData: Address[], con
         {addressData?.map((address: Address, index: number) => (
           <React.Fragment key={`address-${index}`}>
             <li>{address.address_name}</li>
-            <button type="button" className="contacts-form-btn-map">
-            <Link href={address.address_url} >{t.mapButton}</Link>
+           
 
-            </button>
            
           </React.Fragment>
         ))}
