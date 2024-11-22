@@ -204,7 +204,7 @@ export default function Header() {
                 <Link href="/contact">{t.contact}</Link>
               </li>
               <li>
-                <Link href="/clients">{t.clients}</Link>
+                <a href="/#clients">{t.clients}</a>
               </li>
             </ul>
           </nav>
@@ -270,7 +270,7 @@ export default function Header() {
               <Link href="/contact">{t.contact}</Link>
             </li>
             <li>
-              <Link href="/clients">{t.clients}</Link>
+              <a href="/#clients">{t.clients}</a>
             </li>
           </ul>
         </div>
