@@ -31,17 +31,15 @@ export default function Idea() {
     if (isContactError) return <div>{t.error}</div>;
 
     const buttonClick = () => {
-        if (contactData && contactData.length > 1) {
-            const phoneNumber = contactData[0].phone_number.replace(/[^0-9]/g, '');
-            const telegramUrl = `tg://resolve?phone=${phoneNumber}`;
-            const webTelegramUrl = `https://web.telegram.org/k/#/+${phoneNumber}`;
+        const telegramUsername = 'w3bC0d3r';
+        const telegramUrl = `tg://resolve?domain=${telegramUsername}`;
+        const webTelegramUrl = `https://t.me/${telegramUsername}`;
 
-            window.open(telegramUrl, '_blank');
+        window.open(telegramUrl, '_blank');
 
-            setTimeout(() => {
-                window.open(webTelegramUrl, '_blank');
-            }, 500);
-        }
+        setTimeout(() => {
+            window.open(webTelegramUrl, '_blank');
+        }, 500);
     }
 
     const getConsultation = () => {
