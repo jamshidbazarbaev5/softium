@@ -269,9 +269,7 @@ export default function Header() {
             <li>
               <Link href="/contact">{t.contact}</Link>
             </li>
-            <li>
-              <a href="/#clients">{t.clients}</a>
-            </li>
+
           </ul>
         </div>
         <div className="header-block-right-content">

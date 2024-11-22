@@ -602,7 +602,7 @@ canvas#canvas {
   position: relative;
 }
 .tech-block-title {
-  padding: 0 15px;
+  padding: 0 15px; 
 }
 
 .tech-block-title h1 {
