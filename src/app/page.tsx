@@ -34,17 +34,24 @@ interface PartnersItem {
   partner_img: string;
 }
 
-// Custom arrow components
-const PrevArrow = (props: any) => (
-  <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={props.onClick}>
+// Add this interface for the arrow props
+interface ArrowProps {
+  onClick?: () => void;
+  currentSlide?: number;
+  slideCount?: number;
+}
+
+// Update the arrow components with proper typing
+const PrevArrow = ({ onClick }: ArrowProps) => (
+  <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={onClick}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   </div>
 );
 
-const NextArrow = (props: any) => (
-  <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={props.onClick}>
+const NextArrow = ({ onClick }: ArrowProps) => (
+  <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={onClick}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
@@ -256,7 +263,7 @@ export default function MainPage() {
     ru: {
       webStudio: "Веб-студия",
       slogan: "Softium — программируем будущее вместе!",
-      description: "Softium — это команда профессионалов в сфере разработки сайтов, дизайна и IT-решений. Мы создаем современные, функциональные и визуально привлекательные проекты, которые помогают бизнесу расти и выделяться в цифровом мире. ��т идей до готового продукта — программируем успех вашего бизнеса.",
+      description: "Softium — это команда профессионалов в сфере разработки сайтов, дизайна и IT-решений. Мы создаем современные, функциональные и визуально привлекательные проекты, которые помогают бизнесу расти и выделяться в цифровом мире. т идей до готового продукта — программируем успех вашего бизнеса.",
       getConsultation: "Получить консультацию",
       aboutUs: "О нас",
       aboutDescription: "Softium — это команда опытных разработчиков, дизайнеров и IT-специалистов, которые создают инновационные цифровые решения для бизнеса. Мы занимаемся разработкой сайтов, дизайном, веб-приложениями и многими другими направлениями, связанными с программированием. Наша цель — помочь вам воплотить идеи в жизнь, используя современные технологии для роста и успеха вашего бизнеса.",

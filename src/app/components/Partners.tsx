@@ -10,17 +10,24 @@ interface PartnersItem {
   partner_img: string;
 }
 
-// Custom arrow components
-const PrevArrow = (props: any) => (
-  <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={props.onClick}>
+// Define interface for arrow props
+interface ArrowProps {
+  onClick?: () => void;
+  currentSlide?: number;
+  slideCount?: number;
+}
+
+// Custom arrow components with proper typing
+const PrevArrow = ({ onClick }: ArrowProps) => (
+  <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={onClick}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M15 18L9 12L15 6" stroke="#24b8af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   </div>
 );
 
-const NextArrow = (props: any) => (
-  <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={props.onClick}>
+const NextArrow = ({ onClick }: ArrowProps) => (
+  <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={onClick}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M9 18L15 12L9 6" stroke="#24b8af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
@@ -75,7 +82,6 @@ export default function Partners({ language }: { language: Language }) {
     return () => {
       if (sliderRef.current) {
         try {
-          // @ts-ignore
           sliderRef.current.slickPause();
         } catch (error) {
           console.error("Error cleaning up slider:", error);
