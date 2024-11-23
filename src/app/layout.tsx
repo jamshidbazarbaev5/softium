@@ -1,4 +1,3 @@
-// "use client";
 import { Metadata } from 'next'
 import localFont from "next/font/local";
 import Footer from "./components/layout/Footer";
@@ -35,9 +34,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/img/logo.png',
   },
   viewport: {
     width: 'device-width',

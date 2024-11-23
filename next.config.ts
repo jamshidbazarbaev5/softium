@@ -1,10 +1,14 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'softium.uz',
+      },
+    ],
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  images:{
-    domains:['localhost','softium.ru','softium.en']
-  }
-};
 
-export default nextConfig;
+module.exports  = nextConfig;

@@ -1,0 +1,113 @@
+.partner {
+    padding: 50px 0;
+    background: #222222;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .partnerTitle {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .partnerBlock {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 60px;
+  }
+  
+  .partnerBlockContent {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .partnerItem {
+    flex: 0 0 calc(25% - 30px);
+    min-width: calc(25% - 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .partnerItem:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-5px);
+  }
+  
+  .partnerItem img {
+    max-width: 150px;
+    height: auto;
+    filter: grayscale(1);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .partnerItem:hover img {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+  
+  .sliderButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(36, 184, 175, 0.1);
+    color: #24b8af;
+    border: 1px solid #24b8af;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sliderButton:hover {
+    background: rgba(36, 184, 175, 0.2);
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .partnerItem {
+      flex: 0 0 calc(33.333% - 30px);
+      min-width: calc(33.333% - 30px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .partnerItem {
+      flex: 0 0 calc(100% - 30px);
+      min-width: calc(100% - 30px);
+    }
+    
+    .sliderButton {
+      width: 35px;
+      height: 35px;
+      font-size: 16px;
+    }
+  }
+  
+  

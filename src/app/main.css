@@ -12,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-
 .container {
   margin: 0 auto;
   padding: 0;
@@ -602,7 +601,7 @@ canvas#canvas {
   position: relative;
 }
 .tech-block-title {
-  padding: 0 15px; 
+  padding: 0 15px;
 }
 
 .tech-block-title h1 {
@@ -873,56 +872,6 @@ canvas#neon {
 }
 
 /* <----------------PARTNER---------------------> */
-
-.partner {
-  background: #222222;
-  padding: 50px 15px;
-}
-
-.partner-title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 900;
-  font-size: 35px;
-  text-align: center;
-  color: #24b8af;
-}
-
-.partner-block {
-  display: flex;
-  flex-direction: column;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 15px;
-}
-
-.partner-block-group {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 15px;
-}
-
-.partner-block-group div {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.partner-block-group-banner {
-  width: 145px !important;
-  height: 120px;
-  padding: 10px 0;
-  /*background: #393939;*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-}
-
-.partner-block-group-banner img {
-    max-width: 130px;
-    height: auto;
-    margin: 19px;
-}
 
 ::-webkit-scrollbar {
   height: 5px;
@@ -1245,7 +1194,6 @@ canvas#neon {
   .header-block-fixed {
     display: block;
   }
-  
 
   .header-block-flex {
     display: flex;
@@ -1738,35 +1686,108 @@ canvas#neon {
   }
 }
 
-
-/* Webkit browsers (Chrome, Safari, newer versions of Opera) */
 ::-webkit-scrollbar {
-  width: 8px;  /* width of the scrollbar */
+  width: 8px; /* width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;  /* color of the track */
+  background: #1a1a1a;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #24B8AF;  /* color of the scroll thumb */
+  background: #24b8af;
   border-radius: 4px;
   transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1a9891;  /* color when hovering */
+  background: #1a9891;
 }
 
-/* Firefox */
 * {
-  scrollbar-width: thin;  /* "auto" or "thin" */
-  scrollbar-color: #24B8AF #1a1a1a;  /* thumb and track color */
+  scrollbar-width: thin;
+  scrollbar-color: #24b8af #1a1a1a; 
 }
 
-/* For Edge and IE */
 body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: thin;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+}
+
+.partner {
+  background: #222222;
+  padding: 50px 15px;
+}
+
+.partner-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 35px;
+  text-align: center;
+  color: #24b8af;
+}
+
+.partner-block {
+  position: relative;
+  padding: 30px 0;
+}
+
+.partner-block-content {
+  margin: 0 -15px;
+}
+
+.partner-block-item {
+  padding: 0 15px;
+}
+
+/* Slick slider custom styles for partner section */
+.partner-block .slick-prev,
+.partner-block .slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.partner-block .slick-prev {
+  left: -50px;
+}
+
+.partner-block .slick-next {
+  right: -50px;
+}
+
+.partner-block .slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.partner-block .slick-slide {
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .partner-block .slick-prev {
+    left: -30px;
+  }
+  
+  .partner-block .slick-next {
+    right: -30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partner-block .slick-prev {
+    left: -20px;
+  }
+  
+  .partner-block .slick-next {
+    right: -20px;
+  }
 }

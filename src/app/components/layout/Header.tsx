@@ -6,9 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useLanguage } from "@/app/context/LanguageContext";
-import { useAddress, useContact } from "@/app/api/query/query";
-import { Language } from "@/app/api/api";
+import { useLanguage } from "../../context/LanguageContext";
+import { useAddress, useContact } from "../../api/query/query";
+import { Language } from "../../api/api";
 
 const translations = {
   ru: {
@@ -292,8 +292,8 @@ export default function Header() {
             </Link>
           </div>
           <div className="header-right-content-social">
-            <Link href="https://www.instagram.com/softium_nukus/" id="social_icon">
-              <Instagram />
+            <Link href="https://www.linkedin.com/in/softium-web-studio-78065b2b5/" id="social_icon">
+              <Image src="/images/free-icon-linkedin-3536505.png" alt='linkedin' width={25} height={25} />
             </Link>
           </div>
           <div className="header-right-content-email">

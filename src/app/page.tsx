@@ -12,7 +12,10 @@ import { usePartner, usePortfolio } from "./api/query/query";
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { useRouter } from 'next/navigation';
 import { Language } from './api/api';
-import { useLanguage } from '@/app/context/LanguageContext';
+import { useLanguage } from './context/LanguageContext';
+import styles from './styles/Partners.module.css';
+import Slider from 'react-slick';
+import Partners from './components/Partners';
 
 declare global {
   interface Window {
@@ -30,6 +33,23 @@ interface PortfolioItem {
 interface PartnersItem {
   partner_img: string;
 }
+
+// Custom arrow components
+const PrevArrow = (props: any) => (
+  <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={props.onClick}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </div>
+);
+
+const NextArrow = (props: any) => (
+  <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={props.onClick}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </div>
+);
 
 export default function MainPage() {
   const { language, setLanguage } = useLanguage();
@@ -236,12 +256,12 @@ export default function MainPage() {
     ru: {
       webStudio: "Веб-студия",
       slogan: "Softium — программируем будущее вместе!",
-      description: "Softium — это команда профессионалов в сфере разработки сайтов, дизайна и IT-решений. Мы создаем современные, функциональные и визуально привлекательные проекты, которые помогают бизнесу расти и выделяться в цифровом мире. От идей до готового продукта — программируем успех вашего бизнеса.",
+      description: "Softium — это команда профессионалов в сфере разработки сайтов, дизайна и IT-решений. Мы создаем современные, функциональные и визуально привлекательные проекты, которые помогают бизнесу расти и выделяться в цифровом мире. ��т идей до готового продукта — программируем успех вашего бизнеса.",
       getConsultation: "Получить консультацию",
       aboutUs: "О нас",
       aboutDescription: "Softium — это команда опытных разработчиков, дизайнеров и IT-специалистов, которые создают инновационные цифровые решения для бизнеса. Мы занимаемся разработкой сайтов, дизайном, веб-приложениями и многими другими направлениями, связанными с программированием. Наша цель — помочь вам воплотить идеи в жизнь, используя современные технологии для роста и успеха вашего бизнеса.",
       moreAboutUs: "Подробнее о нас",
-      ourTechnologies: "Наши технологии",
+      ourTechnologies: "Наши технологи",
       techDescription: "Мы эксперты в веб-технологиях, которых достаточно для создания полного и максимально функционального веб-сайта для вашего бизнеса.",
       ourBestWorks: "Наши лучшие работы",
       allWorks: "Все работы",
@@ -832,26 +852,7 @@ export default function MainPage() {
           </div>
         </div>
       </section>
-      <section className="partner">
-        <div className="container">
-          <div className="partner-title">
-            <h1>{t.ourPartners}</h1>
-          </div>
-          <div className="partner-block">
-            {isPortfolioLoading ? (
-              <p>Loading partners...</p>
-            ) : isPortfolioError ? (
-              <p>Error loading partners</p>
-            ) : (
-              <div className="partner-block-group-banner">
-                {partners?.map((item: PartnersItem, index: number) => (
-                  <PartnersItem key={index} partner_img={item.partner_img} />
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <Partners language={language as Language} />
     </div>
   );
 }
