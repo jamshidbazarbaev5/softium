@@ -34,7 +34,15 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/img/logo.png',
+    icon: [
+      { url: '/img/playstore.png', sizes: 'any' },
+      { url: '/img/playstore.png', sizes: '16x16', type: 'image/png' },
+      { url: '/img/playstore.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/img/playstore.png',
+    apple: [
+      { url: '/img/playstore.png' },
+    ],
   },
   viewport: {
     width: 'device-width',

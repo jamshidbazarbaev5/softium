@@ -13,8 +13,6 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 import { useRouter } from 'next/navigation';
 import { Language } from './api/api';
 import { useLanguage } from './context/LanguageContext';
-import styles from './styles/Partners.module.css';
-import Slider from 'react-slick';
 import Partners from './components/Partners';
 
 declare global {
@@ -34,29 +32,27 @@ interface PartnersItem {
   partner_img: string;
 }
 
-// Add this interface for the arrow props
 interface ArrowProps {
   onClick?: () => void;
   currentSlide?: number;
   slideCount?: number;
 }
 
-// Update the arrow components with proper typing
-const PrevArrow = ({ onClick }: ArrowProps) => (
-  <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={onClick}>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  </div>
-);
+// const PrevArrow = ({ onClick }: ArrowProps) => (
+//   <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={onClick}>
+//     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+//       <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+//     </svg>
+//   </div>
+// );
 
-const NextArrow = ({ onClick }: ArrowProps) => (
-  <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={onClick}>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  </div>
-);
+// const NextArrow = ({ onClick }: ArrowProps) => (
+//   <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={onClick}>
+//     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+//       <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+//     </svg>
+//   </div>
+// );
 
 export default function MainPage() {
   const { language, setLanguage } = useLanguage();
@@ -91,10 +87,8 @@ export default function MainPage() {
   };
 
   useEffect(() => {
-    // Force style update on route change
     document.body.style.opacity = '0.99';
     
-    // Initialize AOS
     AOS.init({
       duration: 1000,
       once: true,
@@ -102,7 +96,6 @@ export default function MainPage() {
     });
 
     const loadScript = async (src: string): Promise<void> => {
-      // Check if script already exists
       if (document.querySelector(`script[src="${src}"]`)) {
         return Promise.resolve();
       }
@@ -120,12 +113,10 @@ export default function MainPage() {
       try {
         if (typeof window === "undefined") return;
 
-        // Load jQuery if not present
         if (!window.jQuery) {
           await loadScript("https://code.jquery.com/jquery-3.6.0.min.js");
         }
 
-        // Load Slick if not present
         await loadScript(
           "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
         );
@@ -133,13 +124,11 @@ export default function MainPage() {
         const $ = window.jQuery;
         if (!$) return;
 
-        // Destroy existing slick instance if it exists
         const $clientBlock = $(".client-block");
         if ($clientBlock.hasClass('slick-initialized')) {
           $clientBlock.slick('unslick');
         }
 
-        // Initialize new slick instance
         if ($clientBlock.length && !slickInitialized.current) {
           $clientBlock.slick({
             autoplay: true,
@@ -188,7 +177,6 @@ export default function MainPage() {
       AOS.refresh();
     }, 100);
 
-    // Cleanup function
     return () => {
       clearTimeout(timeoutId);
       
@@ -238,27 +226,24 @@ export default function MainPage() {
       </div>
     </div>
   );
-  const PartnersItem: React.FC<PartnersItem> = ({ partner_img }) => (
-    <div className="partner-block-content-inner">
-      {partner_img ? (
-        <Image
-          src={partner_img}
-          alt="Partner logo"
-          width={300}
-          height={100}
-          // style={{ width: "auto", height: "auto", maxWidth: "100%" }}
-          // unoptimized={true}
-          loading="lazy"
-          loader={({ src }) => src}
-        />
-      ) : (
-        <div>No image available</div>
-      )}
-    </div>
-  );
+  // const PartnersItem: React.FC<PartnersItem> = ({ partner_img }) => (
+  //   <div className="partner-block-content-inner">
+  //     {partner_img ? (
+  //       <Image
+  //         src={partner_img}
+  //         alt="Partner logo"
+  //         width={300}
+  //         height={100}
+  //         loading="lazy"
+  //         loader={({ src }) => src}
+  //       />
+  //     ) : (
+  //       <div>No image available</div>
+  //     )}
+  //   </div>
+  // );
   console.log(partners);
 
-  // Add translations
   const translations = {
     ru: {
       webStudio: "Веб-студия",

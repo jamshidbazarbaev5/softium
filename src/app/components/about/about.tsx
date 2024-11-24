@@ -3,7 +3,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { usePortfolio } from '@/app/api/query/query';
 import AOS from 'aos';
 import './about.css'
-import { useRouter } from 'next/navigation';
 import { Language } from '@/app/api/api';
 import { useLanguage } from '@/app/context/LanguageContext';
 import Animation from '../animation/animation';

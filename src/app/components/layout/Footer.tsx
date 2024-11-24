@@ -84,10 +84,8 @@ export default function Footer() {
     const telegramUrl = `tg://resolve?phone=${cleanNumber}`;
     const webTelegramUrl = `https://web.telegram.org/k/#/+${cleanNumber}`;
 
-    // Try to open Telegram Desktop app first
     window.open(telegramUrl, '_blank');
 
-    // Fallback to web version after a short delay
     setTimeout(() => {
       window.open(webTelegramUrl, '_blank');
     }, 500);

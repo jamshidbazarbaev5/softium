@@ -5,7 +5,6 @@ import { IContact } from "@/app/api/query/query";
 import { useAddress, useContact } from "@/app/api/query/query";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Language } from "@/app/api/api";
-import Link from "next/link";
 
 const translations = {
   ru: {
@@ -13,7 +12,7 @@ const translations = {
     formTitle: "Несколько слов о вашем проекте",
     namePlaceholder: "Имя*",
     emailPlaceholder: "E-mail*",
-    phonePlaceholder: "Телефон* (+998)",
+    phonePlaceholder: "Телефон* ",
     textPlaceholder: "Расскажите нам свою идею!",
     submitButton: "Отправить",
     sending: "Отправка...",
@@ -29,7 +28,7 @@ const translations = {
     formTitle: "A few words about your project",
     namePlaceholder: "Name*",
     emailPlaceholder: "E-mail*",
-    phonePlaceholder: "Phone* (+998)",
+    phonePlaceholder: "Phone* ",
     textPlaceholder: "Tell us your idea!",
     submitButton: "Submit",
     sending: "Sending...",
@@ -61,10 +60,9 @@ const ContactForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     if (name === 'phone_number') {
-      const formattedValue = value.startsWith('+998') ? value : '+998' + value.replace(/\D/g, '');
       setFormData(prevState => ({
         ...prevState,
-        [name]: formattedValue
+        [name]: value
       }));
     } else {
       setFormData(prevState => ({
@@ -210,9 +208,6 @@ const ContactInfo = ({ addressData, contactData }: { addressData: Address[], con
         {addressData?.map((address: Address, index: number) => (
           <React.Fragment key={`address-${index}`}>
             <li>{address.address_name}</li>
-           
-
-           
           </React.Fragment>
         ))}
       </ul>

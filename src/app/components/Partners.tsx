@@ -110,7 +110,7 @@ export default function Partners({ language }: { language: Language }) {
                     width={150}
                     height={80}
                     className={styles.slideImage}
-                    objectFit="contain"
+                    style={{ objectFit: 'contain' }}
                   />
                 </div>
               </div>

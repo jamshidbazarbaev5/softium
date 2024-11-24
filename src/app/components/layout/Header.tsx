@@ -8,7 +8,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useLanguage } from "../../context/LanguageContext";
 import { useAddress, useContact } from "../../api/query/query";
-import { Language } from "../../api/api";
 
 const translations = {
   ru: {
@@ -203,9 +202,9 @@ export default function Header() {
               <li>
                 <Link href="/contact">{t.contact}</Link>
               </li>
-              <li>
-                <a href="/#clients">{t.clients}</a>
-              </li>
+              {/*<li>*/}
+              {/*  <a href="/#clients">{t.clients}</a>*/}
+              {/*</li>*/}
             </ul>
           </nav>
         </div>
