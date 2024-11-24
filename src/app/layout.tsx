@@ -5,6 +5,7 @@ import Header from "./components/layout/Header";
 import { Providers } from "./providers";
 import Idea from "@/app/components/layout/Idea";
 import "./globals.css";
+import { NextWebVitalsMetric } from 'next/app';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,6 +18,12 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 
 export const metadata: Metadata = {
   title: {
@@ -44,11 +51,7 @@ export const metadata: Metadata = {
       { url: '/img/playstore.png' },
     ],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
+  
   robots: {
     index: true,
     follow: true,
@@ -60,6 +63,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+}
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  console.log(metric);
+  // Send to your analytics service
 }
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 "use client";
 import './main.css'
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, memo, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -52,11 +52,13 @@ interface ArrowProps {
 //       <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 //     </svg>
 //   </div>
-// );
+// )
+
 
 export default function MainPage() {
   const { language, setLanguage } = useLanguage();
   const router = useRouter();
+  
   
   const {
     data: portfolioData,
@@ -76,11 +78,11 @@ export default function MainPage() {
   const [isMobileLanguageOpen, setIsMobileLanguageOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleLanguageChange = (newLang: 'ru' | 'en') => {
+  const handleLanguageChange = useCallback((newLang: 'ru' | 'en') => {
     setLanguage(newLang);
     setIsMobileLanguageOpen(false);
     setIsMobileMenuOpen(false);
-  };
+  }, [setLanguage]);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -200,32 +202,32 @@ export default function MainPage() {
     };
   }, [pathname]);
 
-  const PortfolioItem: React.FC<PortfolioItem> = ({
-    portfolio_title,
-    portfolio_description,
-    portfolio_img,
-  }) => (
-    <div
-      className="work-block-content-inner"
-      data-aos="fade-up"
-      data-aos-duration="700"
-    >
-      <div className="work-content-inner-photo">
-        <Image
-          src={portfolio_img}
-          alt={portfolio_title}
-          width={300}
-          height={200}
-          unoptimized={true}
-          loading="lazy"
-        />
+  const PortfolioItem = memo(({ portfolio_title, portfolio_description, portfolio_img }: PortfolioItem) => {
+    return (
+      <div
+        className="work-block-content-inner"
+        data-aos="fade-up"
+        data-aos-duration="700"
+      >
+        <div className="work-content-inner-photo">
+          <Image
+            src={portfolio_img}
+            alt={portfolio_title}
+            width={300}
+            height={200}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
+          />
+        </div>
+        <div className="work-content-inner-text">
+          <h3>{portfolio_title}</h3>
+          <p>{portfolio_description}</p>
+        </div>
       </div>
-      <div className="work-content-inner-text">
-        <h3>{portfolio_title}</h3>
-        <p>{portfolio_description}</p>
-      </div>
-    </div>
-  );
+    );
+  });
   // const PartnersItem: React.FC<PartnersItem> = ({ partner_img }) => (
   //   <div className="partner-block-content-inner">
   //     {partner_img ? (
