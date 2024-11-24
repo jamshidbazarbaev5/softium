@@ -228,6 +228,9 @@ export default function MainPage() {
       </div>
     );
   });
+
+  PortfolioItem.displayName = 'PortfolioItem';
+
   // const PartnersItem: React.FC<PartnersItem> = ({ partner_img }) => (
   //   <div className="partner-block-content-inner">
   //     {partner_img ? (
