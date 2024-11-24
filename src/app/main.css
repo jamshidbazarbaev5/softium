@@ -830,8 +830,9 @@ canvas#neon {
 
 .slick-prev {
   position: absolute;
-  left: 25px;
+  left: 10px;
 }
+
 .slick-prev::before,
 .slick-prev::after {
   display: none;
@@ -839,7 +840,7 @@ canvas#neon {
 
 .slick-next {
   position: absolute;
-  right: 25px;
+  right: 0;
 }
 
 .slick-next::before,

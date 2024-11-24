@@ -146,8 +146,8 @@ const About: React.FC = () => {
             </h2>
             <div style={{position: 'relative'}} data-aos="fade-right" data-aos-delay="400">
               <h1 className="main-title">
-                Дизайн, Разработка,<br/>
-                Маркетинг
+                Дизайн, Разработка.<br/>
+
               </h1>
               <div className="watermark">SOFTIUM</div>
             </div>

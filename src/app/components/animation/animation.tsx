@@ -2,15 +2,34 @@
 
 import { useEffect, useState, useRef } from 'react';
 import './animation.css'
+import { useLanguage } from '@/app/context/LanguageContext';
 
-const stats = [
-    { value: 50, suffix: '+', label: 'Проектов, которыми мы гордимся!' },
-    { value: 5, label: 'Лет на рынке информационных технологий' },
-    { value: 21, label: 'Специалистов в нашей команде!' },
-    { value: 100, suffix: '%', label: 'Довольных клиентов' },
-];
+const translations = {
+    ru: {
+        title: "НАШИ ПРЕИМУЩЕСТВА",
+        stats: [
+            { value: 50, suffix: '+', label: 'Проектов, которыми мы гордимся!' },
+            { value: 5, label: 'Лет на рынке информационных технологий' },
+            { value: 21, label: 'Специалистов в нашей команде!' },
+            { value: 100, suffix: '%', label: 'Довольных клиентов' },
+        ]
+    },
+    en: {
+        title: "OUR ADVANTAGES",
+        stats: [
+            { value: 50, suffix: '+', label: 'Projects we are proud of!' },
+            { value: 5, label: 'Years in the IT market' }, 
+            { value: 21, label: 'Specialists in our team!' },
+            { value: 100, suffix: '%', label: 'Satisfied clients' },
+        ]
+    }
+};
 
 export default function Animation() {
+    const { language } = useLanguage();
+    const t = translations[language as keyof typeof translations];
+    const stats = t.stats;
+    
     const [counts, setCounts] = useState(stats.map(() => 0));
     const [isVisible, setIsVisible] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -81,7 +100,7 @@ export default function Animation() {
             className={`stats-container ${isVisible ? 'visible' : ''}`} 
             ref={containerRef}
         >
-            <h2 className="stats-title">НАШИ ПРЕИМУЩЕСТВА</h2>
+            <h2 className="stats-title">{t.title}</h2>
             <div className="stats-grid">
                 {stats.map((stat, index) => (
                     <div 
