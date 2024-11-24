@@ -15,8 +15,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage) {
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ru')) {
       setLanguage(savedLanguage);
+      return;
+    }
+
+    const browserLang = navigator.language.split('-')[0];
+    if (browserLang === 'ru') {
+      setLanguage('ru');
+      localStorage.setItem('language', 'ru');
+    } else {
+      setLanguage('en');
+      localStorage.setItem('language', 'en');
     }
   }, []);
 
