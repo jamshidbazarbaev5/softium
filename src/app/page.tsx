@@ -211,8 +211,7 @@ export default function MainPage() {
         className="work-block-content-inner"
         data-aos="fade-up"
         data-aos-duration="700"
-        style={{textDecoration: 'none'}}
-      >
+       style={{textDecoration:'none'} }>
         <div className="work-content-inner-photo">
           <Image
             src={portfolio_img}

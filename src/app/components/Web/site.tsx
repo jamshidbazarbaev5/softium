@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePortfolio } from '@/app/api/query/query';
 import AOS from 'aos';
 import './web.css'
 import { useRouter, usePathname } from 'next/navigation';

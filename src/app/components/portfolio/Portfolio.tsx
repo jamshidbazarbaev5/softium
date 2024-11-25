@@ -18,7 +18,7 @@ interface PortfolioItem {
 
 const PortfolioItem: React.FC<PortfolioItem> = ({ portfolio_title, portfolio_description, portfolio_img, portfolio_url }) => (
   <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
-    <a href={portfolio_url} target="_blank" rel="noopener noreferrer">
+    <a href={portfolio_url} target="_blank" rel="noopener noreferrer" className='work-block-content-inner-link' style={{textDecoration: 'none'}}>
       <div className="work-content-inner-photo">
         <Image 
           src={portfolio_img}
@@ -61,7 +61,7 @@ const Portfolio: React.FC = () => {
 
   const renderPortfolioItems = useMemo(() => {
     return portfolio?.map((item: React.JSX.IntrinsicAttributes & PortfolioItem, index: React.Key | null | undefined) => (
-      <PortfolioItem key={index} {...item} />
+      <PortfolioItem key={index} {...item }  />
     ));
   }, [portfolio]);
 
@@ -194,7 +194,7 @@ const Portfolio: React.FC = () => {
             {isContentLoaded && (
               <>
                 <div className="work-block-title" data-aos="fade-up" data-aos-duration="700">
-                  {/*<h1>{t.bestWorks}</h1>*/}
+                  <h1>{t.bestWorks}</h1>
                 </div>
                 <div className="work-block-content">
                   {renderPortfolioItems}
