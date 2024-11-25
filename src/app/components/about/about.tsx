@@ -44,7 +44,10 @@ const About: React.FC = () => {
       services: "УСЛУГИ", 
       portfolio: "ПОРТФОЛИО",
       feedback: "ОБРАТНОЙ СВЯЗЬ",
-      clients: "НАШИ КЛИЕНТЫ"
+      clients: "НАШИ КЛИЕНТЫ",
+      complexSolutions: "КОМПЛЕКСНЫЕ РЕШЕНИЯ",
+      designDevelopment: "Дизайн, Разработка.",
+      aboutDescription: "На протяжении 5 лет мы помогаем нашим клиентам развивать бизнес, используя передовые интернет-технологии. Мы создаем веб-сайты, которые приносят ощутимые результаты. Расскажите нам о своих идеях и целях, а мы проведем анализ рынка, вашей аудитории и конкурентов, чтобы предложить лучшее решение. Большинство наших новых проектов приходит по рекомендациям благодарных клиентов."
     },
     en: {
       title: "Our web studio",
@@ -58,7 +61,10 @@ const About: React.FC = () => {
       services: "SERVICES",
       portfolio: "PORTFOLIO", 
       feedback: "FEEDBACK",
-      clients: "OUR CLIENTS"
+      clients: "OUR CLIENTS",
+      complexSolutions: "COMPLEX SOLUTIONS",
+      designDevelopment: "Design, Development.",
+      aboutDescription: "For 5 years, we have been helping our clients grow their business using cutting-edge internet technologies. We create websites that deliver tangible results. Tell us about your ideas and goals, and we will analyze the market, your audience, and competitors to offer the best solution. Most of our new projects come from recommendations of satisfied clients."
     }
   };
 
@@ -142,17 +148,16 @@ const About: React.FC = () => {
       <section>
           <div className="about-block" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="300">
             <h2 className="section-title" data-aos="fade-right" data-aos-delay="200">
-              КОМПЛЕКСНЫЕ РЕШЕНИЯ
+              {t.complexSolutions}
             </h2>
             <div style={{position: 'relative'}} data-aos="fade-right" data-aos-delay="400">
               <h1 className="main-title">
-                Дизайн, Разработка.<br/>
-
+                {t.designDevelopment}<br/>
               </h1>
               <div className="watermark">SOFTIUM</div>
             </div>
             <p className="description" data-aos="fade-right" data-aos-delay="600">
-              На протяжении 5 лет мы помогаем нашим клиентам развивать бизнес, используя передовые интернет-технологии. Мы создаем веб-сайты, которые приносят ощутимые результаты. Расскажите нам о своих идеях и целях, а мы проведем анализ рынка, вашей аудитории и конкурентов, чтобы предложить лучшее решение. Большинство наших новых проектов приходит по рекомендациям благодарных клиентов.
+              {t.aboutDescription}
             </p>
           </div>
           <Animation /> 
