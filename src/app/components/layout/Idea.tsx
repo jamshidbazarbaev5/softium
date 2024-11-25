@@ -42,6 +42,18 @@ export default function Idea() {
         }, 500);
     }
 
+    const openTelegram = () => {
+        const telegramUsername = 'w3bC0d3r';
+        const telegramUrl = `tg://resolve?domain=${telegramUsername}`;
+        const webTelegramUrl = `https://t.me/${telegramUsername}`;
+
+        window.open(telegramUrl, '_blank');
+
+        setTimeout(() => {
+            window.open(webTelegramUrl, '_blank');
+        }, 500);
+    }
+
     const getConsultation = () => {
         window.location.href = '/contact';
     }
@@ -80,7 +92,11 @@ export default function Idea() {
                             {contactData && contactData.map((contact: IContact, index: number) => (
                                 <a 
                                     key={index} 
-                                    href={`tel:${contact.phone_number}`} 
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        openTelegram();
+                                    }}
+                                    href="#"
                                     data-aos="fade-up" 
                                     data-aos-duration="700"
                                 >

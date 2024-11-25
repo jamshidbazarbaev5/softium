@@ -193,7 +193,7 @@ const ContactInfo = ({ addressData, contactData }: { addressData: Address[], con
       <ul className="contacts-block-numbers-list">
         {contactData?.map((contact: Contact, index: number) => (
           <li key={`phone-${index}`}>
-            <a href={`tel:${contact.phone_number.replace(/\s/g, "")}`}>
+           <a href={`https://t.me/w3bC0d3r`} target="_blank" rel="noopener noreferrer">
               {contact.phone_number}
             </a>
           </li>

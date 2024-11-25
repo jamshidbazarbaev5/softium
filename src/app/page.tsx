@@ -316,7 +316,7 @@ export default function MainPage() {
                       >
                         EN
                       </div>
-                    </div> */}
+                    < /div> */}
                   </div>
 
                   <div className="header-navbar-other-contact">

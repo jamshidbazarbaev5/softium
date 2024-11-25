@@ -70,21 +70,31 @@ export default function Services() {
         offset: 50,
       });
       
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500); 
+      if (!servicesLoading) {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      }
     }, 100);
 
     return () => {
       clearTimeout(timer);
       document.body.style.background = '';
     };
-  }, []);
+  }, [servicesLoading]);
 
-  if (!mounted || isLoading) {
+  if (!mounted || isLoading || servicesLoading) {
     return (
       <div className={`loading-screen ${!isLoading ? 'fade-out' : ''}`}>
         <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="error-container">
+        <p>Error loading services. Please try again later.</p>
       </div>
     );
   }
