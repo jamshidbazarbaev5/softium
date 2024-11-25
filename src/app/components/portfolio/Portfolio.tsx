@@ -16,22 +16,24 @@ interface PortfolioItem {
   portfolio_url: string;
 }
 
-const PortfolioItem: React.FC<PortfolioItem> = ({ portfolio_title, portfolio_description, portfolio_img }) => (
+const PortfolioItem: React.FC<PortfolioItem> = ({ portfolio_title, portfolio_description, portfolio_img, portfolio_url }) => (
   <div className="work-block-content-inner" data-aos="fade-up" data-aos-duration="700">
-    <div className="work-content-inner-photo">
-      <Image 
-        src={portfolio_img}
-        alt={portfolio_title}
-        width={300}
-        height={200}
-        unoptimized={true}
-        loading='lazy'
-      />
-    </div>
-    <div className="work-content-inner-text">
-      <h3>{portfolio_title}</h3>
-      <p>{portfolio_description}</p>
-    </div>
+    <a href={portfolio_url} target="_blank" rel="noopener noreferrer">
+      <div className="work-content-inner-photo">
+        <Image 
+          src={portfolio_img}
+          alt={portfolio_title}
+          width={300}
+          height={200}
+          unoptimized={true}
+          loading='lazy'
+        />
+      </div>
+      <div className="work-content-inner-text">
+        <h3>{portfolio_title}</h3>
+        <p>{portfolio_description}</p>
+      </div>
+    </a>
   </div>
 );
 
@@ -192,21 +194,21 @@ const Portfolio: React.FC = () => {
             {isContentLoaded && (
               <>
                 <div className="work-block-title" data-aos="fade-up" data-aos-duration="700">
-                  <h1>{t.bestWorks}</h1>
+                  {/*<h1>{t.bestWorks}</h1>*/}
                 </div>
                 <div className="work-block-content">
                   {renderPortfolioItems}
                 </div>
-                <Link href="#" className="work-block-content-link" data-aos="fade-up" data-aos-duration="700">
-                  {t.allWorks}
-                  <span>
-                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" clipRule="evenodd" d="M0 5.49988C0 4.94759 0.447715 4.49988 1 4.49988L14.6405 4.49988C15.315 4.99597 15.3149 6.00378 14.6405 6.49988L1 6.49988C0.447716 6.49988 0 6.05216 0 5.49988Z" fill="white"/>
-                      <path fillRule="evenodd" clipRule="evenodd" d="M13.1217 5.86388L9.57121 2.31334C9.18069 1.92282 9.18069 1.28965 9.57122 0.899125C9.96174 0.5086 10.5949 0.5086 10.9854 0.899125L14.536 4.44967L13.1217 5.86388Z" fill="white"/>
-                      <path fillRule="evenodd" clipRule="evenodd" d="M14.551 6.4648L11.0115 10.0043C10.6209 10.3949 9.98777 10.3949 9.59724 10.0043C9.20672 9.61382 9.20672 8.98066 9.59724 8.59013L13.1368 5.05058L14.551 6.4648Z" fill="white"/>
-                    </svg>
-                  </span>
-                </Link>
+                {/*<Link href="#" className="work-block-content-link" data-aos="fade-up" data-aos-duration="700">*/}
+                {/*  {t.allWorks}*/}
+                {/*  <span>*/}
+                {/*    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
+                {/*      <path fillRule="evenodd" clipRule="evenodd" d="M0 5.49988C0 4.94759 0.447715 4.49988 1 4.49988L14.6405 4.49988C15.315 4.99597 15.3149 6.00378 14.6405 6.49988L1 6.49988C0.447716 6.49988 0 6.05216 0 5.49988Z" fill="white"/>*/}
+                {/*      <path fillRule="evenodd" clipRule="evenodd" d="M13.1217 5.86388L9.57121 2.31334C9.18069 1.92282 9.18069 1.28965 9.57122 0.899125C9.96174 0.5086 10.5949 0.5086 10.9854 0.899125L14.536 4.44967L13.1217 5.86388Z" fill="white"/>*/}
+                {/*      <path fillRule="evenodd" clipRule="evenodd" d="M14.551 6.4648L11.0115 10.0043C10.6209 10.3949 9.98777 10.3949 9.59724 10.0043C9.20672 9.61382 9.20672 8.98066 9.59724 8.59013L13.1368 5.05058L14.551 6.4648Z" fill="white"/>*/}
+                {/*    </svg>*/}
+                {/*  </span>*/}
+                {/*</Link>*/}
               </>
             )}
           </div>

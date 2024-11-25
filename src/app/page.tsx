@@ -202,12 +202,16 @@ export default function MainPage() {
     };
   }, [pathname]);
 
-  const PortfolioItem = memo(({ portfolio_title, portfolio_description, portfolio_img }: PortfolioItem) => {
+  const PortfolioItem = memo(({ portfolio_title, portfolio_description, portfolio_img, portfolio_url }: PortfolioItem) => {
     return (
-      <div
+      <a 
+        href={portfolio_url} 
+        target="_blank" 
+        rel="noopener noreferrer" 
         className="work-block-content-inner"
         data-aos="fade-up"
         data-aos-duration="700"
+        style={{textDecoration: 'none'}}
       >
         <div className="work-content-inner-photo">
           <Image
@@ -222,10 +226,10 @@ export default function MainPage() {
           />
         </div>
         <div className="work-content-inner-text">
-          <h3>{portfolio_title}</h3>
-          <p>{portfolio_description}</p>
+          <h3 style={{color: '#fff'}}>{portfolio_title}</h3>
+          <p style={{color: '#fff'}}>{portfolio_description}</p>
         </div>
-      </div>
+      </a>
     );
   });
 
