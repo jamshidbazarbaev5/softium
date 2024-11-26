@@ -97,7 +97,7 @@ export default function Idea() {
                             )}
                         </div>
                         <nav className="idea-block-flex-navi">
-                            <button 
+                            <button  style={{cursor: 'pointer'}}
                                 data-aos="fade-up" 
                                 data-aos-duration="700" 
                                 onClick={getConsultation}
