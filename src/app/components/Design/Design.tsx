@@ -142,7 +142,7 @@ export default function Design() {
             </div> */}
             <div className="header-block-flex">
               <div className="header-block-flex-logo">
-                <a href="#">
+                <a href="/">
                   <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
                   <p id="logo_title">SOFTIUM</p>
                 </a>
@@ -160,14 +160,14 @@ export default function Design() {
                   id="fixed_menu"
                   className="header-fixed-menu-input"
                 />
-                <label htmlFor="fixed_menu">
+                {/* <label htmlFor="fixed_menu">
                   <div>
                     <span id="menu_span"></span>
                     <span id="menu_span"></span>
                     <span id="menu_span"></span>
                   </div>
                   <p id="fixed_text">{t.menu}</p>
-                </label>
+                </label> */}
                 <div className="header-fixed-menu-link">
                   <a href="#" id="fixed_link">
                     {t.portfolio}
@@ -236,7 +236,7 @@ export default function Design() {
                   </p>
                 </div>
                 <div className="header-main-center-btn">
-                  <a href="#">
+                  <a href="/contact">
                     {t.get_consultation}
                     <svg
                       width="20"

@@ -23,7 +23,9 @@ body{
 .header-block {    
     position: relative;
 }
-
+.contacts-form-text{
+    resize: none;
+}
 
 
 
@@ -937,7 +939,6 @@ body{
    
    
    
-   
        /* <--------HEADER-NAVBAR------------> */
        .header-block-navbar{
            display: none;
@@ -1124,20 +1125,24 @@ body{
   padding: 12px 20px;
   border-radius: 6px;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   font-size: 14px;
   animation: slideIn 0.3s ease-in-out;
+  width: 100%;
+  max-width: 500px;
 }
 
 .contacts-form-message.success {
-  background-color: #e7f6ed;
-  color: #0d9f4f;
-  border: 1px solid #b7e4c7;
+  background-color: rgba(36, 184, 175, 0.1);
+  color: #24B8AF;
+  border: 1px solid rgba(36, 184, 175, 0.2);
 }
 
 .contacts-form-message.error {
-  background-color: #fee7e7;
-  color: #dc2626;
-  border: 1px solid #fecaca;
+  background-color: rgba(255, 99, 99, 0.1);
+  color: #ff6363;
+  border: 1px solid rgba(255, 99, 99, 0.2);
 }
 
 @keyframes slideIn {

@@ -112,8 +112,7 @@ export default function Header() {
   };
 
   const formatTelegramUrl = (phoneNumber: string) => {
-    const cleanNumber = phoneNumber.replace(/\D/g, '');
-    return `https://t.me/${cleanNumber}`;
+    return `https://t.me/w3bC0d3r`;
   };
 
   return (
