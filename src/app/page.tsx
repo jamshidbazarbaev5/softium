@@ -222,6 +222,7 @@ export default function MainPage() {
       appDevDesc: "Softium разрабатывает функциональные мобильные и веб-приложения, которые ускоряют рост вашего бизнеса и улучшают пользовательский опыт.",
       marketing: "МАРКЕТИНГ",
       marketingDesc: "Softium разрабатывает эффективные маркетинговые стратегии для продвижения вашего бренда и привлечения клиентов через цифровые каналы.",
+      clientsFromUs: "Клиенты о нас",
     },
     en: {
       webStudio: "Web Studio",
@@ -246,6 +247,7 @@ export default function MainPage() {
       appDevDesc: "Softium develops functional mobile and web applications that accelerate your business growth and improve user experience.",
       marketing: "MARKETING",
       marketingDesc: "Softium develops effective marketing strategies to promote your brand and attract customers through digital channels.",
+      clientsFromUs: "Clients About Us",
     }
   };
 

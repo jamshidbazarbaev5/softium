@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './slide.css';
+import { useLanguage } from '@/app/context/LanguageContext';
 
 interface VideoPlayerProps {
   video: string;
@@ -14,6 +15,17 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ video, isPlaying, onPlayClick }: VideoPlayerProps) => {
+  const { language } = useLanguage();
+  const translations = {
+    en: {
+      browserNotSupported: "Your browser does not support the video tag."
+    },
+    ru: {
+      browserNotSupported: "Ваш браузер не поддерживает видео тег."
+    }
+  };
+  const t = translations[language as keyof typeof translations];
+
   return (
     <div className="client-block-video">
       <video 
@@ -21,9 +33,8 @@ const VideoPlayer = ({ video, isPlaying, onPlayClick }: VideoPlayerProps) => {
         controls={isPlaying}
         playsInline
         className="client-video"
-        // style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       >
-        Your browser does not support the video tag.
+        {t.browserNotSupported}
       </video>
       
       {!isPlaying && (
@@ -55,6 +66,16 @@ interface VideoModalProps {
 }
 
 const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
+  const { language } = useLanguage();
+  const translations = {
+    en: {
+      browserNotSupported: "Your browser does not support the video tag."
+    },
+    ru: {
+      browserNotSupported: "Ваш браузер не поддерживает видео тег."
+    }
+  };
+  const t = translations[language as keyof typeof translations];
   const videoRef = useRef<HTMLVideoElement>(null);
 
   if (!isOpen) return null;
@@ -71,7 +92,7 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
           playsInline
           className="video-modal-player"
         >
-          Your browser does not support the video tag.
+          {t.browserNotSupported}
         </video>
       </div>
     </div>
@@ -79,9 +100,10 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
 };
 
 export default function ClientsPage() {
+  const { language } = useLanguage();
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
   const [modalVideo, setModalVideo] = useState<string | null>(null);
-  const { data: customerFeedback, isLoading, isError } = useCustomerFeedback('en' as Language);
+  const { data: customerFeedback, isLoading, isError } = useCustomerFeedback(language as Language);
 
   const handlePlayClick = (videoUrl: string) => {
     setPlayingVideo(videoUrl);
@@ -120,15 +142,32 @@ export default function ClientsPage() {
     ]
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading videos</div>;
+  const translations = {
+    ru: {
+      loading: "Загрузка...",
+      error: "Ошибка при загрузке видео",
+      title: "Клиенты о нас",
+      browserNotSupported: "Ваш браузер не поддерживает видео"
+    },
+    en: {
+      loading: "Loading...",
+      error: "Error loading videos",
+      title: "Clients About Us",
+      browserNotSupported: "Your browser does not support the video tag"
+    }
+  };
+
+  const t = translations[language as keyof typeof translations];
+
+  if (isLoading) return <div>{t.loading}</div>;
+  if (isError) return <div>{t.error}</div>;
 
   return (
     <>
       <section className="client" id="clients">
         <div className="container">
           <div className="client-title" data-aos="fade-up" data-aos-duration="700">
-            <h1>Clients About Us</h1>
+            <h1>{t.title}</h1>
           </div>
           <div className="client-block" data-aos="fade-up" data-aos-duration="700">
             <Slider {...sliderSettings}>
