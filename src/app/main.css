@@ -1159,7 +1159,7 @@ canvas#neon {
   .idea-block-flex {
     padding: 0 15px;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
   }
 
@@ -1418,9 +1418,9 @@ canvas#neon {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .header-right-content-email:hover {
-    background: #333;
-  }
+  /*.header-right-content-email:hover {*/
+  /*  background: #333;*/
+  /*}*/
   .header-right-content-email:hover svg {
     fill: #24b8af !important;
   }
@@ -1735,68 +1735,55 @@ body {
   font-size: 35px;
   text-align: center;
   color: #24b8af;
+  margin-bottom: 40px;
 }
 
-.partner-block {
-  position: relative;
-  padding: 30px 0;
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.partner-block-content {
-  margin: 0 -15px;
-}
-
-.partner-block-item {
-  padding: 0 15px;
-}
-
-/* Slick slider custom styles for partner section */
-.partner-block .slick-prev,
-.partner-block .slick-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.partner-block .slick-prev {
-  left: -50px;
-}
-
-.partner-block .slick-next {
-  right: -50px;
-}
-
-.partner-block .slick-track {
+.partner-item {
+  background: rgba(34, 34, 34, 0.8);
+  border: 1px solid #404040;
+  border-radius: 12px;
+  padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  /* aspect-ratio: 16/9; */
 }
 
-.partner-block .slick-slide {
-  height: auto;
-}
 
-@media (max-width: 1024px) {
-  .partner-block .slick-prev {
-    left: -30px;
-  }
-  
-  .partner-block .slick-next {
-    right: -30px;
-  }
-}
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .partner-block .slick-prev {
-    left: -20px;
+  .partner-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 10px;
   }
   
-  .partner-block .slick-next {
-    right: -20px;
+  .partner-item {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .partner-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .partner-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 50px;
   }
 }

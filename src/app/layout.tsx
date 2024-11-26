@@ -1,11 +1,26 @@
 import { Metadata } from 'next'
 import localFont from "next/font/local";
+import { Montserrat, Orbitron } from 'next/font/google';
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import { Providers } from "./providers";
 import Idea from "@/app/components/layout/Idea";
 import "./globals.css";
 import { NextWebVitalsMetric } from 'next/app';
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  variable: '--font-orbitron',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800', '900'],
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,6 +33,7 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -59,7 +75,7 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
       'max-video-preview': -1,
-      'max-image-preview': 'large',
+      'max-image-preview': 'large', 
       'max-snippet': -1,
     },
   },
@@ -79,7 +95,7 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${orbitron.variable} antialiased`}
         >
           <Header />
           {children}

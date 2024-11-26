@@ -29,3 +29,48 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: thin;  /* Firefox */
 }
+
+.header-right-content-lang {
+  transition: 0.2s all linear;
+}
+@media only screen and (min-width: 768px){
+  .idea-block-flex{
+      padding: 0 15px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+  }
+}
+
+.header-right-content-linkedin svg {
+  width: 35px;
+  height: 35px;
+  fill: white ;
+  transition: 0.3s all linear;
+}
+
+/* .header-right-content-linkedin:hover {
+  background: #333;
+} */
+.header-right-content-linkedin:hover svg {
+  fill: #24b8af !important;
+}
+
+.header-right-content-linkedin svg {
+  width: 40px;
+  height: auto;
+  fill: white;
+  transition: 0.3s all linear;
+}
+
+/* Footer LinkedIn icon styles */
+.footer-block-social-list svg {
+  width: 40px;
+  height: auto;
+  fill: white;
+  transition: 0.3s all linear;
+}
+
+.footer-block-social-list a:hover svg {
+  fill: #24b8af;
+}

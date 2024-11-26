@@ -1,123 +1,81 @@
 "use client";
-import { usePartner } from "../api/query/query";
-import { Language } from "../api/api";
-import Image from "next/image";
-import styles from '../styles/Partners.module.css';
-import Slider from 'react-slick';
-import { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import Image from 'next/image';
+import { usePartner } from '@/app/api/query/query';
+import { Language } from '@/app/api/api';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-interface PartnersItem {
-  partner_img: string;
+interface PartnersProps {
+  language: Language;
 }
 
-// Define interface for arrow props
-interface ArrowProps {
-  onClick?: () => void;
-  currentSlide?: number;
-  slideCount?: number;
-}
+const Partners: React.FC<PartnersProps> = ({ language }) => {
+  const { data: partners, isLoading, error } = usePartner(language);
 
-// Custom arrow components with proper typing
-const PrevArrow = ({ onClick }: ArrowProps) => (
-  <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={onClick}>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M15 18L9 12L15 6" stroke="#24b8af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  </div>
-);
-
-const NextArrow = ({ onClick }: ArrowProps) => (
-  <div className={`${styles.arrow} ${styles.nextArrow}`} onClick={onClick}>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M9 18L15 12L9 6" stroke="#24b8af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  </div>
-);
-
-export default function Partners({ language }: { language: Language }) {
-  const sliderRef = useRef<Slider | null>(null);
-  
-  const {
-    data: partners,
-    isLoading,
-    isError
-  } = usePartner(language);
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      }
-    ]
-  };
-
-  // Cleanup function
   useEffect(() => {
-    return () => {
-      if (sliderRef.current) {
-        try {
-          sliderRef.current.slickPause();
-        } catch (error) {
-          console.error("Error cleaning up slider:", error);
-        }
-      }
-    };
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
   }, []);
 
-  if (isLoading) return <div className={styles.loading}>Loading partners...</div>;
-  if (isError) return <div className={styles.error}>Error loading partners</div>;
+  const translations = {
+    ru: {
+      ourPartners: "Наши партнеры"
+    },
+    en: {
+      ourPartners: "Our Partners"
+    }
+  };
+
+  const t = translations[language];
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading partners</div>;
 
   return (
-    <section className={styles.partner}>
-      <div className={styles.container}>
-        <div className={styles.title}>
-          <h1>Our Partners</h1>
-        </div>
-        <div className={styles.sliderContainer}>
-          <Slider ref={sliderRef} {...settings} className={styles.slider}>
-            {partners?.map((partner: PartnersItem, index: number) => (
-              <div key={index} className={styles.slide}>
-                <div className={styles.slideContent}>
-                  <Image
-                    src={partner.partner_img}
-                    alt={`Partner ${index + 1}`}
-                    width={150}
-                    height={80}
-                    className={styles.slideImage}
-                    style={{ objectFit: 'contain' }}
-                  />
-                </div>
-              </div>
-            ))}
-          </Slider>
+    <section className="partner">
+      <div className="container">
+        <h2 
+          className="partner-title"
+          data-aos="fade-up"
+          data-aos-duration="700"
+        >
+          {t.ourPartners}
+        </h2>
+        <div 
+          className="partner-grid"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          {partners?.map((partner: { partner_img: string }, index: number) => (
+            <div 
+              key={index} 
+              className="partner-item"
+              data-aos="fade-up"
+              data-aos-duration="700"
+              data-aos-delay={100 * (index + 1)}
+            >
+              <Image
+                src={partner.partner_img}
+                alt={`Partner ${index + 1}`}
+                width={130}
+                height={60}
+                style={{ 
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'contain'
+                }}
+                unoptimized={true}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
-} 
+};
+
+export default Partners;

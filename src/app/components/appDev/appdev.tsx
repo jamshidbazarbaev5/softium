@@ -87,7 +87,7 @@ export default function Design() {
                                     <p id="fixed_text">{t.menu}</p>
                                 </label>
                                 <div className="header-fixed-menu-link">
-                                    <a href="#" id="fixed_link">
+                                    <a href="/portfolio" id="fixed_link">
                                         {t.portfolio}
                                     </a>
                                 </div>

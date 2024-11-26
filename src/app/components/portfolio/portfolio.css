@@ -694,7 +694,7 @@ a{
     .idea-block-flex{
         padding: 0 15px;
         flex-direction: row;
-        align-items: start;
+        /*align-items: start;*/
         justify-content: space-between;
     }
 

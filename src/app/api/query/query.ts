@@ -77,3 +77,16 @@ export const usePartner = (language: Language) => {
         queryFn: () => getPartners(language)
     })
 }
+
+
+export const getCustomerFeedback = async (language: Language) => {
+    const response = await api(language)('/customerFeedback');
+    return response.data;
+} 
+
+export const useCustomerFeedback = (language: Language) => {
+    return useQuery({
+        queryKey: ['customerFeedback', language],
+        queryFn: () => getCustomerFeedback(language)
+    })
+} 

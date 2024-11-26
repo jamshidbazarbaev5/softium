@@ -76,33 +76,25 @@ export default function Idea() {
                                     >
                                         {contactData[0].email}
                                     </a>
-                                    {contactData.length > 1 && (
-                                        <a 
-                                            href={`mailto:${contactData[1].email}`} 
-                                            data-aos="fade-up" 
-                                            data-aos-duration="700"
-                                        >
-                                            {contactData[1].email}
-                                        </a>
-                                    )}
+
                                 </>
                             )}
                         </div>
                         <div className="idea-block-flex-numbers">
-                            {contactData && contactData.map((contact: IContact, index: number) => (
-                                <a 
-                                    key={index} 
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        openTelegram();
-                                    }}
-                                    href="#"
-                                    data-aos="fade-up" 
-                                    data-aos-duration="700"
-                                >
-                                    {contact.phone_number}
-                                </a>
-                            ))}
+                            {contactData && contactData.length>0 && (
+                                <>
+                                    <a 
+                                        key={1}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            openTelegram();
+                                        }}
+                                        href="#"
+                                    >
+                                        {contactData[0].phone_number}
+                                    </a>
+                                </>
+                            )}
                         </div>
                         <nav className="idea-block-flex-navi">
                             <button 
@@ -112,13 +104,7 @@ export default function Idea() {
                             >
                                 {t.consultation}
                             </button>
-                            <button 
-                                data-aos="fade-up" 
-                                data-aos-duration="700" 
-                                onClick={buttonClick}
-                            >
-                                {t.call}
-                            </button>
+
                         </nav>
                     </div>
                 </div>
