@@ -25,7 +25,7 @@ const VideoPlayer = ({ video, isPlaying, onPlayClick }: VideoPlayerProps) => {
     }
   };
   const t = translations[language as keyof typeof translations];
-
+  console.log(video)
   return (
     <div className="client-block-video">
       <video 

@@ -86,11 +86,11 @@ export default function Design() {
                                     </div>
                                     <p id="fixed_text">{t.menu}</p>
                                 </label>
-                                <div className="header-fixed-menu-link">
-                                    <a href="/portfolio" id="fixed_link">
-                                        {t.portfolio}
-                                    </a>
-                                </div>
+                                {/*<div className="header-fixed-menu-link">*/}
+                                {/*    <a href="/portfolio" id="fixed_link">*/}
+                                {/*        {t.portfolio}*/}
+                                {/*    </a>*/}
+                                {/*</div>*/}
                                 <ul className="header-fixed-menu-list">
                                     <li><a href="/about">{t.aboutUs}</a></li>
                                     <li><a href="/services">{t.services}</a></li>

@@ -17,6 +17,9 @@ const translations = {
     portfolio: "ПОРТФОЛИО",
     contact: "ОБРАТНАЯ СВЯЗЬ",
     clients: "НАШИ КЛИЕНТЫ",
+    mobileApp: "МОБИЛЬНЫЕ ПРИЛОЖЕНИЯ",
+    websites: "ВЕБ-САЙТЫ",
+    design: "UX/UI ДИЗАЙН"
   },
   en: {
     menu: "Menu",
@@ -25,6 +28,9 @@ const translations = {
     portfolio: "PORTFOLIO",
     contact: "CONTACT",
     clients: "OUR CLIENTS",
+    mobileApp: "MOBILE APP",
+    websites: "WEBSITES",
+    design: "UX/UI DESIGN"
   }
 };
 
@@ -48,7 +54,7 @@ export default function Header() {
   const getPageTitle = () => {
     switch (pathname) {
       case "/portfolio":
-        return t.portfolio
+        return t.portfolio;
       case "/services":
         return t.services;
       case "/about":
@@ -57,6 +63,12 @@ export default function Header() {
         return t.contact;
       case "/clients":
         return t.clients;
+      case "/apps":
+        return t.mobileApp;
+      case "/websites":
+        return t.websites;
+      case "/design":
+        return t.design;
       default:
         return t.portfolio;
     }

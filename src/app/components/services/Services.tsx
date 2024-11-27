@@ -175,19 +175,19 @@ export default function Services() {
                 </ul>
               </div>
 
-              <div className="header-block-right-content">
-                <div className="header-right-content-social">
-                  <a href="#" id="social_icon">
-                    <i className="fa-brands fa-twitter"></i>
-                  </a>
-                  <a href="#" id="social_icon">
-                    <i className="fa-brands fa-square-facebook"></i>
-                  </a>
-                  <a href="#" id="social_icon">
-                    <i className="fa-brands fa-instagram"></i>
-                  </a>
-                </div>
-              </div>
+              {/*<div className="header-block-right-content">*/}
+              {/*  <div className="header-right-content-social">*/}
+              {/*    <a href="#" id="social_icon">*/}
+              {/*      <i className="fa-brands fa-twitter"></i>*/}
+              {/*    </a>*/}
+              {/*    <a href="#" id="social_icon">*/}
+              {/*      <i className="fa-brands fa-square-facebook"></i>*/}
+              {/*    </a>*/}
+              {/*    <a href="#" id="social_icon">*/}
+              {/*      <i className="fa-brands fa-instagram"></i>*/}
+              {/*    </a>*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </div>
 
             <div className="header-block-main">
