@@ -1,11 +1,10 @@
 'use client';
 import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePortfolio } from '@/app/api/query/query';
 import AOS from 'aos';
 import './portfolio.css'
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Language } from '@/app/api/api';
 import { useLanguage } from '@/app/context/LanguageContext';
 
