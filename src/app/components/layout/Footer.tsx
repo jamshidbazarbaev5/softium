@@ -2,7 +2,6 @@
 import {useAddress, useContact} from "../../api/query/query";
 import {  MapPin } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { useLanguage } from '../../context/LanguageContext';
 import { Language } from '../../api/api';
 

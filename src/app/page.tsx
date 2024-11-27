@@ -7,7 +7,6 @@ import { initAnimation } from "./utils/animation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { usePartner, usePortfolio } from "./api/query/query";
-import LanguageSwitcher from './components/LanguageSwitcher';
 import { useRouter } from 'next/navigation';
 import { Language } from './api/api';
 import { useLanguage } from './context/LanguageContext';
