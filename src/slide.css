@@ -76,7 +76,6 @@
     left: -2px;
   }
   
-  /* Adjust arrow positions */
   .slick-prev {
     left: -114px !important;
   }
@@ -86,7 +85,6 @@
     top: 88px;
   }
   
-  /* Fix slider width and alignment */
   .slick-slider {
     width: 100%;
     margin: 0 auto;
@@ -101,7 +99,6 @@
     align-items: center;
   }
   
-  /* Ensure videos maintain aspect ratio */
   .client-block-video {
     position: relative;
     border-radius: 10px;

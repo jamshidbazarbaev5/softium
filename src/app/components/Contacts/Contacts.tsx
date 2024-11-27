@@ -191,19 +191,19 @@ const ContactInfo = ({ addressData, contactData }: { addressData: Address[], con
     <div className="contacts-block-numbers">
       <h3 className="contacts-block-numbers-title">{t.contactsTitle}</h3>
       <ul className="contacts-block-numbers-list">
-        {contactData?.map((contact: Contact, index: number) => (
-          <li key={`phone-${index}`}>
-           <a href={`https://t.me/w3bC0d3r`} target="_blank" rel="noopener noreferrer">
-              {contact.phone_number}
+        {contactData?.[0] && (
+          <li>
+            <a href={`https://t.me/w3bC0d3r`} target="_blank" rel="noopener noreferrer">
+              {contactData[0].phone_number}
             </a>
           </li>
-        ))}
+        )}
 
-        {contactData?.map((contact: Contact, index: number) => (
-          <li key={`email-${index}`}>
-            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        {contactData?.[0] && (
+          <li>
+            <a href={`mailto:${contactData[0].email}`}>{contactData[0].email}</a>
           </li>
-        ))}
+        )}
 
         {addressData?.map((address: Address, index: number) => (
           <React.Fragment key={`address-${index}`}>
