@@ -133,7 +133,7 @@ export default function Header() {
         <div className="header-block-navbar-inner">
           <div className="header-block-navbar-logo">
             <a href="/">
-            <Image src="/img/logo.png" alt="logo" width={50} height={50} />
+            <Image src="/img/logo.png" alt="logo" width={50} height={50}  priority={true}/>
 
             </a>
           </div>
