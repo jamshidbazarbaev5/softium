@@ -72,6 +72,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  other:{
+    'google-site-verification': 'rf9uM1KcrBD5jzzEwaEGScSG-SvG-Zox'
+  },
+  verification: {
+    google: '96sirPA69EXidYNQGpkKrLQREeU98dSVIuPa-H2YG6E',
+  },
 
  
   icons: {
@@ -101,7 +107,6 @@ export const metadata: Metadata = {
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   console.log(metric);
-  // Send to your analytics service
 }
 
 export default function RootLayout({
