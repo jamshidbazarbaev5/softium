@@ -1,11 +1,8 @@
 'use client';
 import React, { useEffect, useState, useMemo } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import AOS from 'aos';
 import './web.css'
 import { useRouter, usePathname } from 'next/navigation';
-import { Language } from '@/app/api/api';
 import { useLanguage } from '@/app/context/LanguageContext';
 
 
@@ -23,6 +20,7 @@ const Website: React.FC = () => {
       once: false,
       offset: 100,
     });
+    setIsContentLoaded(true);
   }, []);
 
  
@@ -45,7 +43,8 @@ const Website: React.FC = () => {
 
 
   return (
-      <div className="wrapper">
+    <div className={`wrapper ${isContentLoaded ? 'loaded' : ''}`}>
+      {isContentLoaded ? (
         <section className="work">
 
           <div className="container">
@@ -79,7 +78,12 @@ const Website: React.FC = () => {
 
           </div>
         </section>
-      </div>
+      ) : (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
+    </div>
   );
 };
 

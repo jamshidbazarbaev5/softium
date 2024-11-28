@@ -43,47 +43,48 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'Softium - Web Development Studio',
+    default: 'Softium - Professional Web Development Studio',
     template: '%s | Softium'
   },
-  description: 'Softium is a professional web development studio specializing in creating modern, functional websites and applications.',
-  keywords: ['web development', 'software development', 'mobile apps', 'web design', 'IT solutions', 'Softium'],
+  description: 'Softium is a professional web development studio specializing in creating modern, functional websites and applications. Based in Nukus, we offer full-range web development services.',
+  keywords: [
+    'Softium', 
+    'web development', 
+    'software development', 
+    'mobile apps', 
+    'web design', 
+    'IT solutions', 
+    'Nukus web development',
+    'Uzbekistan web studio',
+    'website development company',
+    'web development agency',
+    'web design studio',
+    'web development services',
+    'web development company',
+    'web development studio',
+    'web development in nukus',
+    'nukus web development',
+  ],
   authors: [{ name: 'Softium Team' }],
   creator: 'Softium',
   publisher: 'Softium',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  metadataBase: new URL('https://softium.uz'),
+  alternates: {
+    canonical: '/',
   },
-  icons: {
-    icon: [
-      { url: '/img/playstore.png', sizes: 'any' },
-      { url: '/img/playstore.png', sizes: '16x16', type: 'image/png' },
-      { url: '/img/playstore.png', sizes: '32x32', type: 'image/png' },
-    ],
-    shortcut: '/img/playstore.png',
-    apple: [
-      { url: '/img/playstore.png' },
-    ],
+  openGraph: {
+    title: 'Softium - Professional Web Development Studio',
+    description: 'Professional web development studio specializing in modern websites and applications',
+    url: 'https://softium.uz',
+    siteName: 'Softium',
+    locale: 'en_US',
+    type: 'website',
   },
   
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large', 
-      'max-snippet': -1,
-    },
-  },
 }
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   console.log(metric);
-  // Send to your analytics service
 }
 
 export default function RootLayout({
