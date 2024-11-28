@@ -43,19 +43,39 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'Softium - Web Development Studio',
+    default: 'Softium - Professional Web Development Studio',
     template: '%s | Softium'
   },
   description: 'Softium is a professional web development studio specializing in creating modern, functional websites and applications.',
-  keywords: ['web development', 'software development', 'mobile apps', 'web design', 'IT solutions', 'Softium'],
+  keywords: [
+    'Softium', 
+    'web development', 
+    'software development', 
+    'mobile apps', 
+    'web design', 
+    'IT solutions', 
+    'Nukus web development',
+    'Uzbekistan web studio',
+    'website development company',
+    'web development in nukus',
+    'nukus web development',
+    'web development agency',
+    'web design studio',
+    'web development services',
+    'web development company',
+    'web development studio',
+  ],
   authors: [{ name: 'Softium Team' }],
   creator: 'Softium',
   publisher: 'Softium',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  metadataBase: new URL('https://softium.uz'),
+  alternates: {
+    canonical: '/',
   },
+  other: {
+    'google-site-verification': 'rf9uM1KcrBD5jzzEwaEGScSG-SvG-ZoxY34_NK'
+  },
+ 
   icons: {
     icon: [
       { url: '/img/playstore.png', sizes: 'any' },
