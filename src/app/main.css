@@ -521,66 +521,140 @@ canvas#canvas {
 
 /*<---------------------SERVICES------------------------>  */
 
-.services {
+/*.services {*/
+/*  background: rgba(34, 34, 34, 1);*/
+/*  padding: 50px 15px;*/
+/*}*/
+
+/*.services-title h1 {*/
+/*  text-align: center;*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-weight: 900;*/
+/*  font-size: 30px;*/
+/*  color: #24b8af;*/
+/*}*/
+
+/*.services-block {*/
+/*  padding: 50px 0;*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  align-items: start;*/
+/*}*/
+
+/*.services-block-inner {*/
+/*  padding: 0 15px 30px 26px;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  margin: 40px auto;*/
+/*  max-width: 235px;*/
+/*}*/
+
+/*.services-block-inner h2 {*/
+/*  color: white;*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-weight: 700;*/
+/*  font-size: 25px;*/
+/*  text-align: center;*/
+/*}*/
+
+/*.services-block-inner-logo {*/
+/*  position: relative;*/
+/*  display: inline-block;*/
+/*  padding: 50px 0 20px 0;*/
+/*}*/
+
+/*.services-block-inner-logo::after {*/
+/*  position: absolute;*/
+/*  content: "";*/
+/*  bottom: -20px;*/
+/*  left: 50%;*/
+/*  transform: translateX(-50%);*/
+/*  height: 30px;*/
+/*  width: 3px;*/
+/*  background: #24b8af;*/
+/*  box-shadow: 0px 0px 5px 1px rgba(36, 184, 175, 0.6);*/
+/*}*/
+
+/*.services-block-inner-text p {*/
+/*  text-align: center;*/
+/*  color: white;*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-weight: 300;*/
+/*  padding-top: 50px;*/
+/*  line-height: 22px;*/
+/*  font-size: 15px;*/
+/*  margin: 0;*/
+/*}*/
+
+/*<---------------------TECH------------------------>  */
+
+
+
+
+.services{
   background: rgba(34, 34, 34, 1);
-  padding: 50px 15px;
+  padding:50px 15px;
 }
 
-.services-title h1 {
+.services-title h1{
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat',sans-serif;
   font-weight: 900;
   font-size: 30px;
-  color: #24b8af;
+  color: #24B8AF;
 }
 
-.services-block {
-  padding: 50px 0;
+.services-block{
+  padding:50px 0;
   display: flex;
   flex-wrap: wrap;
   align-items: start;
 }
 
-.services-block-inner {
-  padding: 0 15px 30px 26px;
+.services-block-inner{
+  padding:0 15px 30px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 40px auto;
-  max-width: 235px;
+  /*max-width: 235px;*/
 }
 
-.services-block-inner h2 {
-  color: white;
-  font-family: "Montserrat", sans-serif;
+.services-block-inner h2{
+  color:white;
+  font-family: 'Montserrat',sans-serif;
   font-weight: 700;
   font-size: 25px;
   text-align: center;
 }
 
-.services-block-inner-logo {
+.services-block-inner-logo{
   position: relative;
   display: inline-block;
   padding: 50px 0 20px 0;
 }
 
-.services-block-inner-logo::after {
+
+
+.services-block-inner-logo::after{
   position: absolute;
-  content: "";
+  content:'';
   bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   height: 30px;
   width: 3px;
-  background: #24b8af;
+  background: #24B8AF;
   box-shadow: 0px 0px 5px 1px rgba(36, 184, 175, 0.6);
 }
 
-.services-block-inner-text p {
+.services-block-inner-text p{
   text-align: center;
   color: white;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat',sans-serif;
   font-weight: 300;
   padding-top: 50px;
   line-height: 22px;
@@ -588,7 +662,8 @@ canvas#canvas {
   margin: 0;
 }
 
-/*<---------------------TECH------------------------>  */
+
+
 
 .tech {
   background: rgba(34, 34, 34, 1);

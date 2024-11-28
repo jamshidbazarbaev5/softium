@@ -56,6 +56,7 @@ interface ArrowProps {
 export default function MainPage() {
   const { language, setLanguage } = useLanguage();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
 
 
   const {
@@ -89,14 +90,6 @@ export default function MainPage() {
   useEffect(() => {
     document.body.style.opacity = '0.99';
 
-    AOS.init({
-      offset:100, 
-      duration: 600,
-      once: true,
-      debounceDelay: 50,  
-      throttleDelay: 99  
-    });
-
     const loadScript = async (src: string): Promise<void> => {
       if (document.querySelector(`script[src="${src}"]`)) {
         return Promise.resolve();
@@ -121,26 +114,39 @@ export default function MainPage() {
 
         const $ = window.jQuery;
         if (!$) return;
+        
         if (typeof initAnimation === "function") {
           initAnimation($('body'));
         }
         if (typeof window.startNoise === "function") {
           window.startNoise();
         }
+
+        // Initialize AOS after everything is loaded
+        AOS.init({
+          offset: 100,
+          duration: 600,
+          once: true,
+          debounceDelay: 50,
+          throttleDelay: 99
+        });
+
+        // Remove loading state
+        setIsLoading(false);
+        document.body.style.opacity = '1';
+        AOS.refresh();
       } catch (error) {
         console.error("Error initializing animations:", error);
+        setIsLoading(false); // Remove loading state even if there's an error
       }
     };
 
     const timeoutId = setTimeout(() => {
       initializeAnimations();
-      document.body.style.opacity = '1';
-      AOS.refresh();
     }, 100);
 
     return () => {
       clearTimeout(timeoutId);
-
       if (typeof window.stopNoise === "function") {
         window.stopNoise();
       }
@@ -253,7 +259,13 @@ export default function MainPage() {
   const t = translations[language as keyof typeof translations];
 
   return (
-      <div className="wrapper">
+    <>
+      {isLoading && (
+        <div className="loading-container">
+          <div className="loading-spinner" />
+        </div>
+      )}
+      <div className={`wrapper ${!isLoading ? 'loaded' : ''}`}>
         <header className="header">
           <div className="header-block">
             <div className="container">
@@ -513,6 +525,7 @@ export default function MainPage() {
               </a>
 
 
+
             </div>
           </div>
         </section>
@@ -714,5 +727,6 @@ export default function MainPage() {
 
         <Partners language={language as Language} />
       </div>
+    </>
   );
 }
