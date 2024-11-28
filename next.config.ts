@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'softium.uz',
+        hostname: 'softium.uz:8000',
       },
     ],
   },
