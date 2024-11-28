@@ -4,7 +4,7 @@ export type Language = 'en' | 'ru';
 
 const createApi = (language: Language) => {
   const api = axios.create({
-    baseURL: `https://softium.uz/${language}/main_page/api/v1`,
+    baseURL: `https://softium.uz:8000/${language}/main_page/api/v1`,
     headers: {
       'Content-Type': 'application/json',
     }
