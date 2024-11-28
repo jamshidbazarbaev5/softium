@@ -72,9 +72,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  other: {
-    'google-site-verification': 'rf9uM1KcrBD5jzzEwaEGScSG-SvG-ZoxY34_NK'
-  },
+
  
   icons: {
     icon: [
@@ -114,6 +112,30 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
+        <head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Softium",
+                "url": "https://softium.uz",
+                "logo": "https://softium.uz/img/logo.png",
+                "description": "Professional web development studio specializing in modern websites and applications",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Nukus",
+                  "addressCountry": "UZ"
+                },
+                "sameAs": [
+                  "https://linkedin.com/company/softium-web-studio",
+                  "https://instagram.com/softium_nukus"
+                ]
+              })
+            }}
+          />
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${orbitron.variable} antialiased`}
         >
