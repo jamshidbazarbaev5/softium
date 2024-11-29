@@ -44,7 +44,7 @@ export default function Footer() {
       websites: "РАЗРАБОТКА САЙТОВ",
       apps: "РАЗРАБОТКА ПРИЛОЖЕНИЙ",
       onMap: "На карте",
-      copyright: "© SOFTIUM 2024"
+      copyright: `© SOFTIUM ${new Date().getFullYear()}`
     },
     en: {
       about: "ABOUT US",
@@ -56,7 +56,7 @@ export default function Footer() {
       websites: "WEBSITE DEVELOPMENT",
       apps: "APP DEVELOPMENT",
       onMap: "On map",
-      copyright: "© SOFTIUM 2024"
+      copyright: `© SOFTIUM ${new Date().getFullYear()}`
     }
   };
 

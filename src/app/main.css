@@ -148,6 +148,7 @@ canvas#canvas {
   width: 90%;
   margin: auto;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .header-block-navbar-logo img {
@@ -1665,7 +1666,7 @@ canvas#neon {
   /*  left: -5px;*/
   /*}*/
   /* .partner-block-content-inner img {
-   
+
 
   } */
   .header-main-center-title h1 {
@@ -1791,7 +1792,7 @@ canvas#neon {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #24b8af #1a1a1a; 
+  scrollbar-color: #24b8af #1a1a1a;
 }
 
 body {
@@ -1843,7 +1844,7 @@ body {
     gap: 20px;
     padding: 10px;
   }
-  
+
   .partner-item {
     padding: 15px;
   }
