@@ -76,7 +76,7 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch(`https://softium.uz/${language}/main_page/api/v1/contactUs/`, {
+      const response = await fetch(`https://softium.uz:8000/${language}/main_page/api/v1/contactUs/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
