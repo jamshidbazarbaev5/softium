@@ -64,6 +64,9 @@ export const metadata: Metadata = {
     'web development services',
     'web development company',
     'web development studio',
+    'web development in uzbekistan',
+    'web development worldwide',
+
   ],
   authors: [{ name: 'Softium Team' }],
   creator: 'Softium',
@@ -72,13 +75,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  other:{
-    'google-site-verification': 'rf9uM1KcrBD5jzzEwaEGScSG-SvG-Zox'
-  },
-  verification: {
-    google: '96sirPA69EXidYNQGpkKrLQREeU98dSVIuPa-H2YG6E',
-  },
 
+ 
  
   icons: {
     icon: [
@@ -102,6 +100,9 @@ export const metadata: Metadata = {
       'max-image-preview': 'large', 
       'max-snippet': -1,
     },
+  },
+  verification: {
+    google: 'UBG41kbpqry-XY5Livekl2NwuCw641me0XiSNICDOjI',
   },
 }
 

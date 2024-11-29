@@ -356,9 +356,9 @@ body{
 
 }
 
-.work-block-content-inner:nth-child(n+4){
-    display: none;
-}
+    .work-block-content-inner:nth-child(n+4){
+        display: none;
+    }
 
 .work-content-inner-photo img{
     width: 100%;

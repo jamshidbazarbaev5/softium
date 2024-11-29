@@ -355,14 +355,11 @@ a{
 
 
 .work-block-content-inner{
+    display: block;
     border: 2px solid #404040;
     border-radius: 15px;
     max-width: 340px;
     width: 100%;
-}
-
-.work-block-content-inner:nth-child(n+4){
-    display: none;
 }
 
 .work-content-inner-photo {
