@@ -161,6 +161,7 @@ export default function ClientsPage() {
 
   if (isLoading) return <div>{t.loading}</div>;
   if (isError) return <div>{t.error}</div>;
+  if (!customerFeedback || customerFeedback.length === 0) return null;
 
   return (
     <>
