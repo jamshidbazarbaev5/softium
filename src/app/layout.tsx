@@ -119,6 +119,7 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <head>
+          <link rel="icon" href="/img/playstore.png" />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
