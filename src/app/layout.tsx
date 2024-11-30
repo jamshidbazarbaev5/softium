@@ -79,15 +79,13 @@ export const metadata: Metadata = {
  
  
   icons: {
-    icon: [
-      { url: '/img/playstore.png', sizes: 'any' },
-      { url: '/img/playstore.png', sizes: '16x16', type: 'image/png' },
-      { url: '/img/playstore.png', sizes: '32x32', type: 'image/png' },
-    ],
-    shortcut: '/img/playstore.png',
-    apple: [
-      { url: '/img/playstore.png' },
-    ],
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+    other: {
+      rel: 'icon',
+      url: '/favicon.png',
+    },
   },
   
   robots: {
@@ -119,7 +117,7 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <head>
-          <link rel="icon" href="/img/playstore.png" />
+          <link rel="icon" href="/favicon.ico" />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
