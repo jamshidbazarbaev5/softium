@@ -117,7 +117,8 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <head>
-          <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
