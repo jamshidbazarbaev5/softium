@@ -654,7 +654,7 @@ export default function MainPage() {
                 </div>
                 <canvas id="neon"></canvas>
               </div>
-            </div>
+            </div>  
           </div>
         </section>
         <section className="work">
