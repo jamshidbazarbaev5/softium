@@ -29,18 +29,6 @@ export default function Idea() {
     if (isContactLoading) return <div>{t.loading}</div>;
     if (isContactError) return <div>{t.error}</div>;
 
-    const buttonClick = () => {
-        const telegramUsername = 'w3bC0d3r';
-        const telegramUrl = `tg://resolve?domain=${telegramUsername}`;
-        const webTelegramUrl = `https://t.me/${telegramUsername}`;
-
-        window.open(telegramUrl, '_blank');
-
-        setTimeout(() => {
-            window.open(webTelegramUrl, '_blank');
-        }, 500);
-    }
-
     const openTelegram = () => {
         const telegramUsername = 'w3bC0d3r';
         const telegramUrl = `tg://resolve?domain=${telegramUsername}`;

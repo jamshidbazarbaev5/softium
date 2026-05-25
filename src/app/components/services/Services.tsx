@@ -6,14 +6,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { Language } from '@/app/api/api';
 import { useLanguage } from '@/app/context/LanguageContext';
 
 export default function Services() {
   const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
   const { language } = useLanguage();
   
   const { data: services, isLoading: servicesLoading, isError } = useServices(language as Language);
@@ -24,7 +22,7 @@ export default function Services() {
       about: "О НАС",
       services: "УСЛУГИ",
       portfolio: "ПОРТФОЛИО",
-      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      feedback: "ОБРАТНАЯ СВЯЗЬ",
       clients: "НАШИ КЛИЕНТЫ",
       ourServices: "Наши услуги",
       servicesDescription: "Мы предоставляем полный спектр услуг по разработке и продвижению цифровых продуктов",
@@ -99,13 +97,6 @@ export default function Services() {
     );
   }
 
-  function toggleDropdown(): void {
-    throw new Error("Function not implemented.");
-  }
-
-  function selectLanguage(arg0: string): void {
-    throw new Error("Function not implemented.");
-  }
   const servicesData = services?.service
     ? Array.isArray(services.service)
       ? services.service
@@ -123,7 +114,7 @@ export default function Services() {
         <div className="header-block">
           <div className="container">
             <div className="header-block-flex">
-              <a className="header-block-flex-logo" href="/">
+              <Link className="header-block-flex-logo" href="/">
                 <Image
                   src="/img/logo.png"
                   alt="logo"
@@ -131,7 +122,7 @@ export default function Services() {
                   width={100}
                   height={100}
                 />
-              </a>
+              </Link>
 
               <div className="header-block-flex-number">
                 {/* <a href="tel:+998990990011" id="call_number">

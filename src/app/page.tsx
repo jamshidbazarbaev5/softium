@@ -1,13 +1,12 @@
 "use client";
 import './main.css'
 import Image from "next/image";
-import { useEffect, useRef, useState, memo, useCallback } from "react";
+import { useEffect, useState, memo } from "react";
 import { usePathname } from "next/navigation";
 import { initAnimation } from "./utils/animation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { usePartner, usePortfolio } from "./api/query/query";
-import { useRouter } from 'next/navigation';
 import { Language } from './api/api';
 import { useLanguage } from './context/LanguageContext';
 import Partners from './components/Partners';
@@ -26,15 +25,6 @@ interface PortfolioItem {
   portfolio_img: string;
   portfolio_url: string;
 }
-interface PartnersItem {
-  partner_img: string;
-}
-
-interface ArrowProps {
-  onClick?: () => void;
-  currentSlide?: number;
-  slideCount?: number;
-}
 
 // const PrevArrow = ({ onClick }: ArrowProps) => (
 //   <div className={`${styles.arrow} ${styles.prevArrow}`} onClick={onClick}>
@@ -52,40 +42,20 @@ interface ArrowProps {
 //   </div>
 // )
 
-
 export default function MainPage() {
-  const { language, setLanguage } = useLanguage();
-  const router = useRouter();
+  const { language } = useLanguage();
   const [isLoading, setIsLoading] = useState(true);
 
 
   const {
-    data: portfolioData,
-    isLoading: isPortfolioLoading,
-    isError: isPortfolioError,
+    data: portfolioData,isLoading:isPortfolioLoading,isError:isPortfolioError,
   } = usePortfolio(language as Language);
 
   const {
     data: partners,
-    isLoading: isPartnersLoading,
-    isError: isPartnersError,
   } = usePartner(language as Language);
 
   const pathname = usePathname();
-  const slickInitialized = useRef(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileLanguageOpen, setIsMobileLanguageOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const handleLanguageChange = useCallback((newLang: 'ru' | 'en') => {
-    setLanguage(newLang);
-    setIsMobileLanguageOpen(false);
-    setIsMobileMenuOpen(false);
-  }, [setLanguage]);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
 
   useEffect(() => {
     document.body.style.opacity = '0.99';
@@ -116,7 +86,7 @@ export default function MainPage() {
         if (!$) return;
         
         if (typeof initAnimation === "function") {
-          initAnimation($('body'));
+          initAnimation();
         }
         if (typeof window.startNoise === "function") {
           window.startNoise();
@@ -563,6 +533,7 @@ export default function MainPage() {
                           alt="laravel"
                           width={100}
                           height={100}
+                          unoptimized
                           style={{width: "auto", height: "auto", maxWidth: "100%"}}
                       />
                     </div>
@@ -571,10 +542,11 @@ export default function MainPage() {
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
                       <Image
-                          src="/images/typescript.png"
+                          src="/images/figma.png"
                           alt="figma"
                           width={100}
                           height={100}
+                          unoptimized
                           style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                       />
                     </div>
@@ -583,10 +555,11 @@ export default function MainPage() {
                   <div className="tech-block-slider-slide">
                     <div className="tech-slider-slide-img">
                       <Image
-                          src="/images/free-icon-python-5968350.png"
+                          src="/images/Unity.png"
                           alt="unity"
-                          width={100}
-                          height={100}
+                          width={512}
+                          height={512}
+                          unoptimized
                           style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                       />
                     </div>
@@ -597,8 +570,9 @@ export default function MainPage() {
                       <Image
                           src="/images/React.png"
                           alt="react"
-                          width={100}
-                          height={100}
+                          width={1200}
+                          height={1106}
+                          unoptimized
                           style={{ width: "auto", height: "auto", maxWidth: "100%" }}
                       />
                     </div>

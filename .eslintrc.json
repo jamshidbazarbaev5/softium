@@ -1,16 +1,3 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
-  "rules": {
-    "@typescript-eslint/no-unused-vars": "off",
-    "@next/next/no-img-element": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "@next/next/no-html-link-for-pages": "off",
-    "@next/next/link-passhref": "off",
-    "@typescript-eslint/ban-ts-comment": ["error", {
-      "ts-ignore": "allow-with-description",
-      "ts-expect-error": true,
-      "ts-nocheck": false
-    }]
-  },
-  "ignorePatterns": ["node_modules/", ".next/"]
+  "extends": ["next/core-web-vitals", "next/typescript"]
 }

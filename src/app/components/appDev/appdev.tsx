@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from 'next/image';
+import Link from 'next/link';
 import { useLanguage } from '@/app/context/LanguageContext'
 
 export default function Design() {
@@ -23,7 +24,7 @@ export default function Design() {
             portfolio: "Портфолио",
             aboutUs: "О НАС",
             services: "УСЛУГИ",
-            feedback: "ОБРАТНОЙ СВЯЗЬ",
+            feedback: "ОБРАТНАЯ СВЯЗЬ",
             ourClients: "НАШИ КЛИЕНТЫ",
             appDevelopment: "Разработка мобильных приложений",
             appDescription: "Мобильные технологии стали неотъемлемой частью современного бизнеса, открывая новые возможности для взаимодействия с клиентами. Наша команда профессионалов предлагает услуги по созданию гибридных мобильных приложений, которые работают как на iOS, так и на Android.",
@@ -60,10 +61,10 @@ export default function Design() {
 
                         <div className="header-block-flex">
                             <div className="header-block-flex-logo">
-                                <a href="/">
+                                <Link href="/">
                                     <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
                                     <p id="logo_title">SOFTIUM</p>
-                                </a>
+                                </Link>
                             </div>
                             <div className="header-block-flex-number">
                                 {/*<a href="tel:+998990990011" id="call_number">*/}

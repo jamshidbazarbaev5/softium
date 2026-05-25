@@ -44,16 +44,14 @@ declare global {
   }
 }
 
-export const initAnimation = (jquery: JQuery): void => {
-  (function ($) {
-    const noise = () => {
-      let a: HTMLCanvasElement,
-          b: CanvasRenderingContext2D,
-          c: number,
-          d: number;
-      const e: ImageData[] = [];
-      let f = 0,
-          g: number;
+export const initAnimation = (): void => {
+  const noise = () => {
+    let a: HTMLCanvasElement,
+        b: CanvasRenderingContext2D,
+        c: number,
+        d: number;
+    const e: ImageData[] = [];
+    let f = 0;
 
 
       const h = () => {
@@ -75,7 +73,7 @@ export const initAnimation = (jquery: JQuery): void => {
 
       const k = () => {
         j();
-        g = window.setTimeout(() => {
+        window.setTimeout(() => {
           window.noiseFrameId = window.requestAnimationFrame(k);
         }, 40);
       };
@@ -383,5 +381,4 @@ export const initAnimation = (jquery: JQuery): void => {
       cancelAnimationFrame(window.noiseFrameId);
       cancelAnimationFrame(window.drawFrameId);
     };
-  })($);
 };

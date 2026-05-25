@@ -1,10 +1,9 @@
 'use client';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { usePortfolio } from '@/app/api/query/query';
 import AOS from 'aos';
 import './portfolio.css'
-import { useRouter } from 'next/navigation';
 import { Language } from '@/app/api/api';
 import { useLanguage } from '@/app/context/LanguageContext';
 
@@ -39,7 +38,6 @@ const PortfolioItem: React.FC<PortfolioItem> = ({ portfolio_title, portfolio_des
 const Portfolio: React.FC = () => {
   const { language } = useLanguage();
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
   
   const { data: portfolio, isLoading, error } = usePortfolio(language as Language);
   const [isContentLoaded, setIsContentLoaded] = useState(false);
@@ -68,7 +66,7 @@ const Portfolio: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const renderPortfolioItems = useMemo(() => {
+  const renderPortfolioItems = React.useMemo(() => {
     return portfolio?.map((item: React.JSX.IntrinsicAttributes & PortfolioItem, index: React.Key | null | undefined) => (
       <PortfolioItem key={index} {...item }  />
     ));
@@ -85,7 +83,7 @@ const Portfolio: React.FC = () => {
       about: "О НАС",
       services: "УСЛУГИ", 
       portfolio: "ПОРТФОЛИО",
-      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      feedback: "ОБРАТНАЯ СВЯЗЬ",
       clients: "НАШИ КЛИЕНТЫ"
     },
     en: {

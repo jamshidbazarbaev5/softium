@@ -1,8 +1,8 @@
 'use client';
-
 import { useEffect, useState, useRef } from 'react';
 import './animation.css'
 import { useLanguage } from '@/app/context/LanguageContext';
+import React from 'react';
 
 const translations = {
     ru: {
@@ -35,6 +35,38 @@ export default function Animation() {
     const containerRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<number[]>([]);
 
+    const resetCounts = React.useCallback(() => {
+        setCounts(stats.map(() => 0));
+        animationRef.current.forEach(id => clearInterval(id));
+        animationRef.current = [];
+    }, [stats]);
+
+    const startCountAnimation = React.useCallback(() => {
+        stats.forEach((stat, index) => {
+            const duration = 2000;
+            const steps = 60;
+            const increment = stat.value / steps;
+            let current = 0;
+
+            const timerId = window.setInterval(() => {
+                current += increment;
+                if (current >= stat.value) {
+                    current = stat.value;
+                    clearInterval(timerId);
+                    const newIds = animationRef.current.filter(id => id !== timerId);
+                    animationRef.current = newIds;
+                }
+                setCounts(prev => {
+                    const newCounts = [...prev];
+                    newCounts[index] = Math.floor(current);
+                    return newCounts;
+                });
+            }, duration / steps);
+
+            animationRef.current.push(timerId);
+        });
+    }, [stats]);
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -61,39 +93,7 @@ export default function Animation() {
             observer.disconnect();
             animationRef.current.forEach(id => clearInterval(id));
         };
-    }, []);
-
-    const resetCounts = () => {
-        setCounts(stats.map(() => 0));
-        animationRef.current.forEach(id => clearInterval(id));
-        animationRef.current = [];
-    };
-
-    const startCountAnimation = () => {
-        stats.forEach((stat, index) => {
-            const duration = 2000;
-            const steps = 60;
-            const increment = stat.value / steps;
-            let current = 0;
-
-            const timerId = window.setInterval(() => {
-                current += increment;
-                if (current >= stat.value) {
-                    current = stat.value;
-                    clearInterval(timerId);
-                    const newIds = animationRef.current.filter(id => id !== timerId);
-                    animationRef.current = newIds;
-                }
-                setCounts(prev => {
-                    const newCounts = [...prev];
-                    newCounts[index] = Math.floor(current);
-                    return newCounts;
-                });
-            }, duration / steps);
-
-            animationRef.current.push(timerId);
-        });
-    };
+    }, [resetCounts, startCountAnimation]);
 
     return (
         <div 

@@ -1,9 +1,7 @@
 'use client';
-import React, { useEffect, useState, useMemo } from 'react';
-import { usePortfolio } from '@/app/api/query/query';
+import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import './about.css'
-import { Language } from '@/app/api/api';
 import { useLanguage } from '@/app/context/LanguageContext';
 import Animation from '../animation/animation';
 
@@ -12,7 +10,6 @@ import Animation from '../animation/animation';
 const About: React.FC = () => {
   const { language } = useLanguage();
   const [loading, setLoading] = useState(true);
-  const { data: portfolio, isLoading, error } = usePortfolio(language as Language);
   const [isContentLoaded, setIsContentLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,11 +21,9 @@ const About: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (portfolio) {
-      setIsContentLoaded(true);
-      AOS.refresh();
-    }
-  }, [portfolio]);
+    setIsContentLoaded(true);
+    AOS.refresh();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -52,7 +47,7 @@ const About: React.FC = () => {
       about: "О НАС",
       services: "УСЛУГИ", 
       portfolio: "ПОРТФОЛИО",
-      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      feedback: "ОБРАТНАЯ СВЯЗЬ",
       clients: "НАШИ КЛИЕНТЫ",
       complexSolutions: "КОМПЛЕКСНЫЕ РЕШЕНИЯ",
       designDevelopment: "Дизайн, Разработка.",
@@ -78,8 +73,6 @@ const About: React.FC = () => {
   };
 
   const t = translations[language as keyof typeof translations];
-
-  if (error) return <div>Error loading portfolio</div>;
 
   return (
     <>

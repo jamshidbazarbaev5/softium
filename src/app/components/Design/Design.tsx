@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from 'next/image';
+import Link from 'next/link';
 import { useLanguage } from '@/app/context/LanguageContext'
 
 export default function Design() {
@@ -15,7 +16,7 @@ export default function Design() {
       portfolio: "ПОРТФОЛИО",
       about: "О НАС",
       services: "УСЛУГИ",
-      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      feedback: "ОБРАТНАЯ СВЯЗЬ",
       clients: "НАШИ КЛИЕНТЫ",
       our_services: "НАШИ УСЛУГИ",
       services_description: "Мы предоставляем широкий спектр услуг в сфере веб-разработки и дизайна",
@@ -142,10 +143,10 @@ export default function Design() {
             </div> */}
             <div className="header-block-flex">
               <div className="header-block-flex-logo">
-                <a href="/">
+                <Link href="/">
                   <Image src="/img/logo.png" alt="logo" id="logo" width={100} height={100} />
                   <p id="logo_title">SOFTIUM</p>
-                </a>
+                </Link>
               </div>
               <div className="header-block-flex-number">
                 {/* <a href="tel:+998990990011" id="call_number">

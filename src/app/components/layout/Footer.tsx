@@ -38,7 +38,7 @@ export default function Footer() {
       about: "О НАС",
       services: "УСЛУГИ",
       portfolio: "ПОРТФОЛИО",
-      feedback: "ОБРАТНОЙ СВЯЗЬ",
+      feedback: "ОБРАТНАЯ СВЯЗЬ",
       clients: "НАШИ КЛИЕНТЫ",
       design: "UX/UI DESIGN",
       websites: "РАЗРАБОТКА САЙТОВ",
@@ -122,7 +122,7 @@ export default function Footer() {
       },
       { 
         href: "#",
-        text: contactData[1].phone_number,
+        text: contactData[0].phone_number,
         onClick: (e: React.MouseEvent) => {
           e.preventDefault();
           handleTelegramClick(contactData[1].phone_number);

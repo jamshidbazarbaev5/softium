@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Mail, MapPin, Phone, Instagram } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import AOS from "aos";
@@ -36,7 +36,6 @@ const translations = {
 
 export default function Header() {
   const pathname = usePathname();
-  const router = useRouter();
   const { language, setLanguage } = useLanguage();
   const t = translations[language as keyof typeof translations];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -81,11 +80,6 @@ export default function Header() {
     }
   };
 
-  const redirectToPortfolio = () => {
-    window.location.href = `/portfolio`;
-  }
- 
-
   useEffect(() => {
     const initializeStyles = () => {
       document.body.classList.remove("page-transition");
@@ -114,16 +108,7 @@ export default function Header() {
     };
   }, [pathname]);
 
-  const redirectToService = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.body.classList.add("page-transition");
-
-    setTimeout(() => {
-      router.push("/services");
-    }, 100);
-  };
-
-  const formatTelegramUrl = (phoneNumber: string) => {
+  const formatTelegramUrl = () => {
     return `https://t.me/w3bC0d3r`;
   };
 
@@ -132,11 +117,10 @@ export default function Header() {
       <div className="header-block-navbar">
         <div className="header-block-navbar-inner">
           <div className="header-block-navbar-logo">
-            <a href="/">
+          <Link href="/">
             <Image src="/img/logo.png" alt="logo" width={50} height={50}  priority={true}/>
-
-            </a>
-          </div>
+          </Link>
+        </div>
           <div className="header-block-navbar-other">
             <div className="header-navbar-other-lang">
               <div className="dropdown-label" onClick={toggleDropdown}>
@@ -186,7 +170,7 @@ export default function Header() {
               )}
               {contactData?.[0] && (
                 <Link 
-                  href={formatTelegramUrl(contactData[0].phone_number)}
+                  href={formatTelegramUrl()}
                   className="header-other-contact-phone"  
                   style={{color:"white"}}
                   target="_blank"
@@ -232,7 +216,7 @@ export default function Header() {
       </div>
       <div className="header-block-flex">
         <div className="header-block-flex-logo">
-          <a href="/">
+          <Link href="/">
             <Image
               src="/img/logo.png"
               alt="logo"
@@ -241,12 +225,12 @@ export default function Header() {
               id="logo"
             />
             <p id="logo_title">SOFTIUM</p>
-          </a>
+          </Link>
         </div>
         <div className="header-block-flex-number">
           {contactData?.[0] && (
             <Link
-              href={formatTelegramUrl(contactData[0].phone_number)}
+              href={formatTelegramUrl()}
               id="call_number"
               target="_blank"
               rel="noopener noreferrer"

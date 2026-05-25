@@ -1,8 +1,7 @@
 'use client';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import './web.css'
-import { useRouter, usePathname } from 'next/navigation';
 import { useLanguage } from '@/app/context/LanguageContext';
 
 
@@ -10,7 +9,6 @@ import { useLanguage } from '@/app/context/LanguageContext';
 
 const Website: React.FC = () => {
   const { language } = useLanguage();
-  const router = useRouter();
 
   const [isContentLoaded, setIsContentLoaded] = useState(false);
 
